@@ -61,11 +61,11 @@ export nodes=1  # number of nodes to be used
 
 
 # ################ ex3 simula
-export machine=ex3
-export proc=xeongold16q
-export mpi=openmpi
-export compiler=gnu
-export nodes=1  # number of nodes to be used
+# export machine=ex3
+# export proc=xeongold16q
+# export mpi=openmpi
+# export compiler=gnu
+# export nodes=1  # number of nodes to be used
 
 
 
