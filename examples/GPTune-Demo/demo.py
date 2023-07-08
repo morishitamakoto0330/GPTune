@@ -92,23 +92,23 @@ def objectives(point):
     """
     f(t,x) = exp(- (x + 1) ^ (t + 1) * cos(2 * pi * x)) * (sin( (t + 2) * (2 * pi * x) ) + sin( (t + 2)^(2) * (2 * pi * x) + sin ( (t + 2)^(3) * (2 * pi *x))))
     """
-    t = point['t']
-    x = point['x']
-    a = 2 * np.pi
-    b = a * t
-    c = a * x
-    d = np.exp(- (x + 1) ** (t + 1)) * np.cos(c)
-    e = np.sin((t + 2) * c) + np.sin((t + 2)**2 * c) + np.sin((t + 2)**3 * c)
-    f = d * e + 1
+    # t = point['t']
+    # x = point['x']
+    # a = 2 * np.pi
+    # b = a * t
+    # c = a * x
+    # d = np.exp(- (x + 1) ** (t + 1)) * np.cos(c)
+    # e = np.sin((t + 2) * c) + np.sin((t + 2)**2 * c) + np.sin((t + 2)**3 * c)
+    # f = d * e + 1
 
     # print('test:',test)
     """
     f(t,x) = x^2+t
     """
-    # t = point['t']
-    # x = point['x']
-    # f = 20*x**2+t
-    # time.sleep(1.0)
+    t = point['t']
+    x = point['x']
+    f = 20*x**2+t
+    time.sleep(1.0)
 
     return [f]
 
