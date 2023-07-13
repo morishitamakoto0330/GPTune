@@ -171,13 +171,13 @@ def main():
 
     input_space = Space([Real(0., 10., transform="normalize", name="t")])
     # parameter_space = Space([Real(0., 1., transform="normalize", name="x")])
-    parameter_space = Space([Integer(A.shape[1], sys.maxsize, transform="normalize", name="work_array_size")])
+    parameter_space = Space([Integer(N, N*N, transform="normalize", name="work_array_size")])
     # input_space = Space([Real(0., 0.0001, "uniform", "normalize", name="t")])
     # parameter_space = Space([Real(-1., 1., "uniform", "normalize", name="x")])
 
     output_space = Space([Real(float('-Inf'), float('Inf'), name="y")])
     # constraints = {"cst1": "x >= 0. and x <= 1."}
-    constraints = {"cst1": f"work_array_size < {A.shape[1]}."}
+    constraints = {"cst1": f"work_array_size < {N}."}
     if(perfmodel==1):
         problem = TuningProblem(input_space, parameter_space,output_space, objectives, constraints, models)  # with performance model
     else:
