@@ -55,7 +55,7 @@ python ./demo.py -optimization ${tuner} -ntask 2 -nrun 20
 
 
 # the following examples only work with openmpi
-if [[ $ModuleEnv == *"openmpi"* ]]; then
+#if [[ $ModuleEnv == *"openmpi"* ]]; then
     # ###########################################################################################
     # # ################### Illustrate parallel modeling and search performance ###################
     #  # this example performs one MLA iteration using $\epsilon=80$ and $\delta=20$ samples of the analytical function (see Table 2 of the PPoPP paper). Suppose your machine has 1 node with 16 cores, run the following two configurations and compare 'time_search':xxx and 'time_model':xxx from the runlogs.    
@@ -68,7 +68,7 @@ if [[ $ModuleEnv == *"openmpi"* ]]; then
     #  rm -rf gptune.db/*.json
     #  $RUN python ./demo_parallelperformance.py -ntask 20 -nrun 40 -distparallel 1 | tee a.out_parallel # this is parallel modeling and search
     # # ###########################################################################################
-fi
+#fi
 
 
 
