@@ -95,9 +95,16 @@ _A = [ [random.uniform(value_range[0], value_range[1]) for i in range(N)] for j 
 A = np.array(_A)
 
 def objectives(point):
-    x = point['x']
+    # t = point['t']
+    # x = point['x']
+    # f = 20*x**2+t
+    # time.sleep(1.0)
+
+    # return [f]
+
+    work_array_size = point['work_array_size']
     start = time.perf_counter()
-    Q, R = linalg.qr(A, lwork=x)
+    Q, R = linalg.qr(A, lwork=work_array_size)
     end = time.perf_counter()
 
     return [end - start]
@@ -163,12 +170,14 @@ def main():
     os.environ['TUNER_NAME'] = TUNER_NAME
 
     input_space = Space([Real(0., 10., transform="normalize", name="t")])
-    parameter_space = Space([Real(0., 1., transform="normalize", name="x")])
+    # parameter_space = Space([Real(0., 1., transform="normalize", name="x")])
+    parameter_space = Space([Integer(A.shape[1], sys.maxsize, transform="normalize", name="work_array_size")])
     # input_space = Space([Real(0., 0.0001, "uniform", "normalize", name="t")])
     # parameter_space = Space([Real(-1., 1., "uniform", "normalize", name="x")])
 
     output_space = Space([Real(float('-Inf'), float('Inf'), name="y")])
-    constraints = {"cst1": "x >= 0. and x <= 1."}
+    # constraints = {"cst1": "x >= 0. and x <= 1."}
+    constraints = {"cst1": f"work_array_size < {A.shape[1]}."}
     if(perfmodel==1):
         problem = TuningProblem(input_space, parameter_space,output_space, objectives, constraints, models)  # with performance model
     else:
