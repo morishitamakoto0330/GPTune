@@ -20,7 +20,7 @@ tuner=GPTune
 rm -rf gptune.db/*.json # do not load any database 
 #$RUN  
 # python ./demo.py -optimization ${tuner} -ntask 2 -nrun 20
-python ./demo_lapack.py -optimization ${tuner} -ntask 2 -nrun 20
+python ./demo_lapack.py -optimization ${tuner} -ntask 10 -nrun 20
 ###########################################################################################
 
 
