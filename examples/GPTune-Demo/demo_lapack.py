@@ -54,7 +54,8 @@ import time
 from callopentuner import OpenTuner
 from callhpbandster import HpBandSter
 
-
+from scipy import linalg
+import random
 
 # from GPTune import *
 
@@ -88,32 +89,31 @@ def parse_args():
 
     return args
 
+N = 1000
+value_range = [0.0, 1.0]
+_A = [ [random.uniform(value_range[0], value_range[1]) for i in range(N)] for j in range(N)]
+A = np.array(_A)
+
 def objectives(point):
-    """
-    f(t,x) = exp(- (x + 1) ^ (t + 1) * cos(2 * pi * x)) * (sin( (t + 2) * (2 * pi * x) ) + sin( (t + 2)^(2) * (2 * pi * x) + sin ( (t + 2)^(3) * (2 * pi *x))))
-    """
-    # t = point['t']
-    # x = point['x']
-    # a = 2 * np.pi
-    # b = a * t
-    # c = a * x
-    # d = np.exp(- (x + 1) ** (t + 1)) * np.cos(c)
-    # e = np.sin((t + 2) * c) + np.sin((t + 2)**2 * c) + np.sin((t + 2)**3 * c)
-    # f = d * e + 1
-
-    # print('test:',test)
-    """
-    f(t,x) = x^2+t
-    """
-    t = point['t']
     x = point['x']
-    f = 20*x**2+t
-    time.sleep(1.0)
+    start = time.perf_counter()
+    Q, R = linalg.qr(A, lwork=x)
+    end = time.perf_counter()
 
-    return [f]
+    return [end - start]
 
 def test_lapack():
-    pass
+    # print('Test LAPACK')
+    # N = 3
+    # value_range = [0.0, 1.0]
+    # _A = [ [random.uniform(value_range[0], value_range[1]) for i in range(N)] for j in range(N)]
+    # A = np.array(_A)
+    # A_inv = linalg.inv(A)
+
+    # print('A=\n{0}'.format(A))
+    # print('A_inv=\n{0}'.format(A_inv))
+
+    return 0
 
 # test=1  # make sure to set global variables here, rather than in the main function
 def models(point):
@@ -279,5 +279,5 @@ def main():
             print('    Popt ', data.P[tid][np.argmin(data.O[tid])], 'Oopt ', min(data.O[tid])[0], 'nth ', np.argmin(data.O[tid]))
 
 if __name__ == "__main__":
-    # main()
-    test_lapack()
+    main()
+    # test_lapack()
