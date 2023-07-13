@@ -89,7 +89,7 @@ def parse_args():
 
     return args
 
-N = 100
+N = 10
 value_range = [0.0, 1.0]
 _A = [ [random.uniform(value_range[0], value_range[1]) for i in range(N)] for j in range(N)]
 A = np.array(_A)
