@@ -5,10 +5,10 @@ cd ..
 ##################################################
 ##################################################
 #define package version numbers from homebrew, this may need to be changed according to your system 
-pythonversion=3.9.17
+pythonversion=3.9.17_1
 gccversion=13.1.0
 openblasversion=0.3.23
-lapackversion=3.11.0
+lapackversion=3.11
 
 export ModuleEnv='mac-intel-openmpi-gnu'
 BuildExample=0 # whether to build all examples
@@ -22,8 +22,9 @@ if [[ $(uname -s) != "Darwin" ]]; then
 fi
 
 export GPTUNEROOT=$PWD
-export BREWPATH=/usr/local/Cellar # this is where homebrew install packages
-############### macbook
+# export BREWPATH=/usr/local/Cellar # this is where homebrew install packages
+export BREWPATH=/opt/homebrew/Cellar
+############## macbook
 if [ $ModuleEnv = 'mac-intel-openmpi-gnu' ]; then
 
 	export PATH=$BREWPATH/python@3.9/$pythonversion/bin/:$PATH
@@ -46,9 +47,12 @@ if [ $ModuleEnv = 'mac-intel-openmpi-gnu' ]; then
 	export DYLD_LIBRARY_PATH=$GPTUNEROOT/scalapack-2.1.0/build/install/lib/:$DYLD_LIBRARY_PATH
 	export DYLD_LIBRARY_PATH=$GPTUNEROOT/examples/SuperLU_DIST/superlu_dist/parmetis-4.0.3/install/lib/:$DYLD_LIBRARY_PATH
 	OPENMPFLAG=fopenmp
-	CC=$BREWPATH/gcc/$gccversion/bin/gcc-12
-	FTN=$BREWPATH/gcc/$gccversion/bin/gfortran-12
-	CPP=$BREWPATH/gcc/$gccversion/bin/g++-12
+	# CC=$BREWPATH/gcc/$gccversion/bin/gcc-12
+	# FTN=$BREWPATH/gcc/$gccversion/bin/gfortran-12
+	# CPP=$BREWPATH/gcc/$gccversion/bin/g++-12
+	CC=$BREWPATH/gcc/$gccversion/bin/gcc-13
+	FTN=$BREWPATH/gcc/$gccversion/bin/gfortran-13
+	CPP=$BREWPATH/gcc/$gccversion/bin/g++-13
 
 	if [[ $MPIFromSource = 1 ]]; then
 		export MPICC="$GPTUNEROOT/openmpi-4.0.1/bin/mpicc"
