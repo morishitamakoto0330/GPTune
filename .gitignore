@@ -2,3 +2,19 @@ __pycache__
 *.pyc
 *.pkl
 GPTune-Demo.json
+
+# ignore git repositories and directories for building software
+openmpi-4.0.1/
+scalapack-2.1.0/
+mpi4py/
+GPy/
+pygmo2/
+
+# ignore archive file
+openmpi-4.0.1.tar
+openmpi-4.0.1.tar.bz2
+scalapack-2.1.0.tgz
+
+
+
+
