@@ -1,4 +1,5 @@
 file(REMOVE_RECURSE
+  ".3"
   "CMakeFiles/_gptuneclcm.dir/gptuneclcm/lcm.c.o"
   "CMakeFiles/_gptuneclcm.dir/gptuneclcm/lcm.c.o.d"
   "lib_gptuneclcm.3.0.0.dylib"

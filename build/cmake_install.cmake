@@ -60,6 +60,7 @@ if(CMAKE_INSTALL_COMPONENT STREQUAL "Unspecified" OR NOT CMAKE_INSTALL_COMPONENT
         -id "/usr/local/lib/lib_gptuneclcm.3.dylib"
         "${file}")
       execute_process(COMMAND /usr/bin/install_name_tool
+        -delete_rpath "/Users/makotomorishita/Desktop/LBNL/GPTune/scalapack-2.2.0/build/install/lib"
         -add_rpath "/usr/local/lib"
         "${file}")
       if(CMAKE_INSTALL_DO_STRIP)
@@ -79,18 +80,6 @@ if(CMAKE_INSTALL_COMPONENT STREQUAL "Unspecified" OR NOT CMAKE_INSTALL_COMPONENT
     message(FATAL_ERROR "ABSOLUTE path INSTALL DESTINATION forbidden (by caller): ${CMAKE_ABSOLUTE_DESTINATION_FILES}")
   endif()
   file(INSTALL DESTINATION "/Users/makotomorishita/Desktop/LBNL/GPTune/build/GPTune" TYPE SHARED_LIBRARY FILES "/Users/makotomorishita/Desktop/LBNL/GPTune/build/lib_gptuneclcm.dylib")
-  if(EXISTS "$ENV{DESTDIR}/Users/makotomorishita/Desktop/LBNL/GPTune/build/GPTune/lib_gptuneclcm.dylib" AND
-     NOT IS_SYMLINK "$ENV{DESTDIR}/Users/makotomorishita/Desktop/LBNL/GPTune/build/GPTune/lib_gptuneclcm.dylib")
-    execute_process(COMMAND "/usr/bin/install_name_tool"
-      -id "/usr/local/lib/lib_gptuneclcm.3.dylib"
-      "$ENV{DESTDIR}/Users/makotomorishita/Desktop/LBNL/GPTune/build/GPTune/lib_gptuneclcm.dylib")
-    execute_process(COMMAND /usr/bin/install_name_tool
-      -add_rpath "/usr/local/lib"
-      "$ENV{DESTDIR}/Users/makotomorishita/Desktop/LBNL/GPTune/build/GPTune/lib_gptuneclcm.dylib")
-    if(CMAKE_INSTALL_DO_STRIP)
-      execute_process(COMMAND "/usr/bin/strip" -x "$ENV{DESTDIR}/Users/makotomorishita/Desktop/LBNL/GPTune/build/GPTune/lib_gptuneclcm.dylib")
-    endif()
-  endif()
 endif()
 
 if(CMAKE_INSTALL_COMPONENT STREQUAL "Unspecified" OR NOT CMAKE_INSTALL_COMPONENT)
@@ -106,6 +95,7 @@ if(CMAKE_INSTALL_COMPONENT STREQUAL "Unspecified" OR NOT CMAKE_INSTALL_COMPONENT
   if(EXISTS "$ENV{DESTDIR}/Users/makotomorishita/Desktop/LBNL/GPTune/build/GPTune/pdqrdriver" AND
      NOT IS_SYMLINK "$ENV{DESTDIR}/Users/makotomorishita/Desktop/LBNL/GPTune/build/GPTune/pdqrdriver")
     execute_process(COMMAND /usr/bin/install_name_tool
+      -delete_rpath "/Users/makotomorishita/Desktop/LBNL/GPTune/scalapack-2.2.0/build/install/lib"
       -add_rpath "/usr/local/lib"
       "$ENV{DESTDIR}/Users/makotomorishita/Desktop/LBNL/GPTune/build/GPTune/pdqrdriver")
     if(CMAKE_INSTALL_DO_STRIP)

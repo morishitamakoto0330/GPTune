@@ -5,7 +5,9 @@ GPTune-Demo.json
 
 # ignore git repositories and directories for building software
 openmpi-4.0.1/
+openmpi-4.1.5/
 scalapack-2.1.0/
+scalapack-2.2.0/
 mpi4py/
 GPy/
 pygmo2/
@@ -14,6 +16,9 @@ pygmo2/
 openmpi-4.0.1.tar
 openmpi-4.0.1.tar.bz2
 scalapack-2.1.0.tgz
+openmpi-4.1.5.tar
+openmpi-4.1.5.tar.bz2
+scalapack-2.2.0.tgz
 
 
 

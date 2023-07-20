@@ -20,12 +20,12 @@
 #   export nodes=1  # number of nodes to be used
 
 
-# # # ################ Any mac os machine that has used config_macbook.zsh to build GPTune
-export machine=mac
-export proc=intel   
-export mpi=openmpi  
-export compiler=gnu   
-export nodes=1  # number of nodes to be used
+# # ################ Any mac os machine that has used config_macbook.zsh to build GPTune
+ export machine=mac
+ export proc=intel   
+ export mpi=openmpi  
+ export compiler=gnu   
+ export nodes=1  # number of nodes to be used
 
 
 # ############### Cori
@@ -60,7 +60,7 @@ export nodes=1  # number of nodes to be used
 # export nodes=1  # number of nodes to be used
 
 
-# ################ ex3 simula
+# # ################ ex3 simula
 # export machine=ex3
 # export proc=xeongold16q
 # export mpi=openmpi
@@ -109,18 +109,21 @@ if [ $ModuleEnv = 'tr4-workstation-AMD1950X-openmpi-gnu' ]; then
 ###############
 ############### ex3 simula
 elif [ $ModuleEnv = 'ex3-xeongold16q-openmpi-gnu' ]; then
-    module load python37
-	module load cmake/gcc/3.26.3
-	module load openblas/dynamic/0.3.7
-	# module load openmpi/gcc/64/4.1.4
-	module load openmpi/gcc/64/4.0.1
-	module load scalapack/gcc/2.0.2
-	module load metis/gcc/5.1.0
-	module load parmetis/gcc/4.0.3
-	module load scotch/gcc/6.0.7
-	module load slurm
-    export OMPI_MCA_btl=^openib
-    export OMPI_MCA_pml=^yalla
+        module load cmake/gcc/3.26.4
+        # module load python37
+      module load openblas/dynamic/0.3.7
+        # module load openblas/dynamic/0.3.23
+        module load openmpi/gcc/64/4.1.5
+        module load jq/1.6
+        module load scalapack/gcc/2.0.2
+        # module load openmpi/gcc/64/4.1.4
+        module load metis/gcc/5.1.0
+        module load parmetis/gcc/4.0.3
+        module load scotch/gcc/6.0.7
+        module load slurm/20.02.7
+        module list
+    export OMPI_MCA_btl="^openib,self"
+    export OMPI_MCA_pml="^ucx"
     ulimit -s 10240
     export PATH=$PWD/env/bin/:$PATH
     export MPIRUN=mpirun 
@@ -136,10 +139,10 @@ elif [ $ModuleEnv = 'mac-intel-openmpi-gnu' ]; then
     
     MPIFromSource=1 # whether openmpi was built from source when installing GPTune
     if [[ $MPIFromSource = 1 ]]; then
-        export PATH=$PWD/openmpi-4.0.1/bin:$PATH
-        export MPIRUN="$PWD/openmpi-4.0.1/bin/mpirun"
-        export LD_LIBRARY_PATH=$PWD/openmpi-4.0.1/lib:$LD_LIBRARY_PATH
-        export DYLD_LIBRARY_PATH=$PWD/openmpi-4.0.1/lib:$DYLD_LIBRARY_PATH
+        export PATH=$PWD/openmpi-4.1.5/bin:$PATH
+        export MPIRUN="$PWD/openmpi-4.1.5/bin/mpirun"
+        export LD_LIBRARY_PATH=$PWD/openmpi-4.1.5/lib:$LD_LIBRARY_PATH
+        export DYLD_LIBRARY_PATH=$PWD/openmpi-4.1.5/lib:$DYLD_LIBRARY_PATH
     else
         export MPIRUN=
         export PATH=$PATH
@@ -157,10 +160,10 @@ elif [ $ModuleEnv = 'mac-intel-openmpi-gnu' ]; then
 #	export PATH=/usr/local/Cellar/python@3.9/$pythonversion/bin/:$PATH
 	export PATH=$PWD/env/bin/:$PATH
 
-	export SCALAPACK_LIB=$PWD/scalapack-2.1.0/build/install/lib/libscalapack.dylib
-	export LD_LIBRARY_PATH=$PWD/scalapack-2.1.0/build/install/lib/:$LD_LIBRARY_PATH
-    export LIBRARY_PATH=$PWD/scalapack-2.1.0/build/install/lib/:$LIBRARY_PATH
-    export DYLD_LIBRARY_PATH=$PWD/scalapack-2.1.0/build/install/lib/:$DYLD_LIBRARY_PATH
+	export SCALAPACK_LIB=$PWD/scalapack-2.2.0/build/install/lib/libscalapack.dylib
+	export LD_LIBRARY_PATH=$PWD/scalapack-2.2.0/build/install/lib/:$LD_LIBRARY_PATH
+    export LIBRARY_PATH=$PWD/scalapack-2.2.0/build/install/lib/:$LIBRARY_PATH
+    export DYLD_LIBRARY_PATH=$PWD/scalapack-2.2.0/build/install/lib/:$DYLD_LIBRARY_PATH
 	
     export LD_LIBRARY_PATH=$PWD/examples/SuperLU_DIST/superlu_dist/parmetis-github/lib/:$LD_LIBRARY_PATH
     export LIBRARY_PATH=$PWD/examples/SuperLU_DIST/superlu_dist/parmetis-github/lib/:$LIBRARY_PATH
@@ -168,8 +171,8 @@ elif [ $ModuleEnv = 'mac-intel-openmpi-gnu' ]; then
     cores=8
     gpus=0
     
-    software_json=$(echo ",\"software_configuration\":{\"openmpi\":{\"version_split\": [4,0,1]},\"scalapack\":{\"version_split\": [2,1,0]},\"gcc\":{\"version_split\": [10,2,0]}}")
-    loadable_software_json=$(echo ",\"loadable_software_configurations\":{\"openmpi\":{\"version_split\": [4,0,1]},\"scalapack\":{\"version_split\": [2,1,0]},\"gcc\":{\"version_split\": [10,2,0]}}")
+    software_json=$(echo ",\"software_configuration\":{\"openmpi\":{\"version_split\": [4,1,5]},\"scalapack\":{\"version_split\": [2,2,0]},\"gcc\":{\"version_split\": [13,1,0]}}")
+    loadable_software_json=$(echo ",\"loadable_software_configurations\":{\"openmpi\":{\"version_split\": [4,1,5]},\"scalapack\":{\"version_split\": [2,2,0]},\"gcc\":{\"version_split\": [13,1,0]}}")
 # fi
 
 
