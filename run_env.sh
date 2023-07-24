@@ -21,11 +21,11 @@
 
 
 ## # ################ Any mac os machine that has used config_macbook.zsh to build GPTune
-# export machine=mac
-# export proc=intel
-# export mpi=openmpi
-# export compiler=gnu
-# export nodes=1  # number of nodes to be used
+export machine=mac
+export proc=intel
+export mpi=openmpi
+export compiler=gnu
+export nodes=1  # number of nodes to be used
 
 
 # ############### Cori
@@ -37,11 +37,11 @@
 
 
 ############## Perlmutter
-export machine=perlmutter
-export proc=milan   # milan,gpu
-export mpi=craympich #openmpi  # craympich, openmpi
-export compiler=gnu   # gnu, intel
-export nodes=1  # number of nodes to be used
+# export machine=perlmutter
+# export proc=milan   # milan,gpu
+# export mpi=craympich #openmpi  # craympich, openmpi
+# export compiler=gnu   # gnu, intel
+# export nodes=1  # number of nodes to be used
 
 
 # ################ Yang's tr4 machine
