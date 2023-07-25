@@ -1,0 +1,134 @@
+/Users/makotomorishita/Desktop/LBNL/GPTune/examples/Scalapack-PDGEQRF
+machine: mac processor: intel num_nodes: 1 num_cores: 8
+Space([Integer(low=128, high=1000, prior='uniform', transform='normalize'),
+       Integer(low=128, high=1000, prior='uniform', transform='normalize')]) Space([Integer(low=1, high=16, prior='uniform', transform='normalize'),
+       Integer(low=1, high=16, prior='uniform', transform='normalize'),
+       Integer(low=0, high=3, prior='uniform', transform='normalize'),
+       Integer(low=1, high=8, prior='uniform', transform='normalize')]) Space([Real(low=-inf, high=inf, prior='uniform', transform='identity')]) {'cst1': <function cst1 at 0x169a764c0>, 'cst2': <function cst2 at 0x169a76550>, 'cst3': <function cst3 at 0x169a765e0>}
+GPTune History Database Init
+[HistoryDB] Create a JSON file at ./gptune.db/PDGEQRF.json
+
+
+
+------Starting MLA with 1 tasks and 20 samples each 
+[HistoryDB] Found a history database file
+no history data has been loaded
+NS1:  10
+[('QR', 1000, 1000, 1, 8, 96, 24, 1, 5, 5, 1, 1.0, 8)]  scalapack starts 
+exec /Users/makotomorishita/Desktop/LBNL/GPTune/examples/Scalapack-PDGEQRF/scalapack-driver/bin/mac/pdqrdriver args /Users/makotomorishita/Desktop/LBNL/GPTune/examples/Scalapack-PDGEQRF/scalapack-driver/exp/mac/GPTune/0/ nproc 5 nthreads 1 npernode 8
+[('QR', 1000, 1000, 1, 8, 96, 24, 1, 5, 5, 1, 1.0, 8)]  scalapack time:  [0.0395]
+[('QR', 1000, 1000, 1, 8, 88, 112, 1, 7, 7, 1, 1.0, 8)]  scalapack starts 
+exec /Users/makotomorishita/Desktop/LBNL/GPTune/examples/Scalapack-PDGEQRF/scalapack-driver/bin/mac/pdqrdriver args /Users/makotomorishita/Desktop/LBNL/GPTune/examples/Scalapack-PDGEQRF/scalapack-driver/exp/mac/GPTune/0/ nproc 7 nthreads 1 npernode 8
+[('QR', 1000, 1000, 1, 8, 88, 112, 1, 7, 7, 1, 1.0, 8)]  scalapack time:  [0.0504]
+[('QR', 1000, 1000, 1, 8, 32, 120, 2, 4, 1, 4, 1.0, 4)]  scalapack starts 
+exec /Users/makotomorishita/Desktop/LBNL/GPTune/examples/Scalapack-PDGEQRF/scalapack-driver/bin/mac/pdqrdriver args /Users/makotomorishita/Desktop/LBNL/GPTune/examples/Scalapack-PDGEQRF/scalapack-driver/exp/mac/GPTune/0/ nproc 4 nthreads 2 npernode 4
+[('QR', 1000, 1000, 1, 8, 32, 120, 2, 4, 1, 4, 1.0, 4)]  scalapack time:  [0.1213]
+[('QR', 1000, 1000, 1, 8, 72, 88, 2, 3, 3, 1, 1.0, 4)]  scalapack starts 
+exec /Users/makotomorishita/Desktop/LBNL/GPTune/examples/Scalapack-PDGEQRF/scalapack-driver/bin/mac/pdqrdriver args /Users/makotomorishita/Desktop/LBNL/GPTune/examples/Scalapack-PDGEQRF/scalapack-driver/exp/mac/GPTune/0/ nproc 3 nthreads 2 npernode 4
+[('QR', 1000, 1000, 1, 8, 72, 88, 2, 3, 3, 1, 1.0, 4)]  scalapack time:  [0.085]
+[('QR', 1000, 1000, 1, 8, 104, 16, 4, 2, 2, 1, 1.0, 2)]  scalapack starts 
+exec /Users/makotomorishita/Desktop/LBNL/GPTune/examples/Scalapack-PDGEQRF/scalapack-driver/bin/mac/pdqrdriver args /Users/makotomorishita/Desktop/LBNL/GPTune/examples/Scalapack-PDGEQRF/scalapack-driver/exp/mac/GPTune/0/ nproc 2 nthreads 4 npernode 2
+[('QR', 1000, 1000, 1, 8, 104, 16, 4, 2, 2, 1, 1.0, 2)]  scalapack time:  [0.1064]
+[('QR', 1000, 1000, 1, 8, 96, 24, 1, 8, 8, 1, 1.0, 8)]  scalapack starts 
+exec /Users/makotomorishita/Desktop/LBNL/GPTune/examples/Scalapack-PDGEQRF/scalapack-driver/bin/mac/pdqrdriver args /Users/makotomorishita/Desktop/LBNL/GPTune/examples/Scalapack-PDGEQRF/scalapack-driver/exp/mac/GPTune/0/ nproc 8 nthreads 1 npernode 8
+[('QR', 1000, 1000, 1, 8, 96, 24, 1, 8, 8, 1, 1.0, 8)]  scalapack time:  [0.0786]
+[('QR', 1000, 1000, 1, 8, 24, 72, 2, 3, 3, 1, 1.0, 4)]  scalapack starts 
+exec /Users/makotomorishita/Desktop/LBNL/GPTune/examples/Scalapack-PDGEQRF/scalapack-driver/bin/mac/pdqrdriver args /Users/makotomorishita/Desktop/LBNL/GPTune/examples/Scalapack-PDGEQRF/scalapack-driver/exp/mac/GPTune/0/ nproc 3 nthreads 2 npernode 4
+[('QR', 1000, 1000, 1, 8, 24, 72, 2, 3, 3, 1, 1.0, 4)]  scalapack time:  [0.0707]
+[('QR', 1000, 1000, 1, 8, 8, 56, 4, 2, 2, 1, 1.0, 2)]  scalapack starts 
+exec /Users/makotomorishita/Desktop/LBNL/GPTune/examples/Scalapack-PDGEQRF/scalapack-driver/bin/mac/pdqrdriver args /Users/makotomorishita/Desktop/LBNL/GPTune/examples/Scalapack-PDGEQRF/scalapack-driver/exp/mac/GPTune/0/ nproc 2 nthreads 4 npernode 2
+[('QR', 1000, 1000, 1, 8, 8, 56, 4, 2, 2, 1, 1.0, 2)]  scalapack time:  [0.1563]
+[('QR', 1000, 1000, 1, 8, 32, 96, 2, 4, 4, 1, 1.0, 4)]  scalapack starts 
+exec /Users/makotomorishita/Desktop/LBNL/GPTune/examples/Scalapack-PDGEQRF/scalapack-driver/bin/mac/pdqrdriver args /Users/makotomorishita/Desktop/LBNL/GPTune/examples/Scalapack-PDGEQRF/scalapack-driver/exp/mac/GPTune/0/ nproc 4 nthreads 2 npernode 4
+[('QR', 1000, 1000, 1, 8, 32, 96, 2, 4, 4, 1, 1.0, 4)]  scalapack time:  [0.0997]
+[('QR', 1000, 1000, 1, 8, 56, 112, 4, 2, 1, 2, 1.0, 2)]  scalapack starts 
+exec /Users/makotomorishita/Desktop/LBNL/GPTune/examples/Scalapack-PDGEQRF/scalapack-driver/bin/mac/pdqrdriver args /Users/makotomorishita/Desktop/LBNL/GPTune/examples/Scalapack-PDGEQRF/scalapack-driver/exp/mac/GPTune/0/ nproc 2 nthreads 4 npernode 2
+[('QR', 1000, 1000, 1, 8, 56, 112, 4, 2, 1, 2, 1.0, 2)]  scalapack time:  [0.1769]
+NSmin:  10
+NS:  20
+Iteration:  0
+[HistoryDB] Found a history database file
+loaded function evaluations:  10
+exec /Users/makotomorishita/Desktop/LBNL/GPTune/GPTune/lcm.py args None nproc 1
+searcher:  SearchPyGMO algorithm:  pso
+[('QR', 1000, 1000, 1, 8, 112, 8, 2, 4, 1, 4, 1.0, 4)]  scalapack starts 
+exec /Users/makotomorishita/Desktop/LBNL/GPTune/examples/Scalapack-PDGEQRF/scalapack-driver/bin/mac/pdqrdriver args /Users/makotomorishita/Desktop/LBNL/GPTune/examples/Scalapack-PDGEQRF/scalapack-driver/exp/mac/GPTune/0/ nproc 4 nthreads 2 npernode 4
+[('QR', 1000, 1000, 1, 8, 112, 8, 2, 4, 1, 4, 1.0, 4)]  scalapack time:  [0.0584]
+Iteration:  1
+[HistoryDB] Found a history database file
+loaded function evaluations:  11
+exec /Users/makotomorishita/Desktop/LBNL/GPTune/GPTune/lcm.py args None nproc 1
+searcher:  SearchPyGMO algorithm:  pso
+[('QR', 1000, 1000, 1, 8, 88, 64, 1, 8, 1, 8, 1.0, 8)]  scalapack starts 
+exec /Users/makotomorishita/Desktop/LBNL/GPTune/examples/Scalapack-PDGEQRF/scalapack-driver/bin/mac/pdqrdriver args /Users/makotomorishita/Desktop/LBNL/GPTune/examples/Scalapack-PDGEQRF/scalapack-driver/exp/mac/GPTune/0/ nproc 8 nthreads 1 npernode 8
+[('QR', 1000, 1000, 1, 8, 88, 64, 1, 8, 1, 8, 1.0, 8)]  scalapack time:  [0.0313]
+Iteration:  2
+[HistoryDB] Found a history database file
+loaded function evaluations:  12
+exec /Users/makotomorishita/Desktop/LBNL/GPTune/GPTune/lcm.py args None nproc 1
+searcher:  SearchPyGMO algorithm:  pso
+[('QR', 1000, 1000, 1, 8, 64, 8, 1, 6, 3, 2, 1.0, 8)]  scalapack starts 
+exec /Users/makotomorishita/Desktop/LBNL/GPTune/examples/Scalapack-PDGEQRF/scalapack-driver/bin/mac/pdqrdriver args /Users/makotomorishita/Desktop/LBNL/GPTune/examples/Scalapack-PDGEQRF/scalapack-driver/exp/mac/GPTune/0/ nproc 6 nthreads 1 npernode 8
+[('QR', 1000, 1000, 1, 8, 64, 8, 1, 6, 3, 2, 1.0, 8)]  scalapack time:  [0.0417]
+Iteration:  3
+[HistoryDB] Found a history database file
+loaded function evaluations:  13
+exec /Users/makotomorishita/Desktop/LBNL/GPTune/GPTune/lcm.py args None nproc 1
+searcher:  SearchPyGMO algorithm:  pso
+[('QR', 1000, 1000, 1, 8, 120, 56, 1, 6, 3, 2, 1.0, 8)]  scalapack starts 
+exec /Users/makotomorishita/Desktop/LBNL/GPTune/examples/Scalapack-PDGEQRF/scalapack-driver/bin/mac/pdqrdriver args /Users/makotomorishita/Desktop/LBNL/GPTune/examples/Scalapack-PDGEQRF/scalapack-driver/exp/mac/GPTune/0/ nproc 6 nthreads 1 npernode 8
+[('QR', 1000, 1000, 1, 8, 120, 56, 1, 6, 3, 2, 1.0, 8)]  scalapack time:  [0.0628]
+Iteration:  4
+[HistoryDB] Found a history database file
+loaded function evaluations:  14
+exec /Users/makotomorishita/Desktop/LBNL/GPTune/GPTune/lcm.py args None nproc 1
+searcher:  SearchPyGMO algorithm:  pso
+[('QR', 1000, 1000, 1, 8, 32, 32, 4, 2, 1, 2, 1.0, 2)]  scalapack starts 
+exec /Users/makotomorishita/Desktop/LBNL/GPTune/examples/Scalapack-PDGEQRF/scalapack-driver/bin/mac/pdqrdriver args /Users/makotomorishita/Desktop/LBNL/GPTune/examples/Scalapack-PDGEQRF/scalapack-driver/exp/mac/GPTune/0/ nproc 2 nthreads 4 npernode 2
+[('QR', 1000, 1000, 1, 8, 32, 32, 4, 2, 1, 2, 1.0, 2)]  scalapack time:  [0.141]
+Iteration:  5
+[HistoryDB] Found a history database file
+loaded function evaluations:  15
+exec /Users/makotomorishita/Desktop/LBNL/GPTune/GPTune/lcm.py args None nproc 1
+searcher:  SearchPyGMO algorithm:  pso
+[('QR', 1000, 1000, 1, 8, 40, 24, 1, 7, 7, 1, 1.0, 8)]  scalapack starts 
+exec /Users/makotomorishita/Desktop/LBNL/GPTune/examples/Scalapack-PDGEQRF/scalapack-driver/bin/mac/pdqrdriver args /Users/makotomorishita/Desktop/LBNL/GPTune/examples/Scalapack-PDGEQRF/scalapack-driver/exp/mac/GPTune/0/ nproc 7 nthreads 1 npernode 8
+[('QR', 1000, 1000, 1, 8, 40, 24, 1, 7, 7, 1, 1.0, 8)]  scalapack time:  [0.0526]
+Iteration:  6
+[HistoryDB] Found a history database file
+loaded function evaluations:  16
+exec /Users/makotomorishita/Desktop/LBNL/GPTune/GPTune/lcm.py args None nproc 1
+searcher:  SearchPyGMO algorithm:  pso
+[('QR', 1000, 1000, 1, 8, 120, 16, 1, 6, 6, 1, 1.0, 8)]  scalapack starts 
+exec /Users/makotomorishita/Desktop/LBNL/GPTune/examples/Scalapack-PDGEQRF/scalapack-driver/bin/mac/pdqrdriver args /Users/makotomorishita/Desktop/LBNL/GPTune/examples/Scalapack-PDGEQRF/scalapack-driver/exp/mac/GPTune/0/ nproc 6 nthreads 1 npernode 8
+[('QR', 1000, 1000, 1, 8, 120, 16, 1, 6, 6, 1, 1.0, 8)]  scalapack time:  [0.0621]
+Iteration:  7
+[HistoryDB] Found a history database file
+loaded function evaluations:  17
+exec /Users/makotomorishita/Desktop/LBNL/GPTune/GPTune/lcm.py args None nproc 1
+searcher:  SearchPyGMO algorithm:  pso
+[('QR', 1000, 1000, 1, 8, 8, 32, 1, 8, 4, 2, 1.0, 8)]  scalapack starts 
+exec /Users/makotomorishita/Desktop/LBNL/GPTune/examples/Scalapack-PDGEQRF/scalapack-driver/bin/mac/pdqrdriver args /Users/makotomorishita/Desktop/LBNL/GPTune/examples/Scalapack-PDGEQRF/scalapack-driver/exp/mac/GPTune/0/ nproc 8 nthreads 1 npernode 8
+[('QR', 1000, 1000, 1, 8, 8, 32, 1, 8, 4, 2, 1.0, 8)]  scalapack time:  [0.0594]
+Iteration:  8
+[HistoryDB] Found a history database file
+loaded function evaluations:  18
+exec /Users/makotomorishita/Desktop/LBNL/GPTune/GPTune/lcm.py args None nproc 1
+searcher:  SearchPyGMO algorithm:  pso
+[('QR', 1000, 1000, 1, 8, 48, 72, 1, 8, 2, 4, 1.0, 8)]  scalapack starts 
+exec /Users/makotomorishita/Desktop/LBNL/GPTune/examples/Scalapack-PDGEQRF/scalapack-driver/bin/mac/pdqrdriver args /Users/makotomorishita/Desktop/LBNL/GPTune/examples/Scalapack-PDGEQRF/scalapack-driver/exp/mac/GPTune/0/ nproc 8 nthreads 1 npernode 8
+[('QR', 1000, 1000, 1, 8, 48, 72, 1, 8, 2, 4, 1.0, 8)]  scalapack time:  [0.0533]
+Iteration:  9
+[HistoryDB] Found a history database file
+loaded function evaluations:  19
+exec /Users/makotomorishita/Desktop/LBNL/GPTune/GPTune/lcm.py args None nproc 1
+searcher:  SearchPyGMO algorithm:  pso
+[('QR', 1000, 1000, 1, 8, 120, 128, 1, 7, 7, 1, 1.0, 8)]  scalapack starts 
+exec /Users/makotomorishita/Desktop/LBNL/GPTune/examples/Scalapack-PDGEQRF/scalapack-driver/bin/mac/pdqrdriver args /Users/makotomorishita/Desktop/LBNL/GPTune/examples/Scalapack-PDGEQRF/scalapack-driver/exp/mac/GPTune/0/ nproc 7 nthreads 1 npernode 8
+[('QR', 1000, 1000, 1, 8, 120, 128, 1, 7, 7, 1, 1.0, 8)]  scalapack time:  [0.0582]
+stats:  {'time_total': 24.079632, 'time_sample_init': 0.045427, 'time_fun': 8.835927000000002, 'time_search': 5.6091120000000005, 'time_model': 9.588524999999999, 'func_eval_time': [3.920348], 'search_time': [0.571858, 0.559734, 0.560565, 0.64322, 0.553401, 0.542015, 0.57065, 0.524095, 0.558138, 0.525436], 'modeling_time': [0.857348, 0.913807, 1.029133, 0.909033, 1.093363, 1.019616, 1.021037, 0.921862, 0.955061, 0.868265], 'modeling_iteration': [105, 49, 112, 43, 189, 96, 45, 32, 37, 51]}
+tid: 0
+    m:1000 n:1000
+    Ps  [[12, 3, 3, 5], [11, 14, 3, 7], [4, 15, 2, 1], [9, 11, 2, 3], [13, 2, 1, 2], [12, 3, 3, 8], [3, 9, 2, 3], [1, 7, 1, 2], [4, 12, 2, 4], [7, 14, 1, 1], [14, 1, 2, 1], [11, 8, 3, 1], [8, 1, 3, 3], [15, 7, 3, 3], [4, 4, 1, 1], [5, 3, 3, 7], [15, 2, 3, 6], [1, 4, 3, 4], [6, 9, 3, 2], [15, 16, 3, 7]]
+    Os  [[0.039453], [0.050411], [0.121324], [0.084996], [0.106432], [0.078635], [0.070667], [0.15635], [0.099691], [0.1769], [0.05841], [0.031349], [0.041663], [0.062751], [0.140955], [0.052624], [0.062146], [0.059378], [0.053294], [0.058212]]
+    Popt  [11, 8, 3, 1] Oopt  0.031349 nth  11
