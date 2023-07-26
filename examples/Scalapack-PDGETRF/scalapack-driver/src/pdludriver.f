@@ -1,4 +1,4 @@
-      PROGRAM PCLUDRIVER
+      PROGRAM PDLUDRIVER
 *
 *  -- ScaLAPACK testing driver (version 1.7) --
 *     University of Tennessee, Knoxville, Oak Ridge National Laboratory,
@@ -8,7 +8,7 @@
 *  Purpose
 *  ========
 *
-*  PCLUDRIVER is the main test program for the COMPLEX
+*  PDLUDRIVER is the main test program for the DOUBLE PRECISION
 *  SCALAPACK LU routines.  This test driver performs an LU factorization
 *  and solve. If the input matrix is non-square, only the factorization
 *  is performed.  Condition estimation and iterative refinement are
@@ -53,11 +53,10 @@
 *           of TOTMEM may be required.
 *
 *  INTGSZ   INTEGER, default = 4 bytes.
-*  CPLXSZ   INTEGER, default = 8 bytes.
-*           INTGSZ and CPLXSZ indicate the length in bytes on the
-*           given platform for an integer and a single precision
-*           complex.
-*  MEM      COMPLEX array, dimension ( TOTMEM / CPLXSZ )
+*  DBLESZ   INTEGER, default = 8 bytes.
+*           INTGSZ and DBLESZ indicate the length in bytes on the
+*           given platform for an integer and a double precision real.
+*  MEM      DOUBLE PRECISION array, dimension ( TOTMEM / DBLESZ )
 *
 *           All arrays used by SCALAPACK routines are allocated from
 *           this array and referenced by pointers.  The integer IPA,
@@ -72,14 +71,11 @@
       PARAMETER          ( BLOCK_CYCLIC_2D = 1, DLEN_ = 9, DTYPE_ = 1,
      $                     CTXT_ = 2, M_ = 3, N_ = 4, MB_ = 5, NB_ = 6,
      $                     RSRC_ = 7, CSRC_ = 8, LLD_ = 9 )
-      INTEGER            CPLXSZ, INTGSZ, MEMSIZ, NTESTS, REALSZ, TOTMEM
-      REAL               ZERO
-      COMPLEX            PADVAL
-      PARAMETER          ( CPLXSZ = 8, INTGSZ = 4, REALSZ = 4,
-     $                     TOTMEM = 4000000,
-     $                     MEMSIZ = TOTMEM / CPLXSZ, NTESTS = 20,
-     $                     PADVAL = ( -9923.0E+0, -9923.0E+0 ),
-     $                     ZERO = 0.0E+0 )
+      INTEGER            DBLESZ, INTGSZ, MEMSIZ, NTESTS, TOTMEM
+      DOUBLE PRECISION   PADVAL, ZERO
+      PARAMETER          ( DBLESZ = 8, INTGSZ = 4, TOTMEM = 4000000,
+     $                     MEMSIZ = TOTMEM / DBLESZ, NTESTS = 20,
+     $                     PADVAL = -9923.0D+0, ZERO = 0.0D+0 )
 *     ..
 *     .. Local Scalars ..
       LOGICAL            CHECK, EST
@@ -89,13 +85,13 @@
      $                   INFO, IPA, IPA0, IPB, IPB0, IPBERR, IPFERR,
      $                   IPOSTPAD, IPPIV, IPREPAD, IPW, IPW2, J, K,
      $                   KFAIL, KK, KPASS, KSKIP, KTESTS, LCM, LCMQ,
-     $                   LIPIV, LRWORK, LWORK, LW2, M, MAXMN,
+     $                   LIPIV, LIWORK, LWORK, LW2, M, MAXMN,
      $                   MINMN, MP, MYCOL, MYRHS, MYROW, N, NB, NBRHS,
      $                   NGRIDS, NMAT, NNB, NNBR, NNR, NOUT, NP, NPCOL,
      $                   NPROCS, NPROW, NQ, NRHS, WORKSIZ
-      REAL               ANORM, ANORM1, FRESID, RCOND, SRESID, SRESID2,
-     $                   THRESH
-      DOUBLE PRECISION   NOPS, TMFLOPS
+      REAL               THRESH
+      DOUBLE PRECISION   ANORM, ANORM1, FRESID, NOPS, RCOND,
+     $                   SRESID, SRESID2, TMFLOPS
 *     ..
 *     .. Local Arrays ..
       INTEGER            DESCA( DLEN_ ), DESCB( DLEN_ ), IERR( 1 ),
@@ -103,22 +99,21 @@
      $                   NBVAL( NTESTS ), NRVAL( NTESTS ),
      $                   NVAL( NTESTS ), PVAL( NTESTS ),
      $                   QVAL( NTESTS )
-      DOUBLE PRECISION   CTIME( 2 ), WTIME( 2 )
-      COMPLEX            MEM( MEMSIZ )
+      DOUBLE PRECISION   CTIME( 2 ), MEM( MEMSIZ ), WTIME( 2 )
 *     ..
 *     .. External Subroutines ..
       EXTERNAL           BLACS_BARRIER, BLACS_EXIT, BLACS_GET,
      $                   BLACS_GRIDEXIT, BLACS_GRIDINFO, BLACS_GRIDINIT,
-     $                   BLACS_PINFO, DESCINIT, IGSUM2D, PCCHEKPAD,
-     $                   PCFILLPAD, PCGECON, PCGERFS,
-     $                   PCGETRF, PCGETRRV, PCGETRS,
-     $                   PCLAFCHK, PCLASCHK, PCLUINFO,
-     $                   PCMATGEN, SLBOOT, SLCOMBINE, SLTIMER
+     $                   BLACS_PINFO, DESCINIT, IGSUM2D, PDCHEKPAD,
+     $                   PDFILLPAD, PDGECON, PDGERFS,
+     $                   PDGETRF, PDGETRRV, PDGETRS,
+     $                   PDLAFCHK, PDLASCHK, PDLUINFO,
+     $                   PDMATGEN, SLBOOT, SLCOMBINE, SLTIMER
 *     ..
 *     .. External Functions ..
       INTEGER            ICEIL, ILCM, NUMROC
-      REAL               PCLANGE
-      EXTERNAL           ICEIL, ILCM, NUMROC, PCLANGE
+      DOUBLE PRECISION   PDLANGE
+      EXTERNAL           ICEIL, ILCM, NUMROC, PDLANGE
 *     ..
 *     .. Intrinsic Functions ..
       INTRINSIC          DBLE, MAX, MIN
@@ -133,7 +128,7 @@
       CALL BLACS_PINFO( IAM, NPROCS )
       IASEED = 100
       IBSEED = 200
-      CALL PCLUINFO( OUTFILE, NOUT, NMAT, MVAL, NVAL, NTESTS, NNB,
+      CALL PDLUINFO( OUTFILE, NOUT, NMAT, MVAL, NVAL, NTESTS, NNB,
      $               NBVAL, NTESTS, NNR, NRVAL, NTESTS, NNBR, NBRVAL,
      $               NTESTS, NGRIDS, PVAL, NTESTS, QVAL, NTESTS, THRESH,
      $               EST, MEM, IAM, NPROCS )
@@ -285,14 +280,14 @@
                ELSE
                   IPPIV = IPA + DESCA( LLD_ )*NQ + IPOSTPAD + IPREPAD
                END IF
-               LIPIV = ICEIL( INTGSZ*( MP+NB ), CPLXSZ )
+               LIPIV = ICEIL( INTGSZ*( MP+NB ), DBLESZ )
                IPW = IPPIV + LIPIV + IPOSTPAD + IPREPAD
 *
                IF( CHECK ) THEN
 *
 *                 Calculate the amount of workspace required by the
-*                 checking routines PCLANGE, PCGETRRV, and
-*                 PCLAFCHK
+*                 checking routines PDLANGE, PDGETRRV, and
+*                 PDLAFCHK
 *
                   WORKSIZ = MAX( 2, NQ )
 *
@@ -315,7 +310,7 @@
                IF( IPW+WORKSIZ.GT.MEMSIZ ) THEN
                   IF( IAM.EQ.0 )
      $               WRITE( NOUT, FMT = 9996 ) 'factorization',
-     $                      ( IPW+WORKSIZ )*CPLXSZ
+     $                      ( IPW+WORKSIZ )*DBLESZ
                   IERR( 1 ) = 1
                END IF
 *
@@ -332,7 +327,7 @@
 *
 *              Generate matrix A of Ax = b
 *
-               CALL PCMATGEN( ICTXT, 'No transpose', 'No transpose',
+               CALL PDMATGEN( ICTXT, 'No transpose', 'No transpose',
      $                        DESCA( M_ ), DESCA( N_ ), DESCA( MB_ ),
      $                        DESCA( NB_ ), MEM( IPA ), DESCA( LLD_ ),
      $                        DESCA( RSRC_ ), DESCA( CSRC_ ), IASEED, 0,
@@ -341,36 +336,36 @@
 *              Calculate inf-norm of A for residual error-checking
 *
                IF( CHECK ) THEN
-                  CALL PCFILLPAD( ICTXT, MP, NQ, MEM( IPA-IPREPAD ),
+                  CALL PDFILLPAD( ICTXT, MP, NQ, MEM( IPA-IPREPAD ),
      $                            DESCA( LLD_ ), IPREPAD, IPOSTPAD,
      $                            PADVAL )
-                  CALL PCFILLPAD( ICTXT, LIPIV, 1, MEM( IPPIV-IPREPAD ),
+                  CALL PDFILLPAD( ICTXT, LIPIV, 1, MEM( IPPIV-IPREPAD ),
      $                            LIPIV, IPREPAD, IPOSTPAD, PADVAL )
-                  CALL PCFILLPAD( ICTXT, WORKSIZ-IPOSTPAD, 1,
+                  CALL PDFILLPAD( ICTXT, WORKSIZ-IPOSTPAD, 1,
      $                            MEM( IPW-IPREPAD ), WORKSIZ-IPOSTPAD,
      $                            IPREPAD, IPOSTPAD, PADVAL )
-                  ANORM = PCLANGE( 'I', M, N, MEM( IPA ), 1, 1, DESCA,
+                  ANORM = PDLANGE( 'I', M, N, MEM( IPA ), 1, 1, DESCA,
      $                             MEM( IPW ) )
-                  ANORM1 = PCLANGE( '1', M, N, MEM( IPA ), 1, 1, DESCA,
+                  ANORM1 = PDLANGE( '1', M, N, MEM( IPA ), 1, 1, DESCA,
      $                             MEM( IPW ) )
-                  CALL PCCHEKPAD( ICTXT, 'PCLANGE', MP, NQ,
+                  CALL PDCHEKPAD( ICTXT, 'PDLANGE', MP, NQ,
      $                            MEM( IPA-IPREPAD ), DESCA( LLD_ ),
      $                            IPREPAD, IPOSTPAD, PADVAL )
-                  CALL PCCHEKPAD( ICTXT, 'PCLANGE', WORKSIZ-IPOSTPAD,
+                  CALL PDCHEKPAD( ICTXT, 'PDLANGE', WORKSIZ-IPOSTPAD,
      $                            1, MEM( IPW-IPREPAD ),
      $                            WORKSIZ-IPOSTPAD, IPREPAD, IPOSTPAD,
      $                            PADVAL )
                END IF
 *
                IF( EST .AND. M.EQ.N ) THEN
-                  CALL PCMATGEN( ICTXT, 'No transpose', 'No transpose',
+                  CALL PDMATGEN( ICTXT, 'No transpose', 'No transpose',
      $                           DESCA( M_ ), DESCA( N_ ), DESCA( MB_ ),
      $                           DESCA( NB_ ), MEM( IPA0 ),
      $                           DESCA( LLD_ ), DESCA( RSRC_ ),
      $                           DESCA( CSRC_ ), IASEED, 0, MP, 0, NQ,
      $                           MYROW, MYCOL, NPROW, NPCOL )
                   IF( CHECK )
-     $               CALL PCFILLPAD( ICTXT, MP, NQ, MEM( IPA0-IPREPAD ),
+     $               CALL PDFILLPAD( ICTXT, MP, NQ, MEM( IPA0-IPREPAD ),
      $                               DESCA( LLD_ ), IPREPAD, IPOSTPAD,
      $                               PADVAL )
                END IF
@@ -381,14 +376,14 @@
 *
 *              Perform LU factorization
 *
-               CALL PCGETRF( M, N, MEM( IPA ), 1, 1, DESCA,
+               CALL PDGETRF( M, N, MEM( IPA ), 1, 1, DESCA,
      $                       MEM( IPPIV ), INFO )
 *
                CALL SLTIMER( 1 )
 *
                IF( INFO.NE.0 ) THEN
                   IF( IAM.EQ.0 )
-     $               WRITE( NOUT, FMT = * ) 'PCGETRF INFO=', INFO
+     $               WRITE( NOUT, FMT = * ) 'PDGETRF INFO=', INFO
                   KFAIL = KFAIL + 1
                   RCOND = ZERO
                   GO TO 30
@@ -398,10 +393,10 @@
 *
 *                 Check for memory overwrite in LU factorization
 *
-                  CALL PCCHEKPAD( ICTXT, 'PCGETRF', MP, NQ,
+                  CALL PDCHEKPAD( ICTXT, 'PDGETRF', MP, NQ,
      $                            MEM( IPA-IPREPAD ), DESCA( LLD_ ),
      $                            IPREPAD, IPOSTPAD, PADVAL )
-                  CALL PCCHEKPAD( ICTXT, 'PCGETRF', LIPIV, 1,
+                  CALL PDCHEKPAD( ICTXT, 'PDGETRF', LIPIV, 1,
      $                            MEM( IPPIV-IPREPAD ), LIPIV, IPREPAD,
      $                            IPOSTPAD, PADVAL )
                END IF
@@ -417,21 +412,21 @@
 *
 *                    Compute FRESID = ||A - P*L*U|| / (||A|| * N * eps)
 *
-                     CALL PCGETRRV( M, N, MEM( IPA ), 1, 1, DESCA,
+                     CALL PDGETRRV( M, N, MEM( IPA ), 1, 1, DESCA,
      $                              MEM( IPPIV ), MEM( IPW ) )
-                     CALL PCLAFCHK( 'No', 'No', M, N, MEM( IPA ), 1, 1,
+                     CALL PDLAFCHK( 'No', 'No', M, N, MEM( IPA ), 1, 1,
      $                              DESCA, IASEED, ANORM, FRESID,
      $                              MEM( IPW ) )
 *
 *                    Check for memory overwrite
 *
-                     CALL PCCHEKPAD( ICTXT, 'PCGETRRV', MP, NQ,
+                     CALL PDCHEKPAD( ICTXT, 'PDGETRRV', MP, NQ,
      $                               MEM( IPA-IPREPAD ), DESCA( LLD_ ),
      $                               IPREPAD, IPOSTPAD, PADVAL )
-                     CALL PCCHEKPAD( ICTXT, 'PCGETRRV', LIPIV, 1,
+                     CALL PDCHEKPAD( ICTXT, 'PDGETRRV', LIPIV, 1,
      $                               MEM( IPPIV-IPREPAD ), LIPIV,
      $                               IPREPAD, IPOSTPAD, PADVAL )
-                     CALL PCCHEKPAD( ICTXT, 'PCGETRRV',
+                     CALL PDCHEKPAD( ICTXT, 'PDGETRRV',
      $                               WORKSIZ-IPOSTPAD, 1,
      $                               MEM( IPW-IPREPAD ),
      $                               WORKSIZ-IPOSTPAD, IPREPAD,
@@ -440,7 +435,7 @@
 *                    Test residual and detect NaN result
 *
                      IF( ( FRESID.LE.THRESH          ) .AND.
-     $                   ( (FRESID-FRESID).EQ.0.0E+0 ) ) THEN
+     $                   ( (FRESID-FRESID).EQ.0.0D+0 ) ) THEN
                         KPASS = KPASS + 1
                         PASSED = 'PASSED'
                      ELSE
@@ -474,13 +469,12 @@
                      MAXMN = MAX( M, N )
                      MINMN = MIN( M, N )
 *
-*                    4 M N^2 - 4/3 N^3 + 2 M N - 3 N^2 flops for LU
-*                    factorization M >= N
+*                    M N^2 - 1/3 N^3 - 1/2 N^2 flops for LU
+*                    factorization when M >= N
 *
-                     NOPS = 4.0D+0*DBLE(MAXMN)*(DBLE(MINMN)**2) -
-     $                      (4.0D+0 / 3.0D+0)*( DBLE( MINMN )**3 ) +
-     $                      (2.0D+0)*DBLE( MAXMN )*DBLE( MINMN ) -
-     $                      (3.0D+0)*( DBLE( MINMN )**2 )
+                     NOPS = DBLE( MAXMN )*( DBLE( MINMN )**2 ) -
+     $                      (1.0D+0 / 3.0D+0)*( DBLE( MINMN )**3 ) -
+     $                      (1.0D+0 / 2.0D+0)*( DBLE( MINMN )**2 )
 *
 *                    Calculate total megaflops -- factorization only,
 *                    -- for WALL and CPU time, and print output
@@ -520,22 +514,22 @@
 *
                   IF( EST ) THEN
 *
-*                    Calculate workspace required for PCGECON
+*                    Calculate workspace required for PDGECON
 *
-                     LWORK = MAX( 1, 2*NP ) +
+                     LWORK = MAX( 1, 2*NP ) + MAX( 1, 2*NQ ) +
      $                       MAX( 2, DESCA( NB_ )*
      $                       MAX( 1, ICEIL( NPROW-1, NPCOL ) ),
      $                       NQ + DESCA( NB_ )*
      $                       MAX( 1, ICEIL( NPCOL-1, NPROW ) ) )
                      IPW2  = IPW + LWORK + IPOSTPAD + IPREPAD
-                     LRWORK = MAX( 1, 2*NQ )
-                     LW2   = ICEIL( LRWORK*REALSZ, CPLXSZ ) + IPOSTPAD
+                     LIWORK = MAX( 1, NP )
+                     LW2 = ICEIL( LIWORK*INTGSZ, DBLESZ ) + IPOSTPAD
 *
                      IERR( 1 ) = 0
                      IF( IPW2+LW2.GT.MEMSIZ ) THEN
                         IF( IAM.EQ.0 )
      $                     WRITE( NOUT, FMT = 9996 )'cond est',
-     $                     ( IPW2+LW2 )*CPLXSZ
+     $                     ( IPW2+LW2 )*DBLESZ
                         IERR( 1 ) = 1
                      END IF
 *
@@ -552,10 +546,10 @@
                      END IF
 *
                      IF( CHECK ) THEN
-                        CALL PCFILLPAD( ICTXT, LWORK, 1,
+                        CALL PDFILLPAD( ICTXT, LWORK, 1,
      $                                  MEM( IPW-IPREPAD ), LWORK,
      $                                  IPREPAD, IPOSTPAD, PADVAL )
-                        CALL PCFILLPAD( ICTXT, LW2-IPOSTPAD, 1,
+                        CALL PDFILLPAD( ICTXT, LW2-IPOSTPAD, 1,
      $                                  MEM( IPW2-IPREPAD ),
      $                                  LW2-IPOSTPAD, IPREPAD,
      $                                  IPOSTPAD, PADVAL )
@@ -563,19 +557,19 @@
 *
 *                    Compute condition number of the matrix
 *
-                     CALL PCGECON( '1', N, MEM( IPA ), 1, 1, DESCA,
+                     CALL PDGECON( '1', N, MEM( IPA ), 1, 1, DESCA,
      $                             ANORM1, RCOND, MEM( IPW ), LWORK,
-     $                             MEM( IPW2 ), LRWORK, INFO )
+     $                             MEM( IPW2 ), LIWORK, INFO )
 *
                      IF( CHECK ) THEN
-                        CALL PCCHEKPAD( ICTXT, 'PCGECON', NP, NQ,
+                        CALL PDCHEKPAD( ICTXT, 'PDGECON', NP, NQ,
      $                                  MEM( IPA-IPREPAD ),
      $                                  DESCA( LLD_ ), IPREPAD,
      $                                  IPOSTPAD, PADVAL )
-                        CALL PCCHEKPAD( ICTXT, 'PCGECON', LWORK, 1,
+                        CALL PDCHEKPAD( ICTXT, 'PDGECON', LWORK, 1,
      $                                  MEM( IPW-IPREPAD ), LWORK,
      $                                  IPREPAD, IPOSTPAD, PADVAL )
-                        CALL PCCHEKPAD( ICTXT, 'PCGECON',
+                        CALL PDCHEKPAD( ICTXT, 'PDGECON',
      $                                  LW2-IPOSTPAD, 1,
      $                                  MEM( IPW2-IPREPAD ),
      $                                  LW2-IPOSTPAD, IPREPAD,
@@ -630,7 +624,7 @@
                         END IF
 *
 *                       Set worksiz: routines requiring most workspace
-*                       is PCLASCHK
+*                       is PDLASCHK
 *
                         IF( CHECK ) THEN
                            LCM = ILCM( NPROW, NPCOL )
@@ -649,7 +643,7 @@
                         IF( IPW+WORKSIZ.GT.MEMSIZ ) THEN
                            IF( IAM.EQ.0 )
      $                        WRITE( NOUT, FMT = 9996 )'solve',
-     $                        ( IPW+WORKSIZ )*CPLXSZ
+     $                        ( IPW+WORKSIZ )*DBLESZ
                            IERR( 1 ) = 1
                         END IF
 *
@@ -667,7 +661,7 @@
 *
 *                       Generate RHS
 *
-                        CALL PCMATGEN( ICTXT, 'No', 'No', DESCB( M_ ),
+                        CALL PDMATGEN( ICTXT, 'No', 'No', DESCB( M_ ),
      $                                 DESCB( N_ ), DESCB( MB_ ),
      $                                 DESCB( NB_ ), MEM( IPB ),
      $                                 DESCB( LLD_ ), DESCB( RSRC_ ),
@@ -676,13 +670,13 @@
      $                                 NPCOL )
 *
                         IF( CHECK )
-     $                     CALL PCFILLPAD( ICTXT, NP, MYRHS,
+     $                     CALL PDFILLPAD( ICTXT, NP, MYRHS,
      $                                     MEM( IPB-IPREPAD ),
      $                                     DESCB( LLD_ ), IPREPAD,
      $                                     IPOSTPAD, PADVAL )
 *
                         IF( EST ) THEN
-                           CALL PCMATGEN( ICTXT, 'No', 'No',
+                           CALL PDMATGEN( ICTXT, 'No', 'No',
      $                                    DESCB( M_ ), DESCB( N_ ),
      $                                    DESCB( MB_ ), DESCB( NB_ ),
      $                                    MEM( IPB0 ), DESCB( LLD_ ),
@@ -691,15 +685,15 @@
      $                                    0, MYRHS, MYROW, MYCOL, NPROW,
      $                                    NPCOL )
                            IF( CHECK ) THEN
-                              CALL PCFILLPAD( ICTXT, NP, MYRHS,
+                              CALL PDFILLPAD( ICTXT, NP, MYRHS,
      $                                        MEM( IPB0-IPREPAD ),
      $                                        DESCB( LLD_ ), IPREPAD,
      $                                        IPOSTPAD, PADVAL )
-                              CALL PCFILLPAD( ICTXT, 1, MYRHS,
+                              CALL PDFILLPAD( ICTXT, 1, MYRHS,
      $                                        MEM( IPFERR-IPREPAD ), 1,
      $                                        IPREPAD, IPOSTPAD,
      $                                        PADVAL )
-                              CALL PCFILLPAD( ICTXT, 1, MYRHS,
+                              CALL PDFILLPAD( ICTXT, 1, MYRHS,
      $                                        MEM( IPBERR-IPREPAD ), 1,
      $                                        IPREPAD, IPOSTPAD,
      $                                        PADVAL )
@@ -711,7 +705,7 @@
 *
 *                       Solve linear sytem via LU factorization
 *
-                        CALL PCGETRS( 'No', N, NRHS, MEM( IPA ), 1, 1,
+                        CALL PDGETRS( 'No', N, NRHS, MEM( IPA ), 1, 1,
      $                                DESCA, MEM( IPPIV ), MEM( IPB ),
      $                                1, 1, DESCB, INFO )
 *
@@ -721,26 +715,26 @@
 *
 *                          check for memory overwrite
 *
-                           CALL PCCHEKPAD( ICTXT, 'PCGETRS', NP, NQ,
+                           CALL PDCHEKPAD( ICTXT, 'PDGETRS', NP, NQ,
      $                                     MEM( IPA-IPREPAD ),
      $                                     DESCA( LLD_ ), IPREPAD,
      $                                     IPOSTPAD, PADVAL )
-                           CALL PCCHEKPAD( ICTXT, 'PCGETRS', LIPIV, 1,
+                           CALL PDCHEKPAD( ICTXT, 'PDGETRS', LIPIV, 1,
      $                                     MEM( IPPIV-IPREPAD ), LIPIV,
      $                                     IPREPAD, IPOSTPAD, PADVAL )
-                           CALL PCCHEKPAD( ICTXT, 'PCGETRS', NP,
+                           CALL PDCHEKPAD( ICTXT, 'PDGETRS', NP,
      $                                     MYRHS, MEM( IPB-IPREPAD ),
      $                                     DESCB( LLD_ ), IPREPAD,
      $                                     IPOSTPAD, PADVAL )
 *
-                           CALL PCFILLPAD( ICTXT, WORKSIZ-IPOSTPAD,
+                           CALL PDFILLPAD( ICTXT, WORKSIZ-IPOSTPAD,
      $                                     1, MEM( IPW-IPREPAD ),
      $                                     WORKSIZ-IPOSTPAD, IPREPAD,
      $                                     IPOSTPAD, PADVAL )
 *
 *                          check the solution to rhs
 *
-                           CALL PCLASCHK( 'No', 'N', N, NRHS,
+                           CALL PDLASCHK( 'No', 'N', N, NRHS,
      $                                    MEM( IPB ), 1, 1, DESCB,
      $                                    IASEED, 1, 1, DESCA, IBSEED,
      $                                    ANORM, SRESID, MEM( IPW ) )
@@ -750,11 +744,11 @@
 *
 *                          check for memory overwrite
 *
-                           CALL PCCHEKPAD( ICTXT, 'PCLASCHK', NP,
+                           CALL PDCHEKPAD( ICTXT, 'PDLASCHK', NP,
      $                                     MYRHS, MEM( IPB-IPREPAD ),
      $                                     DESCB( LLD_ ), IPREPAD,
      $                                     IPOSTPAD, PADVAL )
-                           CALL PCCHEKPAD( ICTXT, 'PCLASCHK',
+                           CALL PDCHEKPAD( ICTXT, 'PDLASCHK',
      $                                     WORKSIZ-IPOSTPAD, 1,
      $                                     MEM( IPW-IPREPAD ),
      $                                     WORKSIZ-IPOSTPAD,
@@ -763,7 +757,7 @@
 *                          The second test is a NaN trap
 *
                            IF( SRESID.LE.THRESH .AND.
-     $                         ( SRESID-SRESID ).EQ.0.0E+0 ) THEN
+     $                         ( SRESID-SRESID ).EQ.0.0D+0 ) THEN
                               KPASS = KPASS + 1
                               PASSED = 'PASSED'
                            ELSE
@@ -778,19 +772,19 @@
 *
                         IF( EST ) THEN
 *
-*                          Calculate workspace required for PCGERFS
+*                          Calculate workspace required for PDGERFS
 *
-                           LWORK = MAX( 1, 2*NP )
+                           LWORK = MAX( 1, 3*NP )
                            IPW2  = IPW + LWORK + IPOSTPAD + IPREPAD
-                           LRWORK = MAX( 1, NP )
-                           LW2 = ICEIL( LRWORK*REALSZ, CPLXSZ ) +
+                           LIWORK = MAX( 1, NP )
+                           LW2 = ICEIL( LIWORK*INTGSZ, DBLESZ ) +
      $                           IPOSTPAD
 *
                            IERR( 1 ) = 0
                            IF( IPW2+LW2.GT.MEMSIZ ) THEN
                               IF( IAM.EQ.0 )
      $                           WRITE( NOUT, FMT = 9996 )
-     $                           'iter ref', ( IPW2+LW2 )*CPLXSZ
+     $                           'iter ref', ( IPW2+LW2 )*DBLESZ
                               IERR( 1 ) = 1
                            END IF
 *
@@ -808,11 +802,11 @@
                            END IF
 *
                            IF( CHECK ) THEN
-                              CALL PCFILLPAD( ICTXT, LWORK, 1,
+                              CALL PDFILLPAD( ICTXT, LWORK, 1,
      $                                        MEM( IPW-IPREPAD ),
      $                                        LWORK, IPREPAD, IPOSTPAD,
      $                                        PADVAL )
-                              CALL PCFILLPAD( ICTXT, LW2-IPOSTPAD, 1,
+                              CALL PDFILLPAD( ICTXT, LW2-IPOSTPAD, 1,
      $                                        MEM( IPW2-IPREPAD ),
      $                                        LW2-IPOSTPAD, IPREPAD,
      $                                        IPOSTPAD, PADVAL )
@@ -821,65 +815,65 @@
 *                          Use iterative refinement to improve the
 *                          computed solution
 *
-                           CALL PCGERFS( 'No', N, NRHS, MEM( IPA0 ), 1,
+                           CALL PDGERFS( 'No', N, NRHS, MEM( IPA0 ), 1,
      $                                   1, DESCA, MEM( IPA ), 1, 1,
      $                                   DESCA, MEM( IPPIV ),
      $                                   MEM( IPB0 ), 1, 1, DESCB,
      $                                   MEM( IPB ), 1, 1, DESCB,
      $                                   MEM( IPFERR ), MEM( IPBERR ),
      $                                   MEM( IPW ), LWORK, MEM( IPW2 ),
-     $                                   LRWORK, INFO )
+     $                                   LIWORK, INFO )
 *
                            IF( CHECK ) THEN
-                              CALL PCCHEKPAD( ICTXT, 'PCGERFS', NP,
+                              CALL PDCHEKPAD( ICTXT, 'PDGERFS', NP,
      $                                        NQ, MEM( IPA0-IPREPAD ),
      $                                        DESCA( LLD_ ), IPREPAD,
      $                                        IPOSTPAD, PADVAL )
-                              CALL PCCHEKPAD( ICTXT, 'PCGERFS', NP,
+                              CALL PDCHEKPAD( ICTXT, 'PDGERFS', NP,
      $                                        NQ, MEM( IPA-IPREPAD ),
      $                                        DESCA( LLD_ ), IPREPAD,
      $                                        IPOSTPAD, PADVAL )
-                              CALL PCCHEKPAD( ICTXT, 'PCGERFS', LIPIV,
+                              CALL PDCHEKPAD( ICTXT, 'PDGERFS', LIPIV,
      $                                        1, MEM( IPPIV-IPREPAD ),
      $                                        LIPIV, IPREPAD,
      $                                        IPOSTPAD, PADVAL )
-                              CALL PCCHEKPAD( ICTXT, 'PCGERFS', NP,
+                              CALL PDCHEKPAD( ICTXT, 'PDGERFS', NP,
      $                                        MYRHS, MEM( IPB-IPREPAD ),
      $                                        DESCB( LLD_ ), IPREPAD,
      $                                        IPOSTPAD, PADVAL )
-                              CALL PCCHEKPAD( ICTXT, 'PCGERFS', NP,
+                              CALL PDCHEKPAD( ICTXT, 'PDGERFS', NP,
      $                                        MYRHS,
      $                                        MEM( IPB0-IPREPAD ),
      $                                        DESCB( LLD_ ), IPREPAD,
      $                                        IPOSTPAD, PADVAL )
-                              CALL PCCHEKPAD( ICTXT, 'PCGERFS', 1,
+                              CALL PDCHEKPAD( ICTXT, 'PDGERFS', 1,
      $                                        MYRHS,
      $                                        MEM( IPFERR-IPREPAD ), 1,
      $                                        IPREPAD, IPOSTPAD,
      $                                        PADVAL )
-                              CALL PCCHEKPAD( ICTXT, 'PCGERFS', 1,
+                              CALL PDCHEKPAD( ICTXT, 'PDGERFS', 1,
      $                                        MYRHS,
      $                                        MEM( IPBERR-IPREPAD ), 1,
      $                                        IPREPAD, IPOSTPAD,
      $                                        PADVAL )
-                              CALL PCCHEKPAD( ICTXT, 'PCGERFS', LWORK,
+                              CALL PDCHEKPAD( ICTXT, 'PDGERFS', LWORK,
      $                                        1, MEM( IPW-IPREPAD ),
      $                                        LWORK, IPREPAD, IPOSTPAD,
      $                                        PADVAL )
-                              CALL PCCHEKPAD( ICTXT, 'PCGERFS',
+                              CALL PDCHEKPAD( ICTXT, 'PDGERFS',
      $                                        LW2-IPOSTPAD, 1,
      $                                        MEM( IPW2-IPREPAD ),
      $                                        LW2-IPOSTPAD, IPREPAD,
      $                                        IPOSTPAD, PADVAL )
 *
-                              CALL PCFILLPAD( ICTXT, WORKSIZ-IPOSTPAD,
+                              CALL PDFILLPAD( ICTXT, WORKSIZ-IPOSTPAD,
      $                                        1, MEM( IPW-IPREPAD ),
      $                                        WORKSIZ-IPOSTPAD, IPREPAD,
      $                                        IPOSTPAD, PADVAL )
 *
 *                             check the solution to rhs
 *
-                              CALL PCLASCHK( 'No', 'N', N, NRHS,
+                              CALL PDLASCHK( 'No', 'N', N, NRHS,
      $                                       MEM( IPB ), 1, 1, DESCB,
      $                                       IASEED, 1, 1, DESCA,
      $                                       IBSEED, ANORM, SRESID2,
@@ -890,11 +884,11 @@
 *
 *                             check for memory overwrite
 *
-                              CALL PCCHEKPAD( ICTXT, 'PCLASCHK', NP,
+                              CALL PDCHEKPAD( ICTXT, 'PDLASCHK', NP,
      $                                        MYRHS, MEM( IPB-IPREPAD ),
      $                                        DESCB( LLD_ ), IPREPAD,
      $                                        IPOSTPAD, PADVAL )
-                              CALL PCCHEKPAD( ICTXT, 'PCLASCHK',
+                              CALL PDCHEKPAD( ICTXT, 'PDLASCHK',
      $                                        WORKSIZ-IPOSTPAD, 1,
      $                                        MEM( IPW-IPREPAD ),
      $                                        WORKSIZ-IPOSTPAD, IPREPAD,
@@ -913,14 +907,14 @@
 *
                         IF( MYROW.EQ.0 .AND. MYCOL.EQ.0 ) THEN
 *
-*                          8/3 N^3 - N^2 flops for LU factorization
+*                          2/3 N^3 - 1/2 N^2 flops for LU factorization
 *
-                           NOPS = (8.0D+0/3.0D+0)*( DBLE(N)**3 ) -
-     $                            DBLE(N)**2
+                           NOPS = (2.0D+0/3.0D+0)*( DBLE(N)**3 ) -
+     $                            (1.0D+0/2.0D+0)*( DBLE(N)**2 )
 *
-*                          nrhs * 8 N^2 flops for LU solve.
+*                          nrhs * 2 N^2 flops for LU solve.
 *
-                           NOPS = NOPS + 8.0D+0*(DBLE(N)**2)*DBLE(NRHS)
+                           NOPS = NOPS + 2.0D+0*(DBLE(N)**2)*DBLE(NRHS)
 *
 *                          Calculate total megaflops -- factorization
 *                          and solve -- for WALL and CPU time, and print
@@ -967,21 +961,21 @@
 *
 *                    Compute fresid = ||A - P*L*U|| / (||A|| * N * eps)
 *
-                     CALL PCGETRRV( M, N, MEM( IPA ), 1, 1, DESCA,
+                     CALL PDGETRRV( M, N, MEM( IPA ), 1, 1, DESCA,
      $                              MEM( IPPIV ), MEM( IPW ) )
-                     CALL PCLAFCHK( 'No', 'No', M, N, MEM( IPA ), 1,
+                     CALL PDLAFCHK( 'No', 'No', M, N, MEM( IPA ), 1,
      $                              1, DESCA, IASEED, ANORM, FRESID,
      $                              MEM( IPW ) )
 *
 *                    Check for memory overwrite
 *
-                     CALL PCCHEKPAD( ICTXT, 'PCGETRRV', NP, NQ,
+                     CALL PDCHEKPAD( ICTXT, 'PDGETRRV', NP, NQ,
      $                               MEM( IPA-IPREPAD ), DESCA( LLD_ ),
      $                               IPREPAD, IPOSTPAD, PADVAL )
-                     CALL PCCHEKPAD( ICTXT, 'PCGETRRV', LIPIV,
+                     CALL PDCHEKPAD( ICTXT, 'PDGETRRV', LIPIV,
      $                               1, MEM( IPPIV-IPREPAD ), LIPIV,
      $                               IPREPAD, IPOSTPAD, PADVAL )
-                     CALL PCCHEKPAD( ICTXT, 'PCGETRRV',
+                     CALL PDCHEKPAD( ICTXT, 'PDGETRRV',
      $                               WORKSIZ-IPOSTPAD, 1,
      $                               MEM( IPW-IPREPAD ),
      $                               WORKSIZ-IPOSTPAD, IPREPAD,
@@ -1043,6 +1037,6 @@
 *
       STOP
 *
-*     End of PCLUDRIVER
+*     End of PDLUDRIVER
 *
       END
