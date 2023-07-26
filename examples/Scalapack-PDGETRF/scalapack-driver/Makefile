@@ -35,11 +35,11 @@ $(BIN)/pmatgeninc.o:$(SRC)/pmatgeninc.f Makefile
 	$(FC) $(CFLAGS) -o $(BIN)/pmatgeninc.o -c $(SRC)/pmatgeninc.f
 
 # Link
-driver:build_dirs $(BIN)/pdluinfo.o $(BIN)/pcgetrrv.o $(BIN)/pclaschk.o $(BIN)/pdlafchk.o $(BIN)/pdgeqlrv.o $(BIN)/pmatgeninc.o $(BIN)/pdmatgen.o $(BIN)/pdludriver.o Makefile
-	$(FC) $(CFLAGS) -o $(BIN)/pdludriver $(LIBS) $(BIN)/pdluinfo.o $(BIN)/pclaschk.o $(BIN)/pcgetrrv.o $(BIN)/pdlafchk.o $(BIN)/pdgeqlrv.o $(BIN)/pmatgeninc.o$ (BIN)/pdmatgen.o
+driver:build_dirs $(BIN)/pdludriver.o $(BIN)/pdluinfo.o $(BIN)/pcgetrrv.o $(BIN)/pclaschk.o $(BIN)/pdlafchk.o $(BIN)/pmatgeninc.o $(BIN)/pdmatgen.o Makefile
+	$(FC) $(CFLAGS) -o $(BIN)/pdludriver $(LIBS) $(BIN)/pdluinfo.o $(BIN)/pcgetrrv.o $(BIN)/pclaschk.o $(BIN)/pdlafchk.o $(BIN)/pmatgeninc.o $(BIN)/pdmatgen.o
 
 clean:
-	rm -f $(BIN)/pdludriver $(BIN)/pdluinfo.o $(BIN)/pcgetrrv.o $(BIN)/pclaschk.o $(BIN)/pdlafchk.o $(BIN)/pdgeqlrv.o $(BIN)/pmatgeninc.o $(BIN)/pdmatgen.o
+	rm -f $(BIN)/pdludriver $(BIN)/pdluinfo.o $(BIN)/pcgetrrv.o $(BIN)/pclaschk.o $(BIN)/pdlafchk.o $(BIN)/pmatgeninc.o $(BIN)/pdmatgen.o
 
 cleanall:
 	rm -fr bin/*/*.o bin/*/pdludriver exp/*/*
