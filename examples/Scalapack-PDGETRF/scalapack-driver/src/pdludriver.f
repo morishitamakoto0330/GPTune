@@ -125,6 +125,11 @@
 *
 *     Get starting information
 *
+      CALL GETARG(1,FILEDIR)
+		
+	  call MPI_INIT(ierr)
+	  call MPI_COMM_GET_PARENT(master, ierr) ! YL: this is needed if this function is spawned by a master process	     
+
       CALL BLACS_PINFO( IAM, NPROCS )
       IASEED = 100
       IBSEED = 200
@@ -1012,6 +1017,12 @@
       END IF
 *
       CALL BLACS_EXIT( 0 )
+      IF(master .NE. MPI_COMM_NULL) THEN
+         call MPI_BARRIER(master,ierr) 
+         call MPI_COMM_DISCONNECT(master, ierr)  ! YL: this is needed if this function is spawned by a master process
+      END IF	
+	  CALL BLACS_EXIT( 1 )
+	  call MPI_Finalize(ierr)
 *
  9999 FORMAT( 'ILLEGAL ', A6, ': ', A5, ' = ', I3,
      $        '; It should be at least 1' )

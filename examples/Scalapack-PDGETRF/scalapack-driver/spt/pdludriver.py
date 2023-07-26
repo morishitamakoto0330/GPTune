@@ -62,8 +62,8 @@ def execute(nproc, nthreads, npernode, RUNDIR):
          
 
        
-        print('exec', "%s/pdqrdriver"%(BINDIR), 'args', "%s/"%(RUNDIR), 'nproc', nproc, 'nthreads', nthreads, 'npernode', npernode)#, info=mpi_info).Merge()# process_rank = comm.Get_rank()
-        comm = MPI.COMM_SELF.Spawn("%s/pdqrdriver"%(BINDIR), args="%s/"%(RUNDIR), maxprocs=nproc,info=info)
+        print('exec', "%s/pdludriver"%(BINDIR), 'args', "%s/"%(RUNDIR), 'nproc', nproc, 'nthreads', nthreads, 'npernode', npernode)#, info=mpi_info).Merge()# process_rank = comm.Get_rank()
+        comm = MPI.COMM_SELF.Spawn("%s/pdludriver"%(BINDIR), args="%s/"%(RUNDIR), maxprocs=nproc,info=info)
         comm.Barrier()
         comm.Disconnect()
         # time.sleep(5.0)
@@ -71,7 +71,7 @@ def execute(nproc, nthreads, npernode, RUNDIR):
         return 0
 
 
-        # return os.system("cd %s; export OMP_PLACES=threads; export OMP_PROC_BIND=spread; export OMP_NUM_THREADS=%d; mpirun -c %d -n %d %s/pdqrdriver 2>> QR.err &  wait;"%(RUNDIR, nthreads, 2*nthreads, nproc, BINDIR))
+        # return os.system("cd %s; export OMP_PLACES=threads; export OMP_PROC_BIND=spread; export OMP_NUM_THREADS=%d; mpirun -c %d -n %d %s/pdludriver 2>> QR.err &  wait;"%(RUNDIR, nthreads, 2*nthreads, nproc, BINDIR))
 
 ##    err = v_sequential()
     err = v_parallel()
@@ -116,7 +116,7 @@ def read_output(params, RUNDIR, niter=1):
 
     return times
 
-def pdqrdriver(params, niter=10,JOBID: int = None):
+def pdludriver(params, niter=10,JOBID: int = None):
 
     global EXPDIR 
     global BINDIR
@@ -173,7 +173,7 @@ if __name__ == "__main__":
               ('QR',  100,  100, 1, 32, 32, 32, 2, 1, 1, 1, 1., 1),\
               ('QR', 1000, 1000, 1, 32, 32, 32, 1, 2, 2, 1, 1., 1),\
               ('QR',  100,  100, 1, 32, 32, 32, 1, 2, 2, 1, 1., 1)]
-    times = pdqrdriver(params, niter=3)
+    times = pdludriver(params, niter=3)
     print(times)
 #    clean()
 

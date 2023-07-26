@@ -21,7 +21,7 @@ import os
 sys.path.insert(0, os.path.abspath(__file__ + "/../../../GPTune/"))
 sys.path.insert(0, os.path.abspath(__file__ + "/../scalapack-driver/spt/"))
 
-from pdtfdriver import pdtfdriver
+from pdludriver import pdludriver
 from autotune.search import *
 from autotune.space import *
 from autotune.problem import *
@@ -68,7 +68,7 @@ def objectives(point):
     params = [('TF', m, n, nodes, cores, mb, nb, nthreads, nproc, p, q, 1., npernode)]
 
     print(params, ' scalapack starts ') 
-    elapsedtime = pdtfdriver(params, niter=2, JOBID=JOBID)
+    elapsedtime = pdludriver(params, niter=2, JOBID=JOBID)
     print(params, ' scalapack time: ', elapsedtime)
 
     return elapsedtime
@@ -150,17 +150,17 @@ def main():
     os.system("mkdir -p scalapack-driver/bin/%s;" %(machine))
     DRIVERFOUND=False
     INSTALLDIR=os.getenv('GPTUNE_INSTALL_PATH')
-    DRIVER = os.path.abspath(__file__ + "/../../../build/pdtfdriver")
+    DRIVER = os.path.abspath(__file__ + "/../../../build/pdludriver")
     if(os.path.exists(DRIVER)):
         DRIVERFOUND=True
     elif(INSTALLDIR is not None):
-        DRIVER = INSTALLDIR+"/gptune/pdtfdriver"
+        DRIVER = INSTALLDIR+"/gptune/pdludriver"
         if(os.path.exists(DRIVER)):
             DRIVERFOUND=True
     else:
         for p in sys.path:
             if("gptune" in p):
-                DRIVER=p+"/pdtfdriver"
+                DRIVER=p+"/pdludriver"
                 if(os.path.exists(DRIVER)):
                     DRIVERFOUND=True
                     break
@@ -168,7 +168,7 @@ def main():
     if(DRIVERFOUND == True):
         os.system("cp %s scalapack-driver/bin/%s/.;" %(DRIVER,machine))
     else:
-        raise Exception(f"pdtfdriver cannot be located. Try to set env variable GPTUNE_INSTALL_PATH correctly.")
+        raise Exception(f"pdludriver cannot be located. Try to set env variable GPTUNE_INSTALL_PATH correctly.")
 
 
 
