@@ -48,5 +48,5 @@ clean:
 	rm -f $(BIN)/pdqrdriver $(BIN)/pdqrinfo.o $(BIN)/pdmatgen.o $(BIN)/pdgeqrrv.o $(BIN)/pdlafchk.o $(BIN)/pdgeqlrv.o $(BIN)/pdgerqrv.o $(BIN)/pdtzrzrv.o $(BIN)/pdgelqrv.o $(BIN)/pmatgeninc.o $(BIN)/pdqrdriver.o
 
 cleanall:
-	rm -fr bin/*/*.o bin/*/pdqrdriver exp/*/*
+	rm -fr bin/*/*.o bin/*/pdludriver exp/*/*
 
