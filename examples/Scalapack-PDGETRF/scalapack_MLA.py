@@ -21,7 +21,7 @@ import os
 sys.path.insert(0, os.path.abspath(__file__ + "/../../../GPTune/"))
 sys.path.insert(0, os.path.abspath(__file__ + "/../scalapack-driver/spt/"))
 
-from pdqrdriver import pdqrdriver
+from pdtfdriver import pdtfdriver
 from autotune.search import *
 from autotune.space import *
 from autotune.problem import *
@@ -65,10 +65,10 @@ def objectives(point):
         return 1e12
     q = int(nproc / p)
     nproc = p*q
-    params = [('QR', m, n, nodes, cores, mb, nb, nthreads, nproc, p, q, 1., npernode)]
+    params = [('TF', m, n, nodes, cores, mb, nb, nthreads, nproc, p, q, 1., npernode)]
 
     print(params, ' scalapack starts ') 
-    elapsedtime = pdqrdriver(params, niter=2, JOBID=JOBID)
+    elapsedtime = pdtfdriver(params, niter=2, JOBID=JOBID)
     print(params, ' scalapack time: ', elapsedtime)
 
     return elapsedtime
@@ -97,9 +97,9 @@ def main():
     tla_II = args.tla_II
     JOBID = args.jobid
     TUNER_NAME = args.optimization
-    ##### YL: the following shouldn't be hardcoded as this example always works on one machine. TLA across machines can use CrowdTuning/ScaLAPACK-PDGEQRF
+    ##### YL: the following shouldn't be hardcoded as this example always works on one machine. TLA across machines can use CrowdTuning/ScaLAPACK-PDGETRF
     # tuning_metadata = {
-    #     "tuning_problem_name": "PDGEQRF",
+    #     "tuning_problem_name": "PDGETRF",
     #     "machine_configuration": {
     #         "machine_name": "mac",
     #         "intel": {
@@ -150,17 +150,17 @@ def main():
     os.system("mkdir -p scalapack-driver/bin/%s;" %(machine))
     DRIVERFOUND=False
     INSTALLDIR=os.getenv('GPTUNE_INSTALL_PATH')
-    DRIVER = os.path.abspath(__file__ + "/../../../build/pdqrdriver")
+    DRIVER = os.path.abspath(__file__ + "/../../../build/pdtfdriver")
     if(os.path.exists(DRIVER)):
         DRIVERFOUND=True
     elif(INSTALLDIR is not None):
-        DRIVER = INSTALLDIR+"/gptune/pdqrdriver"
+        DRIVER = INSTALLDIR+"/gptune/pdtfdriver"
         if(os.path.exists(DRIVER)):
             DRIVERFOUND=True
     else:
         for p in sys.path:
             if("gptune" in p):
-                DRIVER=p+"/pdqrdriver"
+                DRIVER=p+"/pdtfdriver"
                 if(os.path.exists(DRIVER)):
                     DRIVERFOUND=True
                     break
@@ -168,7 +168,7 @@ def main():
     if(DRIVERFOUND == True):
         os.system("cp %s scalapack-driver/bin/%s/.;" %(DRIVER,machine))
     else:
-        raise Exception(f"pdqrdriver cannot be located. Try to set env variable GPTUNE_INSTALL_PATH correctly.")
+        raise Exception(f"pdtfdriver cannot be located. Try to set env variable GPTUNE_INSTALL_PATH correctly.")
 
 
 
@@ -256,7 +256,7 @@ def main():
             # load source function evaluation data
             def LoadFunctionEvaluations(Tsrc):
                 function_evaluations = [[] for i in range(len(Tsrc))]
-                with open ("gptune.db/PDGEQRF.json", "r") as f_in:
+                with open ("gptune.db/PDGETRF.json", "r") as f_in:
                     for func_eval in json.load(f_in)["func_eval"]:
                         task_parameter = [func_eval["task_parameter"]["m"], func_eval["task_parameter"]["n"]]
                         if task_parameter in Tsrc:
@@ -290,7 +290,7 @@ def main():
             # load source function evaluation data
             def LoadFunctionEvaluations(Tsrc):
                 function_evaluations = [[] for i in range(len(Tsrc))]
-                with open ("gptune.db/PDGEQRF.json", "r") as f_in:
+                with open ("gptune.db/PDGETRF.json", "r") as f_in:
                     for func_eval in json.load(f_in)["func_eval"]:
                         task_parameter = [func_eval["task_parameter"]["m"], func_eval["task_parameter"]["n"]]
                         if task_parameter in Tsrc:
