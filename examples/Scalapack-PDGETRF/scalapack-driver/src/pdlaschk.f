@@ -1,4 +1,4 @@
-      SUBROUTINE PCLASCHK( SYMM, DIAG, N, NRHS, X, IX, JX, DESCX,
+      SUBROUTINE PDLASCHK( SYMM, DIAG, N, NRHS, X, IX, JX, DESCX,
      $                     IASEED, IA, JA, DESCA, IBSEED, ANORM, RESID,
      $                     WORK )
 *
@@ -10,17 +10,17 @@
 *     .. Scalar Arguments ..
       CHARACTER          DIAG, SYMM
       INTEGER            IA, IASEED, IBSEED, IX, JA, JX, N, NRHS
-      REAL               ANORM, RESID
+      DOUBLE PRECISION   ANORM, RESID
 *     ..
 *     .. Array Arguments ..
       INTEGER            DESCA( * ), DESCX( * )
-      COMPLEX            WORK( * ), X( * )
+      DOUBLE PRECISION   WORK( * ), X( * )
 *     ..
 *
 *  Purpose
 *  =======
 *
-*  PCLASCHK computes the residual
+*  PDLASCHK computes the residual
 *  || sub( A )*sub( X ) - B || / (|| sub( A ) ||*|| sub( X ) ||*eps*N)
 *  to check the accuracy of the factorization and solve steps in the
 *  LU and Cholesky decompositions, where sub( A ) denotes
@@ -84,7 +84,7 @@
 *  =========
 *
 *  SYMM      (global input) CHARACTER
-*          if SYMM = 'H', sub( A ) is a hermitian distributed matrix,
+*          if SYMM = 'S', sub( A ) is a symmetric distributed matrix,
 *          otherwise sub( A ) is a general distributed matrix.
 *
 *  DIAG    (global input) CHARACTER
@@ -98,7 +98,7 @@
 *          The number of right-hand-sides, i.e the number of columns
 *          of the distributed matrix sub( X ). NRHS >= 0.
 *
-*  X       (local input) COMPLEX pointer into the local memory
+*  X       (local input) DOUBLE PRECISION pointer into the local memory
 *          to an array of dimension (LLD_X,LOCc(JX+NRHS-1). This array
 *          contains the local pieces of the answer vector(s) sub( X ) of
 *          sub( A ) sub( X ) - B, split up over a column of processes.
@@ -131,15 +131,15 @@
 *  IBSEED  (global input) INTEGER
 *          The seed number to generate the original matrix B.
 *
-*  ANORM   (global input) REAL
+*  ANORM   (global input) DOUBLE PRECISION
 *          The 1-norm or infinity norm of the distributed matrix
 *          sub( A ).
 *
-*  RESID   (global output) REAL
+*  RESID   (global output) DOUBLE PRECISION
 *          The residual error:
 *          ||sub( A )*sub( X )-B|| / (||sub( A )||*||sub( X )||*eps*N).
 *
-*  WORK    (local workspace) COMPLEX array, dimension (LWORK)
+*  WORK    (local workspace) DOUBLE PRECISION array, dimension (LWORK)
 *          LWORK >= MAX(1,Np)*NB_X + Nq*NB_X + MAX( MAX(NQ*MB_A,2*NB_X),
 *          NB_X * NUMROC( NUMROC(N,MB_X,0,0,NPCOL), MB_X, 0, 0, LCMQ ) )
 *
@@ -151,30 +151,28 @@
       PARAMETER          ( BLOCK_CYCLIC_2D = 1, DLEN_ = 9, DTYPE_ = 1,
      $                     CTXT_ = 2, M_ = 3, N_ = 4, MB_ = 5, NB_ = 6,
      $                     RSRC_ = 7, CSRC_ = 8, LLD_ = 9 )
-      COMPLEX            ZERO, ONE
-      PARAMETER          ( ONE = ( 1.0E+0, 0.0E+0 ),
-     $                     ZERO = ( 0.0E+0, 0.0E+0 ) )
+      DOUBLE PRECISION   ZERO, ONE
+      PARAMETER          ( ONE = 1.0D+0, ZERO = 0.0D+0 )
 *     ..
 *     .. Local Scalars ..
       INTEGER            IACOL, IAROW, IB, ICOFF, ICTXT, ICURCOL, IDUMM,
      $                   II, IIA, IIX, IOFFX, IPA, IPB, IPW, IPX, IROFF,
      $                   IXCOL, IXROW, J, JBRHS, JJ, JJA, JJX, LDX,
      $                   MYCOL, MYROW, NP, NPCOL, NPROW, NQ
-      REAL               DIVISOR, EPS, RESID1
-      COMPLEX            BETA
+      DOUBLE PRECISION   BETA, DIVISOR, EPS, RESID1
 *     ..
 *     .. External Subroutines ..
-      EXTERNAL           BLACS_GRIDINFO, CGAMX2D, CGEMM, CGSUM2D,
-     $                   CLASET, PBCTRAN, PCMATGEN, SGEBR2D,
-     $                   SGEBS2D, SGERV2D, SGESD2D
+      EXTERNAL           BLACS_GRIDINFO, DGAMX2D, DGEBR2D,
+     $                   DGEBS2D, DGEMM, DGERV2D, DGESD2D,
+     $                   DGSUM2D, DLASET, PBDTRAN, PDMATGEN
 *     ..
 *     .. External Functions ..
-      INTEGER            ICAMAX, NUMROC
-      REAL               PSLAMCH
-      EXTERNAL           ICAMAX, NUMROC, PSLAMCH
+      INTEGER            IDAMAX, NUMROC
+      DOUBLE PRECISION   PDLAMCH
+      EXTERNAL           IDAMAX, NUMROC, PDLAMCH
 *     ..
 *     .. Intrinsic Functions ..
-      INTRINSIC          ABS, MAX, MIN, MOD, REAL
+      INTRINSIC          ABS, DBLE, MAX, MIN, MOD
 *     ..
 *     .. Executable Statements ..
 *
@@ -183,9 +181,9 @@
       ICTXT = DESCA( CTXT_ )
       CALL BLACS_GRIDINFO( ICTXT, NPROW, NPCOL, MYROW, MYCOL )
 *
-      EPS = PSLAMCH( ICTXT, 'eps' )
-      RESID = 0.0E+0
-      DIVISOR = ANORM * EPS * REAL( N )
+      EPS = PDLAMCH( ICTXT, 'eps' )
+      RESID = 0.0D+0
+      DIVISOR = ANORM * EPS * DBLE( N )
 *
       CALL INFOG2L( IA, JA, DESCA, NPROW, NPCOL, MYROW, MYCOL, IIA, JJA,
      $              IAROW, IACOL )
@@ -216,7 +214,7 @@
 *        Transpose x from ICURCOL to all rows
 *
          IOFFX = IIX + ( JJX - 1 ) * DESCX( LLD_ )
-         CALL PBCTRAN( ICTXT, 'Column', 'Transpose', N, JBRHS,
+         CALL PBDTRAN( ICTXT, 'Column', 'Transpose', N, JBRHS,
      $              DESCX( MB_ ), X( IOFFX ), DESCX( LLD_ ), ZERO,
      $              WORK( IPX ), JBRHS, IXROW, ICURCOL, -1, IACOL,
      $              WORK( IPA ) )
@@ -224,7 +222,7 @@
 *        Regenerate B in IXCOL
 *
          IF( MYCOL.EQ.ICURCOL ) THEN
-            CALL PCMATGEN( ICTXT, 'N', 'N', DESCX( M_ ), DESCX( N_ ),
+            CALL PDMATGEN( ICTXT, 'N', 'N', DESCX( M_ ), DESCX( N_ ),
      $                     DESCX( MB_ ), DESCX( NB_ ), WORK( IPB ), LDX,
      $                     IXROW, IXCOL, IBSEED, IIX-1, NP, JJX-1,
      $                     JBRHS, MYROW, MYCOL, NPROW, NPCOL )
@@ -239,7 +237,7 @@
 *
 *              Regenerate ib rows of the matrix A(IA:IA+N-1,JA:JA+N-1).
 *
-               CALL PCMATGEN( ICTXT, SYMM, DIAG, DESCA( M_ ),
+               CALL PDMATGEN( ICTXT, SYMM, DIAG, DESCA( M_ ),
      $                        DESCA( N_ ), DESCA( MB_ ), DESCA( NB_ ),
      $                        WORK( IPA ), IB, DESCA( RSRC_ ),
      $                        DESCA( CSRC_ ), IASEED, II-1, IB,
@@ -247,7 +245,7 @@
 *
 *              Compute B <= B - A * X.
 *
-               CALL CGEMM( 'No transpose', 'Transpose', IB, JBRHS, NQ,
+               CALL DGEMM( 'No transpose', 'Transpose', IB, JBRHS, NQ,
      $                     -ONE, WORK( IPA ), IB, WORK( IPX ), JBRHS,
      $                     BETA, WORK( IPB+II-IIA ), LDX )
 *
@@ -255,14 +253,14 @@
 *
          ELSE IF( MYCOL.NE.ICURCOL ) THEN
 *
-            CALL CLASET( 'All', NP, JBRHS, ZERO, ZERO, WORK( IPB ),
+            CALL DLASET( 'All', NP, JBRHS, ZERO, ZERO, WORK( IPB ),
      $                   LDX )
 *
          END IF
 *
 *        Add B rowwise to ICURCOL
 *
-         CALL CGSUM2D( ICTXT, 'Row', ' ', NP, JBRHS, WORK( IPB ), LDX,
+         CALL DGSUM2D( ICTXT, 'Row', ' ', NP, JBRHS, WORK( IPB ), LDX,
      $                 MYROW, ICURCOL )
 *
          IF( MYCOL.EQ.ICURCOL ) THEN
@@ -272,9 +270,9 @@
             IPW = IPA + JBRHS
             DO 20 JJ = 0, JBRHS - 1
                IF( NP.GT.0 ) THEN
-                  II = ICAMAX( NP, WORK( IPB+JJ*LDX ), 1 )
+                  II = IDAMAX( NP, WORK( IPB+JJ*LDX ), 1 )
                   WORK( IPA+JJ ) = ABS( WORK( IPB+II-1+JJ*LDX ) )
-                  WORK( IPW+JJ ) = ABS( X( IOFFX + ICAMAX( NP,
+                  WORK( IPW+JJ ) = ABS( X( IOFFX + IDAMAX( NP,
      $            X( IOFFX + JJ*DESCX( LLD_ ) ), 1 )-1+JJ*
      $            DESCX( LLD_ ) ) )
                ELSE
@@ -283,29 +281,28 @@
                END IF
    20       CONTINUE
 *
-*           After CGAMX2D computation,
+*           After DGAMX2D computation,
 *              WORK(IPB) has the maximum of || Ax - b ||, and
 *              WORK(IPX) has the maximum of || X ||.
 *
-            CALL CGAMX2D( ICTXT, 'Column', ' ', 1, 2*JBRHS,
+            CALL DGAMX2D( ICTXT, 'Column', ' ', 1, 2*JBRHS,
      $                    WORK( IPA ), 1, IDUMM, IDUMM, -1, 0, ICURCOL )
 *
 *           Calculate residual = ||Ax-b|| / (||x||*||A||*eps*N)
 *
             IF( MYROW.EQ.0 ) THEN
                DO 30 JJ = 0, JBRHS - 1
-                  RESID1 = REAL( WORK( IPA+JJ ) ) /
-     $                     ( REAL( WORK( IPW+JJ ) )*DIVISOR )
+                  RESID1 = WORK( IPA+JJ ) / ( WORK( IPW+JJ )*DIVISOR )
                   IF( RESID.LT.RESID1 )
      $               RESID = RESID1
    30          CONTINUE
                IF( MYCOL.NE.0 )
-     $            CALL SGESD2D( ICTXT, 1, 1, RESID, 1, 0, 0 )
+     $            CALL DGESD2D( ICTXT, 1, 1, RESID, 1, 0, 0 )
             END IF
 *
          ELSE IF( MYROW.EQ.0 .AND. MYCOL.EQ.0 ) THEN
 *
-            CALL SGERV2D( ICTXT, 1, 1, RESID1, 1, 0, ICURCOL )
+            CALL DGERV2D( ICTXT, 1, 1, RESID1, 1, 0, ICURCOL )
             IF( RESID.LT.RESID1 )
      $         RESID = RESID1
 *
@@ -318,13 +315,13 @@
    40 CONTINUE
 *
       IF( MYROW.EQ.0 .AND. MYCOL.EQ.0 ) THEN
-         CALL SGEBS2D( ICTXT, 'All', ' ', 1, 1, RESID, 1 )
+         CALL DGEBS2D( ICTXT, 'All', ' ', 1, 1, RESID, 1 )
       ELSE
-         CALL SGEBR2D( ICTXT, 'All', ' ', 1, 1, RESID, 1, 0, 0 )
+         CALL DGEBR2D( ICTXT, 'All', ' ', 1, 1, RESID, 1, 0, 0 )
       END IF
 *
       RETURN
 *
-*     End of PCLASCHK
+*     End of PDLASCHK
 *
       END

@@ -81,6 +81,7 @@
       LOGICAL            CHECK, EST
       CHARACTER*6        PASSED
       CHARACTER*80       OUTFILE
+      CHARACTER*1000     FILEDIR
       INTEGER            HH, I, IAM, IASEED, IBSEED, ICTXT, IMIDPAD,
      $                   INFO, IPA, IPA0, IPB, IPB0, IPBERR, IPFERR,
      $                   IPOSTPAD, IPPIV, IPREPAD, IPW, IPW2, J, K,
@@ -1016,7 +1017,6 @@
      $      CLOSE( NOUT )
       END IF
 *
-      CALL BLACS_EXIT( 0 )
       IF(master .NE. MPI_COMM_NULL) THEN
          call MPI_BARRIER(master,ierr) 
          call MPI_COMM_DISCONNECT(master, ierr)  ! YL: this is needed if this function is spawned by a master process

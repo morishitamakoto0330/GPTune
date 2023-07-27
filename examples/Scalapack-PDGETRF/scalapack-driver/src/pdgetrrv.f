@@ -1,4 +1,4 @@
-      SUBROUTINE PCGETRRV( M, N, A, IA, JA, DESCA, IPIV, WORK )
+      SUBROUTINE PDGETRRV( M, N, A, IA, JA, DESCA, IPIV, WORK )
 *
 *  -- ScaLAPACK routine (version 1.7) --
 *     University of Tennessee, Knoxville, Oak Ridge National Laboratory,
@@ -10,17 +10,17 @@
 *     ..
 *     .. Array Arguments ..
       INTEGER            DESCA( * ), IPIV( * )
-      COMPLEX            A( * ), WORK( * )
+      DOUBLE PRECISION   A( * ), WORK( * )
 *     ..
 *
 *  Purpose
 *  =======
 *
-*  PCGETRRV reforms sub( A ) = A(IA:IA+M-1,JA:JA+N-1) from the
-*  triangular matrices L and U returned by PCGETRF.  It multiplies
+*  PDGETRRV reforms sub( A ) = A(IA:IA+M-1,JA:JA+N-1) from the
+*  triangular matrices L and U returned by PDGETRF.  It multiplies
 *  an upper triangular matrix stored in the upper triangle of sub( A )
 *  times the unit lower triangular matrix stored in the lower triangle.
-*  To accomplish this, the routine basically performs the PCGETRF
+*  To accomplish this, the routine basically performs the PDGETRF
 *  routine in reverse.
 *
 *  It computes L*U first, and then apply P: P*L*U => sub( A ). In the
@@ -100,7 +100,7 @@
 *          The number of columns to be operated on, i.e. the number of
 *          columns of the distributed submatrix sub( A ). N >= 0.
 *
-*  A       (local input/local output) COMPLEX pointer into the
+*  A       (local input/local output) DOUBLE PRECISION pointer into the
 *          local memory to an array of dimension (LLD_A, LOCc(JA+N-1)).
 *          On entry, the local pieces of the distributed matrix sub( A )
 *          contains the the factors L and U from the factorization
@@ -124,7 +124,7 @@
 *          IPIV(i) -> The global row local row i was swapped with.
 *          This array is tied to the distributed matrix A.
 *
-*  WORK    (local workspace) COMPLEX array of dimension (LWORK)
+*  WORK    (local workspace) DOUBLE PRECISION array of dimension (LWORK)
 *          LWORK >= MpA0 * NB_A + NqA0 * MB_A, where
 *
 *          IROFFA = MOD( IA-1, MB_A ), ICOFFA = MOD( JA-1, NB_A ),
@@ -146,8 +146,8 @@
       PARAMETER          ( BLOCK_CYCLIC_2D = 1, DLEN_ = 9, DTYPE_ = 1,
      $                     CTXT_ = 2, M_ = 3, N_ = 4, MB_ = 5, NB_ = 6,
      $                     RSRC_ = 7, CSRC_ = 8, LLD_ = 9 )
-      COMPLEX            ONE, ZERO
-      PARAMETER          ( ONE = 1.0E+0, ZERO = 0.0E+0 )
+      DOUBLE PRECISION   ONE, ZERO
+      PARAMETER          ( ONE = 1.0D+0, ZERO = 0.0D+0 )
 *     ..
 *     .. Local Scalars ..
       CHARACTER          COLBTOP, ROWBTOP
@@ -158,8 +158,8 @@
      $                   DESCU( DLEN_ ), IDUM( 1 )
 *     ..
 *     .. External Subroutines ..
-      EXTERNAL           BLACS_GRIDINFO, DESCSET, PCGEMM, PCLACPY,
-     $                   PCLAPIV, PCLASET, PB_TOPGET, PB_TOPSET
+      EXTERNAL           BLACS_GRIDINFO, DESCSET, PDGEMM, PDLACPY,
+     $                   PDLAPIV, PDLASET, PB_TOPGET, PB_TOPSET
 *     ..
 *     .. External Functions ..
       INTEGER            ICEIL, INDXG2P, NUMROC
@@ -212,31 +212,31 @@
 *
 *        Copy unit lower triangular part of sub( A ) into WORK
 *
-         CALL PCLACPY( 'Lower', M-IL+IA, JB, A, IL, J, DESCA,
+         CALL PDLACPY( 'Lower', M-IL+IA, JB, A, IL, J, DESCA,
      $                 WORK( IPL ), 1, 1, DESCL )
-         CALL PCLASET( 'Upper', M-IL+IA, JB, ZERO, ONE, WORK( IPL ),
+         CALL PDLASET( 'Upper', M-IL+IA, JB, ZERO, ONE, WORK( IPL ),
      $                 1, 1, DESCL )
 *
 *        Copy upper triangular part of sub( A ) into WORK(IPU)
 *
-         CALL PCLACPY( 'Upper', JB, JA+N-J, A, IL, J, DESCA,
+         CALL PDLACPY( 'Upper', JB, JA+N-J, A, IL, J, DESCA,
      $                 WORK( IPU ), 1, 1, DESCU )
-         CALL PCLASET( 'Lower', JB-1, JA+N-J, ZERO, ZERO,
+         CALL PDLASET( 'Lower', JB-1, JA+N-J, ZERO, ZERO,
      $                 WORK( IPU ), 2, 1, DESCU )
 *
 *        Zero the strict lower triangular piece of the current block.
 *
-         CALL PCLASET( 'Lower', IA+M-IL-1, JB, ZERO, ZERO, A, IL+1, J,
+         CALL PDLASET( 'Lower', IA+M-IL-1, JB, ZERO, ZERO, A, IL+1, J,
      $                 DESCA )
 *
 *        Zero the upper triangular piece of the current block.
 *
-         CALL PCLASET( 'Upper', JB, JA+N-J, ZERO, ZERO, A, IL, J,
+         CALL PDLASET( 'Upper', JB, JA+N-J, ZERO, ZERO, A, IL, J,
      $                 DESCA )
 *
 *        Update the matrix sub( A ).
 *
-         CALL PCGEMM( 'No transpose', 'No transpose', IA+M-IL,
+         CALL PDGEMM( 'No transpose', 'No transpose', IA+M-IL,
      $                JA+N-J, JB, ONE, WORK( IPL ), 1, 1, DESCL,
      $                WORK( IPU ), 1, 1, DESCU, ONE, A, IL, J, DESCA )
 *
@@ -256,35 +256,35 @@
 *
 *     Copy unit lower triangular part of sub( A ) into WORK
 *
-      CALL PCLACPY( 'Lower', M, JB, A, IA, JA, DESCA, WORK( IPL ),
+      CALL PDLACPY( 'Lower', M, JB, A, IA, JA, DESCA, WORK( IPL ),
      $              1, 1, DESCL )
-      CALL PCLASET( 'Upper', M, JB, ZERO, ONE, WORK( IPL ), 1, 1,
+      CALL PDLASET( 'Upper', M, JB, ZERO, ONE, WORK( IPL ), 1, 1,
      $              DESCL )
 *
 *     Copy upper triangular part of sub( A ) into WORK(IPU)
 *
-      CALL PCLACPY( 'Upper', JB, N, A, IA, JA, DESCA, WORK( IPU ), 1,
+      CALL PDLACPY( 'Upper', JB, N, A, IA, JA, DESCA, WORK( IPU ), 1,
      $              1, DESCU )
-      CALL PCLASET( 'Lower', JB-1, N, ZERO, ZERO, WORK( IPU ), 2, 1,
+      CALL PDLASET( 'Lower', JB-1, N, ZERO, ZERO, WORK( IPU ), 2, 1,
      $              DESCU )
 *
 *     Zero the strict lower triangular piece of the current block.
 *
-      CALL PCLASET( 'Lower', M-1, JB, ZERO, ZERO, A, IA+1, JA, DESCA )
+      CALL PDLASET( 'Lower', M-1, JB, ZERO, ZERO, A, IA+1, JA, DESCA )
 *
 *     Zero the upper triangular piece of the current block.
 *
-      CALL PCLASET( 'Upper', JB, N, ZERO, ZERO, A, IA, JA, DESCA )
+      CALL PDLASET( 'Upper', JB, N, ZERO, ZERO, A, IA, JA, DESCA )
 *
 *     Update the matrix sub( A ).
 *
-      CALL PCGEMM( 'No transpose', 'No transpose', M, N, JB, ONE,
+      CALL PDGEMM( 'No transpose', 'No transpose', M, N, JB, ONE,
      $             WORK( IPL ), 1, 1, DESCL, WORK( IPU ), 1, 1,
      $             DESCU, ONE, A, IA, JA, DESCA )
 *
 *     Apply pivots so that sub( A ) = P*L*U
 *
-      CALL PCLAPIV( 'Backward', 'Row', 'Col', MIN( M, N ), N, A, IA, JA,
+      CALL PDLAPIV( 'Backward', 'Row', 'Col', MIN( M, N ), N, A, IA, JA,
      $              DESCA, IPIV, IA, 1, DESCIP, IDUM )
 *
       CALL PB_TOPSET( ICTXT, 'Broadcast', 'Rowwise', ROWBTOP )
@@ -292,6 +292,6 @@
 *
       RETURN
 *
-*     End of PCGETRRV
+*     End of PDGETRRV
 *
       END
