@@ -44,8 +44,8 @@ $(BIN)/pmatgeninc.o:$(SRC)/pmatgeninc.f Makefile
 	$(FC) $(CFLAGS) -o $(BIN)/pmatgeninc.o -c $(SRC)/pmatgeninc.f
 
 # Link
-driver:build_dirs $(BIN)/pdludriver.o $(BIN)/pdluinfo.o $(BIN)/pdgetrrv.o $(BIN)/pdlaschk.o $(BIN)/pdlafchk.o $(BIN)/pmatgeninc.o $(BIN)/pdmatgen.o Makefile
-	$(FC) $(CFLAGS) -o $(BIN)/pdludriver $(LIBS) $(BIN)/pdluinfo.o $(BIN)/pdgetrrv.o $(BIN)/pdlaschk.o $(BIN)/pdlafchk.o $(BIN)/pmatgeninc.o $(BIN)/pdmatgen.o
+driver:build_dirs $(BIN)/pdluinfo.o $(BIN)/pdgetrrv.o $(BIN)/pdlaschk.o $(BIN)/pdlafchk.o $(BIN)/pmatgeninc.o $(BIN)/pdmatgen.o $(BIN)/pdludriver.o Makefile
+	$(FC) $(CFLAGS) -o $(BIN)/pdludriver $(LIBS) $(BIN)/pdluinfo.o $(BIN)/pdgetrrv.o $(BIN)/pdlaschk.o $(BIN)/pdlafchk.o $(BIN)/pmatgeninc.o $(BIN)/pdmatgen.o $(BIN)/pdludriver.o
 
 clean:
 	rm -f $(BIN)/pdludriver $(BIN)/pdluinfo.o $(BIN)/pdgetrrv.o $(BIN)/pdlaschk.o $(BIN)/pdlafchk.o $(BIN)/pmatgeninc.o $(BIN)/pdmatgen.o
