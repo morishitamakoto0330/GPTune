@@ -71,17 +71,21 @@
       PARAMETER          ( BLOCK_CYCLIC_2D = 1, DLEN_ = 9, DTYPE_ = 1,
      $                     CTXT_ = 2, M_ = 3, N_ = 4, MB_ = 5, NB_ = 6,
      $                     RSRC_ = 7, CSRC_ = 8, LLD_ = 9 )
-      INTEGER            DBLESZ, INTGSZ, MEMSIZ, NTESTS, TOTMEM
+      INTEGER            DBLESZ, INTGSZ, MEMSIZ, NTESTS
+      INTEGER, PARAMETER :: IK16 = selected_int_kind(16)
+      INTEGER (KIND=IK16) TOTMEM
       DOUBLE PRECISION   PADVAL, ZERO
-      PARAMETER          ( DBLESZ = 8, INTGSZ = 4, TOTMEM = 4000000,
-     $                     MEMSIZ = TOTMEM / DBLESZ, NTESTS = 20,
-     $                     PADVAL = -9923.0D+0, ZERO = 0.0D+0 )
+      PARAMETER          ( DBLESZ = 8, INTGSZ = 4,
+     $                     TOTMEM = 64424509440_IK16,
+     $                     NTESTS = 1,
+     $                     PADVAL = -9923.0D+0 , ZERO = 0.0D+0)
 *     ..
 *     .. Local Scalars ..
       LOGICAL            CHECK, EST
       CHARACTER*6        PASSED
       CHARACTER*80       OUTFILE
       CHARACTER*1000     FILEDIR
+      CHARACTER*1000      STRING
       INTEGER            HH, I, IAM, IASEED, IBSEED, ICTXT, IMIDPAD,
      $                   INFO, IPA, IPA0, IPB, IPB0, IPBERR, IPFERR,
      $                   IPOSTPAD, IPPIV, IPREPAD, IPW, IPW2, J, K,
@@ -100,7 +104,8 @@
      $                   NBVAL( NTESTS ), NRVAL( NTESTS ),
      $                   NVAL( NTESTS ), PVAL( NTESTS ),
      $                   QVAL( NTESTS )
-      DOUBLE PRECISION   CTIME( 2 ), MEM( MEMSIZ ), WTIME( 2 )
+      DOUBLE PRECISION   CTIME( 2 ), WTIME( 2 )
+      DOUBLE PRECISION, DIMENSION(:), ALLOCATABLE :: MEM
 *     ..
 *     .. External Subroutines ..
       EXTERNAL           BLACS_BARRIER, BLACS_EXIT, BLACS_GET,
@@ -132,13 +137,41 @@
 	  call MPI_COMM_GET_PARENT(master, ierr) ! YL: this is needed if this function is spawned by a master process	     
 
       CALL BLACS_PINFO( IAM, NPROCS )
-      IASEED = 100
-      IBSEED = 200
-      CALL PDLUINFO( OUTFILE, NOUT, NMAT, MVAL, NVAL, NTESTS, NNB,
-     $               NBVAL, NTESTS, NNR, NRVAL, NTESTS, NNBR, NBRVAL,
-     $               NTESTS, NGRIDS, PVAL, NTESTS, QVAL, NTESTS, THRESH,
-     $               EST, MEM, IAM, NPROCS )
-      CHECK = ( THRESH.GE.0.0E+0 )
+*
+*     Allocate MEM
+*
+      MEMSIZ = TOTMEM / DBLESZ / NPROCS
+      MEMSIZ = 644245094
+      ALLOCATE ( MEM(MEMSIZ) , STAT=IERR(1) )
+*      
+*
+*     Check memory allocation
+*
+      IF( IERR( 1 ).NE.0 ) THEN
+          WRITE( 0 ) 'MALLOC FAILED!'
+          GO TO 100
+      END IF
+*
+*
+*     Open input file
+*
+      OPEN( NIN, FILE=trim(FILEDIR)//'LU.in', STATUS='OLD' )
+      IF( IAM.EQ.0 ) THEN
+          OPEN( NOUT, FILE=trim(FILEDIR)//'LU.out', STATUS='UNKNOWN' )
+      END IF
+*
+*     Read number of configurations
+*
+      READ( NIN, FMT = 1111 ) NBCONF
+*      write(*,*)'nrep', NBCONF
+*
+*      IASEED = 100
+*      IBSEED = 200
+*      CALL PDLUINFO( OUTFILE, NOUT, NMAT, MVAL, NVAL, NTESTS, NNB,
+*     $               NBVAL, NTESTS, NNR, NRVAL, NTESTS, NNBR, NBRVAL,
+*     $               NTESTS, NGRIDS, PVAL, NTESTS, QVAL, NTESTS, THRESH,
+*     $               EST, MEM, IAM, NPROCS )
+*      CHECK = ( THRESH.GE.0.0E+0 )
 *
 *     Print headings
 *
@@ -148,6 +181,27 @@
          WRITE( NOUT, FMT = 9994 )
          WRITE( NOUT, FMT = * )
       END IF
+*      
+      NFACT = 1
+      NMAT = 1
+      NNB = 1
+      NGRIDS = 1
+*    
+*     Read configurations
+*    
+      READ( NIN, '(A)') STRING
+*	  write(*,*) STRING
+	  
+      READ( STRING, * ) FACTOR, MVAL, NVAL,
+     $                        MBVAL, NBVAL, PVAL, QVAL, THRESH
+!          WRITE( * , * ) FACTOR, MVAL, NVAL,
+!         $               MBVAL, NBVAL, PVAL, QVAL, THRESH
+*     
+
+*      write(*,*)FACTOR, MVAL, NVAL, MBVAL, NBVAL, PVAL, QVAL, THRESH
+
+      IASEED = 100
+      CHECK = ( THRESH.GE.0.0E+0 )
 *
 *     Loop over different process grids
 *
@@ -1017,6 +1071,27 @@
      $      CLOSE( NOUT )
       END IF
 *
+*
+*     Close input and output files
+*
+      CLOSE( NIN )
+      IF( IAM.EQ.0 ) THEN
+          CLOSE( NOUT )
+      END IF
+*
+*     Deallocate MEM
+*
+      DEALLOCATE ( MEM , STAT=IERR(1) )
+*
+*     Check memory deallocation
+*
+      IF( IERR( 1 ).NE.0 ) THEN
+          WRITE( 0 ) 'FREE FAILED!'
+          GO TO 100
+      END IF
+*      
+  100 CONTINUE
+*
       IF(master .NE. MPI_COMM_NULL) THEN
          call MPI_BARRIER(master,ierr) 
          call MPI_COMM_DISCONNECT(master, ierr)  ! YL: this is needed if this function is spawned by a master process
@@ -1024,6 +1099,7 @@
 	  CALL BLACS_EXIT( 1 )
 	  call MPI_Finalize(ierr)
 *
+ 1111 FORMAT( I6 )
  9999 FORMAT( 'ILLEGAL ', A6, ': ', A5, ' = ', I3,
      $        '; It should be at least 1' )
  9998 FORMAT( 'ILLEGAL GRID: nprow*npcol = ', I4, '. It can be at most',
