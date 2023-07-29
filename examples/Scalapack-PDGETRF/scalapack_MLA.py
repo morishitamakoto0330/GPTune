@@ -65,7 +65,7 @@ def objectives(point):
         return 1e12
     q = int(nproc / p)
     nproc = p*q
-    params = [('TF', m, n, nodes, cores, mb, nb, nthreads, nproc, p, q, 1., npernode)]
+    params = [('LU', m, n, nodes, cores, mb, nb, nthreads, nproc, p, q, 1., npernode)]
 
     print(params, ' scalapack starts ') 
     elapsedtime = pdludriver(params, niter=2, JOBID=JOBID)
@@ -150,7 +150,8 @@ def main():
     os.system("mkdir -p scalapack-driver/bin/%s;" %(machine))
     DRIVERFOUND=False
     INSTALLDIR=os.getenv('GPTUNE_INSTALL_PATH')
-    DRIVER = os.path.abspath(__file__ + "/../../../build/pdludriver")
+    # DRIVER = os.path.abspath(__file__ + "/../../../build/pdludriver")
+    DRIVER = os.path.abspath("./scalapack-driver/bin/pdludriver")
     if(os.path.exists(DRIVER)):
         DRIVERFOUND=True
     elif(INSTALLDIR is not None):
@@ -164,7 +165,9 @@ def main():
                 if(os.path.exists(DRIVER)):
                     DRIVERFOUND=True
                     break
-    
+    print(DRIVERFOUND)
+    print(__file__)
+    print(DRIVER)
     if(DRIVERFOUND == True):
         os.system("cp %s scalapack-driver/bin/%s/.;" %(DRIVER,machine))
     else:

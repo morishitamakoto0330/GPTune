@@ -93,7 +93,7 @@
      $                   LIPIV, LIWORK, LWORK, LW2, M, MAXMN,
      $                   MINMN, MP, MYCOL, MYRHS, MYROW, N, NB, NBRHS,
      $                   NGRIDS, NMAT, NNB, NNBR, NNR, NOUT, NP, NPCOL,
-     $                   NPROCS, NPROW, NQ, NRHS, WORKSIZ
+     $                   NPROCS, NPROW, NQ, NRHS, WORKSIZ, CONFIG
       REAL               THRESH
       DOUBLE PRECISION   ANORM, ANORM1, FRESID, NOPS, RCOND,
      $                   SRESID, SRESID2, TMFLOPS
@@ -133,8 +133,8 @@
 *
       CALL GETARG(1,FILEDIR)
 		
-	  call MPI_INIT(ierr)
-	  call MPI_COMM_GET_PARENT(master, ierr) ! YL: this is needed if this function is spawned by a master process	     
+	   call MPI_INIT(ierr)
+	   call MPI_COMM_GET_PARENT(master, ierr) ! YL: this is needed if this function is spawned by a master process	     
 
       CALL BLACS_PINFO( IAM, NPROCS )
 *
@@ -156,6 +156,7 @@
 *     Open input file
 *
       OPEN( NIN, FILE=trim(FILEDIR)//'LU.in', STATUS='OLD' )
+      write(*,*) IAM, FILEDIR
       IF( IAM.EQ.0 ) THEN
           OPEN( NOUT, FILE=trim(FILEDIR)//'LU.out', STATUS='UNKNOWN' )
       END IF
@@ -163,7 +164,7 @@
 *     Read number of configurations
 *
       READ( NIN, FMT = 1111 ) NBCONF
-*      write(*,*)'nrep', NBCONF
+      write(*,*)'nrep', NBCONF
 *
 *      IASEED = 100
 *      IBSEED = 200
@@ -182,6 +183,7 @@
          WRITE( NOUT, FMT = * )
       END IF
 *      
+      DO 22 CONFIG = 1, NBCONF
       NFACT = 1
       NMAT = 1
       NNB = 1
@@ -190,8 +192,8 @@
 *     Read configurations
 *    
       READ( NIN, '(A)') STRING
-*	  write(*,*) STRING
-	  
+	   write(*,*) IAM, STRING
+	   
       READ( STRING, * ) FACTOR, MVAL, NVAL,
      $                        MBVAL, NBVAL, PVAL, QVAL, THRESH
 !          WRITE( * , * ) FACTOR, MVAL, NVAL,
@@ -1049,6 +1051,7 @@
    40    CONTINUE
          CALL BLACS_GRIDEXIT( ICTXT )
    50 CONTINUE
+   22 CONTINUE
 *
 *     Print ending messages and close output file
 *
@@ -1096,8 +1099,8 @@
          call MPI_BARRIER(master,ierr) 
          call MPI_COMM_DISCONNECT(master, ierr)  ! YL: this is needed if this function is spawned by a master process
       END IF	
-	  CALL BLACS_EXIT( 1 )
-	  call MPI_Finalize(ierr)
+	   CALL BLACS_EXIT( 1 )
+	   call MPI_Finalize(ierr)
 *
  1111 FORMAT( I6 )
  9999 FORMAT( 'ILLEGAL ', A6, ': ', A5, ' = ', I3,

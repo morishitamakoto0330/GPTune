@@ -1,5 +1,5 @@
 {
-  "tuning_problem_name": "PDGEQRF",
+  "tuning_problem_name": "PDGETRF",
   "machine_configuration": {
     "machine_name": "mac",
     "intel": {

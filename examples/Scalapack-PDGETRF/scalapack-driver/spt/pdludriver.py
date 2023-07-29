@@ -38,7 +38,7 @@ def clean():
 
 def write_input(params, RUNDIR, niter=1):
 
-    fin = open("%s/QR.in"%(RUNDIR), 'w')
+    fin = open("%s/LU.in"%(RUNDIR), 'w')
     fin.write("%d\n"%(len(params) * niter))
     for param in params:
         for k in range(niter):
@@ -71,7 +71,7 @@ def execute(nproc, nthreads, npernode, RUNDIR):
         return 0
 
 
-        # return os.system("cd %s; export OMP_PLACES=threads; export OMP_PROC_BIND=spread; export OMP_NUM_THREADS=%d; mpirun -c %d -n %d %s/pdludriver 2>> QR.err &  wait;"%(RUNDIR, nthreads, 2*nthreads, nproc, BINDIR))
+        # return os.system("cd %s; export OMP_PLACES=threads; export OMP_PROC_BIND=spread; export OMP_NUM_THREADS=%d; mpirun -c %d -n %d %s/pdludriver 2>> LU.err &  wait;"%(RUNDIR, nthreads, 2*nthreads, nproc, BINDIR))
 
 ##    err = v_sequential()
     err = v_parallel()
@@ -82,13 +82,14 @@ def execute(nproc, nthreads, npernode, RUNDIR):
 
 def read_output(params, RUNDIR, niter=1):
 
-    fout = open("%s/QR.out"%(RUNDIR), 'r')
+    fout = open("%s/LU.out"%(RUNDIR), 'r')
     times = np.ones(len(params))*float('Inf')
     idxparam = 0
     idxiter = 0
     for line in fout.readlines():
         words = line.split()
         # WRITE( NOUT, FMT = 9993 ) 'WALL', M, N, MB, NB, NPROW, NPCOL, WTIME( 1 ), TMFLOPS, PASSED, FRESID
+        # WRITE( NOUT, FMT = 9993 ) 'WALL', M, N, NB, NRHS, NBRHS, NPROW, NPCOL, WTIME( 1 ), WTIME( 2 ), TMFLOPS, PASSED
         if (len(words) > 0 and words[0] == "WALL"):
             if (words[9] == "PASSED"):
                 m  = int(words[1])
@@ -130,6 +131,7 @@ def pdludriver(params, niter=10,JOBID: int = None):
     if (JOBID==-1):  # -1 is the default value if jobid is not set from command line
         JOBID = os.getpid()
     RUNDIR = os.path.abspath(os.path.join(EXPDIR, str(JOBID)))
+    # print('RUNDIR={}'.format(RUNDIR))
     os.makedirs("%s"%(RUNDIR),exist_ok=True)
     # print('nima',RUNDIR)
 
@@ -167,12 +169,12 @@ if __name__ == "__main__":
     # Test
 
 #    compile()
-    params = [('QR', 1000, 1000, 1, 32, 32, 32, 2, 2, 2, 1, 1., 1),\
-              ('QR', 1000, 1000, 1, 32, 32, 32, 1, 1, 1, 1, 1., 1),\
-              ('QR', 1000, 1000, 1, 32, 32, 32, 2, 1, 1, 1, 1., 1),\
-              ('QR',  100,  100, 1, 32, 32, 32, 2, 1, 1, 1, 1., 1),\
-              ('QR', 1000, 1000, 1, 32, 32, 32, 1, 2, 2, 1, 1., 1),\
-              ('QR',  100,  100, 1, 32, 32, 32, 1, 2, 2, 1, 1., 1)]
+    params = [('LU', 1000, 1000, 1, 32, 32, 32, 2, 2, 2, 1, 1., 1),\
+              ('LU', 1000, 1000, 1, 32, 32, 32, 1, 1, 1, 1, 1., 1),\
+              ('LU', 1000, 1000, 1, 32, 32, 32, 2, 1, 1, 1, 1., 1),\
+              ('LU',  100,  100, 1, 32, 32, 32, 2, 1, 1, 1, 1., 1),\
+              ('LU', 1000, 1000, 1, 32, 32, 32, 1, 2, 2, 1, 1., 1),\
+              ('LU',  100,  100, 1, 32, 32, 32, 1, 2, 2, 1, 1., 1)]
     times = pdludriver(params, niter=3)
     print(times)
 #    clean()

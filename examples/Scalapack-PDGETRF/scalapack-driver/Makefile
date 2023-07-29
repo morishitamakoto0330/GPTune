@@ -10,7 +10,7 @@ SRC=src
 
 CC=mpicc
 FC=mpif90
-CFLAGS= -O3 -Wall -fPIC -std=c11 -fopenmp
+CFLAGS= -O3 -Wall -fPIC # -std=c11 -fopenmp
 LDFLAGS= -shared
 # LIBS = -L$(MKLROOT)/lib/intel64 -lmkl_gf_lp64 -lmkl_core -lmkl_gnu_thread -lmkl_blacs_openmpi_lp64 -lmkl_scalapack_lp64 -lmkl_avx -lmkl_def -lpthread -lm -lgomp
 openblasversion=0.3.23
@@ -48,7 +48,7 @@ driver:build_dirs $(BIN)/pdluinfo.o $(BIN)/pdgetrrv.o $(BIN)/pdlaschk.o $(BIN)/p
 	$(FC) $(CFLAGS) -o $(BIN)/pdludriver $(LIBS) $(BIN)/pdluinfo.o $(BIN)/pdgetrrv.o $(BIN)/pdlaschk.o $(BIN)/pdlafchk.o $(BIN)/pmatgeninc.o $(BIN)/pdmatgen.o $(BIN)/pdludriver.o
 
 clean:
-	rm -f $(BIN)/pdludriver $(BIN)/pdluinfo.o $(BIN)/pdgetrrv.o $(BIN)/pdlaschk.o $(BIN)/pdlafchk.o $(BIN)/pmatgeninc.o $(BIN)/pdmatgen.o
+	rm -f $(BIN)/pdludriver.o $(BIN)/pdluinfo.o $(BIN)/pdgetrrv.o $(BIN)/pdlaschk.o $(BIN)/pdlafchk.o $(BIN)/pmatgeninc.o $(BIN)/pdmatgen.o
 
 cleanall:
 	rm -fr bin/*/*.o bin/*/pdludriver exp/*/*
