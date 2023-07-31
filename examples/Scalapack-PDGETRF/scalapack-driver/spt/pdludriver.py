@@ -43,7 +43,8 @@ def write_input(params, RUNDIR, niter=1):
     for param in params:
         for k in range(niter):
             # READ( NIN, FMT = 2222 ) FACTOR, MVAL, NVAL, MBVAL, NBVAL, PVAL, QVAL, THRESH
-            fin.write("%2s%6d%6d%6d%6d%6d%6d%20.13E\n"%(param[0], param[1], param[2], param[5], param[6], param[9], param[10],param[11]))
+            # fin.write("%2s%6d%6d%6d%6d%6d%6d%20.13E\n"%(param[0], param[1], param[2], param[5], param[6], param[9], param[10],param[11]))
+            fin.write("%2s%6d%6d%6d%6d%6d\n"%(param[0], param[1], param[4], param[7], param[8], param[9]))
     fin.close()
 
 def execute(nproc, nthreads, npernode, RUNDIR):
@@ -92,20 +93,15 @@ def read_output(params, RUNDIR, niter=1):
         # WRITE( NOUT, FMT = 9993 ) 'WALL', M, N, NB, NRHS, NBRHS, NPROW, NPCOL, WTIME( 1 ), WTIME( 2 ), TMFLOPS, PASSED
         if (len(words) > 0 and words[0] == "WALL"):
             if (words[9] == "PASSED"):
-                m  = int(words[1])
                 n  = int(words[2])
-                mb = int(words[3])
-                nb = int(words[4])
-                p  = int(words[5])
-                q  = int(words[6])
-                thresh = float(words[10])
-                mytime = float(words[7])
-                while (not ((m == params[idxparam][1])\
-                        and (n == params[idxparam][2])\
-                        and (mb == params[idxparam][5])\
-                        and (nb == params[idxparam][6])\
-                        and (p == params[idxparam][9])\
-                        and (q == params[idxparam][10]))):
+                nb = int(words[3])
+                p  = int(words[6])
+                q  = int(words[7])
+                mytime = float(words[8])
+                while (not ((n == params[idxparam][2])\
+                        and (nb == params[idxparam][3])\
+                        and (p == params[idxparam][6])\
+                        and (q == params[idxparam][7]))):
                     idxparam += 1
                 if (mytime < times[idxparam]):
                     times[idxparam] = mytime
@@ -135,13 +131,18 @@ def pdludriver(params, niter=10,JOBID: int = None):
     os.makedirs("%s"%(RUNDIR),exist_ok=True)
     # print('nima',RUNDIR)
 
-    dtype = [("fac", 'U10'), ("m", int), ("n", int), ("nodes", int), ("cores", int), ("mb", int), ("nb", int), ("nthreads", int), ("nproc", int), ("p", int), ("q", int), ("thresh", float), ("npernode", int)]
+    # dtype = [("fac", 'U10'), ("m", int), ("n", int), ("nodes", int), ("cores", int), ("mb", int), ("nb", int), ("nthreads", int), ("nproc", int), ("p", int), ("q", int), ("thresh", float), ("npernode", int)]
+    # params = [('LU', n, nodes, cores, nb, nthreads, nproc, p, q, 1., npernode)]
+    dtype = [("fac", 'U10'), ("n", int), ("nodes", int), ("cores", int), ("nb", int), ("nthreads", int), ("nproc", int), ("p", int), ("q", int), ("thresh", float), ("npernode", int)]
     params = np.array(params, dtype=dtype)
     perm = np.argsort(params, order=["nproc", "nthreads"])
     invperm = np.argsort(perm)
-    idxproc = 8
-    idxth = 7
-    idxnpernode = 12
+    # idxproc = 8
+    # idxth = 7
+    # idxnpernode = 12
+    idxproc = 6
+    idxth = 5
+    idxnpernode = 10
     times = np.array([])
     k_beg = 0
     k_end = 1
@@ -169,12 +170,13 @@ if __name__ == "__main__":
     # Test
 
 #    compile()
-    params = [('LU', 1000, 1000, 1, 32, 32, 32, 2, 2, 2, 1, 1., 1),\
-              ('LU', 1000, 1000, 1, 32, 32, 32, 1, 1, 1, 1, 1., 1),\
-              ('LU', 1000, 1000, 1, 32, 32, 32, 2, 1, 1, 1, 1., 1),\
-              ('LU',  100,  100, 1, 32, 32, 32, 2, 1, 1, 1, 1., 1),\
-              ('LU', 1000, 1000, 1, 32, 32, 32, 1, 2, 2, 1, 1., 1),\
-              ('LU',  100,  100, 1, 32, 32, 32, 1, 2, 2, 1, 1., 1)]
+# params = [(  'LU', n,    nodes, cores, nb, nthreads, nproc, p, q, 1., npernode)]
+    params = [('LU', 1000, 1, 8, 32, 2, 2, 2, 1, 1., 1),\
+              ('LU', 1000, 1, 8, 32, 1, 1, 1, 1, 1., 1),\
+              ('LU', 1000, 1, 8, 32, 2, 1, 1, 1, 1., 1),\
+              ('LU',  100, 1, 8, 32, 2, 1, 1, 1, 1., 1),\
+              ('LU', 1000, 1, 8, 32, 1, 2, 2, 1, 1., 1),\
+              ('LU',  100, 1, 8, 32, 1, 2, 2, 1, 1., 1)]
     times = pdludriver(params, niter=3)
     print(times)
 #    clean()

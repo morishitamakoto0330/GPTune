@@ -50,9 +50,9 @@ def objectives(point):
     bunit = point['bunit']	
 #########################################
 
-    m = point['m']
+    # m = point['m']
     n = point['n']
-    mb = point['mb']*bunit
+    # mb = point['mb']*bunit
     nb = point['nb']*bunit
     p = point['p']
     npernode = 2**point['lg2npernode']
@@ -65,7 +65,8 @@ def objectives(point):
         return 1e12
     q = int(nproc / p)
     nproc = p*q
-    params = [('LU', m, n, nodes, cores, mb, nb, nthreads, nproc, p, q, 1., npernode)]
+    # params = [('LU', m, n, nodes, cores, mb, nb, nthreads, nproc, p, q, 1., npernode)]
+    params = [('LU', n, nodes, cores, nb, nthreads, nproc, p, q, 1., npernode)]
 
     print(params, ' scalapack starts ') 
     elapsedtime = pdludriver(params, niter=2, JOBID=JOBID)
@@ -73,8 +74,8 @@ def objectives(point):
 
     return elapsedtime
 
-def cst1(mb,p,m,bunit):
-    return mb*bunit * p <= m
+# def cst1(mb,p,m,bunit):
+#     return mb*bunit * p <= m
 def cst2(nb,lg2npernode,n,p,nodes,bunit):
     return nb * bunit * nodes * 2**lg2npernode <= n * p
 def cst3(lg2npernode,p,nodes):
@@ -87,7 +88,7 @@ def main():
     # Parse command line arguments
     args = parse_args()
 
-    mmax = args.mmax
+    # mmax = args.mmax
     nmax = args.nmax
     ntask = args.ntask
     nprocmin_pernode = args.nprocmin_pernode
@@ -178,22 +179,25 @@ def main():
     nprocmax = nodes*cores
 
     bunit=8     # the block size is multiple of bunit
-    mmin=128
+    # mmin=128
     nmin=128
 
-    m = Integer(mmin, mmax, transform="normalize", name="m")
+    # m = Integer(mmin, mmax, transform="normalize", name="m")
     n = Integer(nmin, nmax, transform="normalize", name="n")
-    mb = Integer(1, 16, transform="normalize", name="mb")
+    # mb = Integer(1, 16, transform="normalize", name="mb")
     nb = Integer(1, 16, transform="normalize", name="nb")
     lg2npernode     = Integer     (int(math.log2(nprocmin_pernode)), int(math.log2(cores)), transform="normalize", name="lg2npernode")
     p = Integer(1, nprocmax, transform="normalize", name="p")
     r = Real(float("-Inf"), float("Inf"), name="r")
 
-    IS = Space([m, n])
-    PS = Space([mb, nb, lg2npernode, p])
+    # IS = Space([m, n])
+    IS = Space([n])
+    # PS = Space([mb, nb, lg2npernode, p])
+    PS = Space([nb, lg2npernode, p])
     OS = Space([r])
     
-    constraints = {"cst1": cst1, "cst2": cst2, "cst3": cst3}
+    # constraints = {"cst1": cst1, "cst2": cst2, "cst3": cst3}
+    constraints = {"cst2": cst2, "cst3": cst3}
     constants={"nodes":nodes,"cores":cores,"bunit":bunit}
     print(IS, PS, OS, constraints)
 
@@ -218,11 +222,14 @@ def main():
 
     seed(1)
     if ntask == 1:
-        giventask = [[mmax,nmax]]
+        # giventask = [[mmax,nmax]]
+        giventask = [[nmax,nmax]]
     elif ntask == 2:
-        giventask = [[mmax,nmax],[int(mmax/2),int(nmax/2)]]
+        # giventask = [[mmax,nmax],[int(mmax/2),int(nmax/2)]]
+        giventask = [[nmax,nmax],[int(nmax/2),int(nmax/2)]]
     else:
-        giventask = [[randint(mmin,mmax),randint(nmin,nmax)] for i in range(ntask)]
+        # giventask = [[randint(mmin,mmax),randint(nmin,nmax)] for i in range(ntask)]
+        giventask = [[nmax,nmax] for i in range(ntask)]
     # # giventask = [[2000, 2000]]
     # giventask = [[177, 1303],[367, 381],[1990, 1850],[1123, 1046],[200, 143],[788, 1133],[286, 1673],[1430, 512],[1419, 1320],[622, 263] ]
     # giventask = [[177, 1303],[367, 381]]
@@ -342,7 +349,7 @@ def parse_args():
     parser = argparse.ArgumentParser()
 
     # Problem related arguments
-    parser.add_argument('-mmax', type=int, default=-1, help='Number of rows')
+    # parser.add_argument('-mmax', type=int, default=-1, help='Number of rows')
     parser.add_argument('-nmax', type=int, default=-1, help='Number of columns')
     # Machine related arguments
     parser.add_argument('-nodes', type=int, default=1,help='Number of machine nodes')
