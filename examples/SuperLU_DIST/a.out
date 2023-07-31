@@ -1,0 +1,17 @@
+machine: mac processor: intel num_nodes: 1 num_cores: 8
+Space([Categorical(categories=('big.rua', 'g20.rua', 'Si2.bin', ..., 'Ga3As3H12.bin', 'GaAsH6.bin', 'H2O.bin'), prior=None)]) Space([Integer(low=5, high=20, prior='uniform', transform='normalize'),
+       Integer(low=0, high=3, prior='uniform', transform='normalize'),
+       Integer(low=1, high=8, prior='uniform', transform='normalize'),
+       Integer(low=30, high=300, prior='uniform', transform='normalize'),
+       Integer(low=10, high=40, prior='uniform', transform='normalize')]) Space([Real(low=-inf, high=inf, prior='uniform', transform='identity')]) {'cst1': <function cst1 at 0x17a332e50>, 'cst2': <function cst2 at 0x17a332ee0>} {}
+GPTune History Database Init
+[HistoryDB] Create a JSON file at ./gptune.db/SuperLU_DIST.json
+
+
+
+------Starting MLA with 2 tasks and 20 samples each 
+[HistoryDB] Found a history database file
+no history data has been loaded
+NS1:  10
+exec /Users/makotomorishita/Desktop/LBNL/GPTune/examples/SuperLU_DIST/superlu_dist/build/EXAMPLE/pddrive_spawn args ['-c', '8', '-r', '1', '-l', '7', '-p', '4', '/Users/makotomorishita/Desktop/LBNL/GPTune/examples/SuperLU_DIST/superlu_dist/EXAMPLE/big.rua'] nproc 8 env OMP_NUM_THREADS=1 NSUP=214 NREL=20
+8 total processes failed to start

@@ -1,43 +1,64 @@
 {
   "tuning_problem_name": "SuperLU_DIST",
   "machine_configuration": {
-      "machine_name": "mymachine",
-      "myprocessor": {
-          "nodes": 8,
-          "cores": 32
-      }
+    "machine_name": "mac",
+    "intel": {
+      "nodes": 1,
+      "cores": 8
+    }
   },
   "software_configuration": {
-      "openmpi": {
-          "version_split": [4,0,1]
-      },
-      "parmetis": {
-          "version_split": [4,0,3]
-      },
-      "superlu_dist": {
-          "version_split": [6,4,0]
-      }
+    "openmpi": {
+      "version_split": [
+        4,
+        1,
+        5
+      ]
+    },
+    "scalapack": {
+      "version_split": [
+        2,
+        2,
+        0
+      ]
+    },
+    "gcc": {
+      "version_split": [
+        13,
+        1,
+        0
+      ]
+    }
   },
   "loadable_machine_configurations": {
-      "mymachine" : {
-          "myprocessor": {
-              "nodes":8,
-              "cores":32
-          }
+    "mac": {
+      "intel": {
+        "nodes": 1,
+        "cores": 8
       }
+    }
   },
   "loadable_software_configurations": {
-      "openmpi": {
-          "version_from":[4,0,1],
-          "version_to":[5,0,0]
-      },
-      "parmetis": {
-          "version_from": [4,0,3],
-          "version_to":[5,0,0]
-      },
-      "superlu_dist": {
-          "version_from": [6,0,0],
-          "version_to":[7,0,0]
-      }
+    "openmpi": {
+      "version_split": [
+        4,
+        1,
+        5
+      ]
+    },
+    "scalapack": {
+      "version_split": [
+        2,
+        2,
+        0
+      ]
+    },
+    "gcc": {
+      "version_split": [
+        13,
+        1,
+        0
+      ]
+    }
   }
 }

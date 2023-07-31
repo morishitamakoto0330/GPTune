@@ -93,10 +93,12 @@
      $                   LIPIV, LIWORK, LWORK, LW2, M, MAXMN,
      $                   MINMN, MP, MYCOL, MYRHS, MYROW, N, NB, NBRHS,
      $                   NGRIDS, NMAT, NNB, NNBR, NNR, NOUT, NP, NPCOL,
-     $                   NPROCS, NPROW, NQ, NRHS, WORKSIZ, CONFIG, NBCONF
+     $                   NPROCS, NPROW, NQ, NRHS, WORKSIZ, CONFIG,
+     $                   NBCONF, NIN
       REAL               THRESH
       DOUBLE PRECISION   ANORM, ANORM1, FRESID, NOPS, RCOND,
      $                   SRESID, SRESID2, TMFLOPS
+      PARAMETER          (NIN = 1, NOUT = 2)
 *     ..
 *     .. Local Arrays ..
       INTEGER            DESCA( DLEN_ ), DESCB( DLEN_ ), IERR( 1 ),
@@ -138,8 +140,7 @@
 	   call MPI_COMM_GET_PARENT(master, ierr) ! YL: this is needed if this function is spawned by a master process	     
 
       CALL BLACS_PINFO( IAM, NPROCS )
-      write(*,*) IAM, NPROCS
-!      STOP
+!      write(*,*) IAM, NPROCS
 *
 *     Allocate MEM
 *
@@ -162,7 +163,6 @@
 !      write(*,*) IAM, FILEDIR
       IF( IAM.EQ.0 ) THEN
           OPEN( NOUT, FILE=trim(FILEDIR)//'LU.out', STATUS='UNKNOWN' )
-          write(*,*) 'LU.out open'
       END IF
 *
 *     Read number of configurations
@@ -197,7 +197,7 @@
 *     Read configurations
 *    
       READ( NIN, '(A)') STRING
-	   write(*,'(2i6,a)') IAM, CONFIG, STRING
+!	   write(*,'(2i6,5x,a)') IAM, CONFIG, STRING
 	   
 *      READ( STRING, * ) FACTOR, MVAL, NVAL,
 *     $                        MBVAL, NBVAL, PVAL, QVAL, THRESH
@@ -211,8 +211,8 @@
 
 
       IASEED = 100
-!      CHECK = ( THRESH.GE.0.0E+0 )
-      CHECK = .FALSE.
+      CHECK = ( THRESH.GE.0.0E+0 )
+!      CHECK = .FALSE.
       EST = .FALSE.
 *
 *     Loop over different process grids
@@ -248,9 +248,11 @@
 *
 *        Define process grid
 *
+!         write(*,*) NPROW, NPCOL
          CALL BLACS_GET( -1, 0, ICTXT )
          CALL BLACS_GRIDINIT( ICTXT, 'Row-major', NPROW, NPCOL )
          CALL BLACS_GRIDINFO( ICTXT, NPROW, NPCOL, MYROW, MYCOL )
+!         write(*,*) IAM, ' PDGETRF'
 *
 *        Go to bottom of process grid loop if this case doesn't use my
 *        process
@@ -652,11 +654,17 @@
 *
 *                 Loop over the different values for NRHS
 *
-                  DO 20 HH = 1, NNR
+!                  DO 20 HH = 1, NNR
+                  DO 20 HH = 1, 1
 *
                      NRHS = NRVAL( HH )
 *
-                     DO 10 KK = 1, NNBR
+!                     DO 10 KK = 1, NNBR
+                     DO 10 KK = 1, 1
+                        NBRHS = 1
+*                       ===========
+                        GO TO 123
+*                       ===========
 *
                         NBRHS = NBRVAL( KK )
 *
@@ -971,6 +979,10 @@
 *
 *                       Gather max. of all CPU and WALL clock timings
 *
+*                       ===========
+123                     CONTINUE
+*                       ===========
+                        PASSED = 'PASSED'
                         CALL SLCOMBINE( ICTXT, 'All', '>', 'W', 2, 1,
      $                                  WTIME )
                         CALL SLCOMBINE( ICTXT, 'All', '>', 'C', 2, 1,

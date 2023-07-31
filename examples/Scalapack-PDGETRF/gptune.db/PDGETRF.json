@@ -1,6 +1,2553 @@
 {
   "tuning_problem_name": "PDGETRF",
   "tuning_problem_category": null,
-  "surrogate_model": [],
-  "func_eval": []
+  "surrogate_model": [
+    {
+      "hyperparameters": [
+        0.21628089410982818,
+        6.116915861966075,
+        1.7964352783611648,
+        1.0,
+        0.001398235019315935,
+        1e-10,
+        0.06386445751855424
+      ],
+      "model_stats": {
+        "log_likelihood": 22.187896386495755,
+        "neg_log_likelihood": -22.187896386495755,
+        "gradients": [
+          -3.3081389645417403e-06,
+          4.133036446835048e-07,
+          7.073728964523962e-07,
+          0.0,
+          8.973957086384104e-09,
+          -7.627252093827912e-07,
+          5.2354193046766144e-08
+        ],
+        "iterations": 53
+      },
+      "task_parameters": [
+        [
+          1000
+        ]
+      ],
+      "function_evaluations": [
+        "0dbd8f4c-2fe9-11ee-bdbc-9a70d92099b8",
+        "0dd842d8-2fe9-11ee-bdbc-9a70d92099b8",
+        "0df6235c-2fe9-11ee-bdbc-9a70d92099b8",
+        "0e0fc816-2fe9-11ee-bdbc-9a70d92099b8",
+        "0e31d17c-2fe9-11ee-bdbc-9a70d92099b8",
+        "0e4f26be-2fe9-11ee-bdbc-9a70d92099b8",
+        "0e6cacf2-2fe9-11ee-bdbc-9a70d92099b8",
+        "0e858f4c-2fe9-11ee-bdbc-9a70d92099b8",
+        "0eb871a0-2fe9-11ee-bdbc-9a70d92099b8",
+        "0ecfc094-2fe9-11ee-bdbc-9a70d92099b8"
+      ],
+      "input_space": [
+        {
+          "name": "n",
+          "transformer": "normalize",
+          "type": "int",
+          "lower_bound": 128,
+          "upper_bound": 1000,
+          "optimize": true
+        }
+      ],
+      "parameter_space": [
+        {
+          "name": "nb",
+          "transformer": "normalize",
+          "type": "int",
+          "lower_bound": 1,
+          "upper_bound": 16,
+          "optimize": true
+        },
+        {
+          "name": "lg2npernode",
+          "transformer": "normalize",
+          "type": "int",
+          "lower_bound": 0,
+          "upper_bound": 3,
+          "optimize": true
+        },
+        {
+          "name": "p",
+          "transformer": "normalize",
+          "type": "int",
+          "lower_bound": 1,
+          "upper_bound": 8,
+          "optimize": true
+        }
+      ],
+      "output_space": [
+        {
+          "name": "r",
+          "transformer": "identity",
+          "type": "real",
+          "lower_bound": -Infinity,
+          "upper_bound": Infinity,
+          "optimize": true
+        }
+      ],
+      "modeler": "Model_LCM",
+      "objective": {
+        "name": "r",
+        "transformer": "identity",
+        "type": "real",
+        "lower_bound": -Infinity,
+        "upper_bound": Infinity,
+        "optimize": true,
+        "objective_id": 0
+      },
+      "time": {
+        "tm_year": 2023,
+        "tm_mon": 7,
+        "tm_mday": 31,
+        "tm_hour": 14,
+        "tm_min": 27,
+        "tm_sec": 32,
+        "tm_wday": 0,
+        "tm_yday": 212,
+        "tm_isdst": 1
+      },
+      "uid": "0f68d7de-2fe9-11ee-bdbc-9a70d92099b8"
+    },
+    {
+      "hyperparameters": [
+        0.008709701331215878,
+        0.09707300129327716,
+        39.36784917534017,
+        1.0,
+        0.0039900001734622294,
+        1e-05,
+        9.010758256030615e-06
+      ],
+      "model_stats": {
+        "log_likelihood": 14.759711183048452,
+        "neg_log_likelihood": -14.759711183048452,
+        "gradients": [
+          2.1187501180731453e-11,
+          2.695448774332125e-09,
+          3.6886247243389175e-14,
+          0.0,
+          -4.864900162657905e-07,
+          -1.2194173069033378e-09,
+          -1.9799475703407877e-14
+        ],
+        "iterations": 8
+      },
+      "task_parameters": [
+        [
+          1000
+        ]
+      ],
+      "function_evaluations": [
+        "0dbd8f4c-2fe9-11ee-bdbc-9a70d92099b8",
+        "0dd842d8-2fe9-11ee-bdbc-9a70d92099b8",
+        "0df6235c-2fe9-11ee-bdbc-9a70d92099b8",
+        "0e0fc816-2fe9-11ee-bdbc-9a70d92099b8",
+        "0e31d17c-2fe9-11ee-bdbc-9a70d92099b8",
+        "0e4f26be-2fe9-11ee-bdbc-9a70d92099b8",
+        "0e6cacf2-2fe9-11ee-bdbc-9a70d92099b8",
+        "0e858f4c-2fe9-11ee-bdbc-9a70d92099b8",
+        "0eb871a0-2fe9-11ee-bdbc-9a70d92099b8",
+        "0ecfc094-2fe9-11ee-bdbc-9a70d92099b8",
+        "10081c86-2fe9-11ee-bdbc-9a70d92099b8"
+      ],
+      "input_space": [
+        {
+          "name": "n",
+          "transformer": "normalize",
+          "type": "int",
+          "lower_bound": 128,
+          "upper_bound": 1000,
+          "optimize": true
+        }
+      ],
+      "parameter_space": [
+        {
+          "name": "nb",
+          "transformer": "normalize",
+          "type": "int",
+          "lower_bound": 1,
+          "upper_bound": 16,
+          "optimize": true
+        },
+        {
+          "name": "lg2npernode",
+          "transformer": "normalize",
+          "type": "int",
+          "lower_bound": 0,
+          "upper_bound": 3,
+          "optimize": true
+        },
+        {
+          "name": "p",
+          "transformer": "normalize",
+          "type": "int",
+          "lower_bound": 1,
+          "upper_bound": 8,
+          "optimize": true
+        }
+      ],
+      "output_space": [
+        {
+          "name": "r",
+          "transformer": "identity",
+          "type": "real",
+          "lower_bound": -Infinity,
+          "upper_bound": Infinity,
+          "optimize": true
+        }
+      ],
+      "modeler": "Model_LCM",
+      "objective": {
+        "name": "r",
+        "transformer": "identity",
+        "type": "real",
+        "lower_bound": -Infinity,
+        "upper_bound": Infinity,
+        "optimize": true,
+        "objective_id": 0
+      },
+      "time": {
+        "tm_year": 2023,
+        "tm_mon": 7,
+        "tm_mday": 31,
+        "tm_hour": 14,
+        "tm_min": 27,
+        "tm_sec": 34,
+        "tm_wday": 0,
+        "tm_yday": 212,
+        "tm_isdst": 1
+      },
+      "uid": "108fbf06-2fe9-11ee-bdbc-9a70d92099b8"
+    },
+    {
+      "hyperparameters": [
+        1.0038124098305743,
+        1.9409505978965633,
+        0.19942658784539402,
+        1.0,
+        0.0025969329970051886,
+        1e-05,
+        0.01807408582180384
+      ],
+      "model_stats": {
+        "log_likelihood": 28.48844528987165,
+        "neg_log_likelihood": -28.48844528987165,
+        "gradients": [
+          5.084452459067155e-07,
+          -3.716627971732519e-07,
+          4.950165568548548e-06,
+          0.0,
+          5.078889497261664e-07,
+          0.38374252360994016,
+          1.277764048090777e-07
+        ],
+        "iterations": 21
+      },
+      "task_parameters": [
+        [
+          1000
+        ]
+      ],
+      "function_evaluations": [
+        "0dbd8f4c-2fe9-11ee-bdbc-9a70d92099b8",
+        "0dd842d8-2fe9-11ee-bdbc-9a70d92099b8",
+        "0df6235c-2fe9-11ee-bdbc-9a70d92099b8",
+        "0e0fc816-2fe9-11ee-bdbc-9a70d92099b8",
+        "0e31d17c-2fe9-11ee-bdbc-9a70d92099b8",
+        "0e4f26be-2fe9-11ee-bdbc-9a70d92099b8",
+        "0e6cacf2-2fe9-11ee-bdbc-9a70d92099b8",
+        "0e858f4c-2fe9-11ee-bdbc-9a70d92099b8",
+        "0eb871a0-2fe9-11ee-bdbc-9a70d92099b8",
+        "0ecfc094-2fe9-11ee-bdbc-9a70d92099b8",
+        "10081c86-2fe9-11ee-bdbc-9a70d92099b8",
+        "1112e976-2fe9-11ee-bdbc-9a70d92099b8"
+      ],
+      "input_space": [
+        {
+          "name": "n",
+          "transformer": "normalize",
+          "type": "int",
+          "lower_bound": 128,
+          "upper_bound": 1000,
+          "optimize": true
+        }
+      ],
+      "parameter_space": [
+        {
+          "name": "nb",
+          "transformer": "normalize",
+          "type": "int",
+          "lower_bound": 1,
+          "upper_bound": 16,
+          "optimize": true
+        },
+        {
+          "name": "lg2npernode",
+          "transformer": "normalize",
+          "type": "int",
+          "lower_bound": 0,
+          "upper_bound": 3,
+          "optimize": true
+        },
+        {
+          "name": "p",
+          "transformer": "normalize",
+          "type": "int",
+          "lower_bound": 1,
+          "upper_bound": 8,
+          "optimize": true
+        }
+      ],
+      "output_space": [
+        {
+          "name": "r",
+          "transformer": "identity",
+          "type": "real",
+          "lower_bound": -Infinity,
+          "upper_bound": Infinity,
+          "optimize": true
+        }
+      ],
+      "modeler": "Model_LCM",
+      "objective": {
+        "name": "r",
+        "transformer": "identity",
+        "type": "real",
+        "lower_bound": -Infinity,
+        "upper_bound": Infinity,
+        "optimize": true,
+        "objective_id": 0
+      },
+      "time": {
+        "tm_year": 2023,
+        "tm_mon": 7,
+        "tm_mday": 31,
+        "tm_hour": 14,
+        "tm_min": 27,
+        "tm_sec": 36,
+        "tm_wday": 0,
+        "tm_yday": 212,
+        "tm_isdst": 1
+      },
+      "uid": "11965194-2fe9-11ee-bdbc-9a70d92099b8"
+    },
+    {
+      "hyperparameters": [
+        1.9631152207475788,
+        0.007306930024371833,
+        0.32792610455314036,
+        1.0,
+        0.00245412649403993,
+        1e-05,
+        0.0005977263434510913
+      ],
+      "model_stats": {
+        "log_likelihood": 26.65393073468546,
+        "neg_log_likelihood": -26.65393073468546,
+        "gradients": [
+          7.261492527277369e-07,
+          0.0,
+          1.6150858286323455e-06,
+          0.0,
+          -1.0376839603443315e-06,
+          5.449755256682493,
+          -3.021363484536934e-10
+        ],
+        "iterations": 38
+      },
+      "task_parameters": [
+        [
+          1000
+        ]
+      ],
+      "function_evaluations": [
+        "0dbd8f4c-2fe9-11ee-bdbc-9a70d92099b8",
+        "0dd842d8-2fe9-11ee-bdbc-9a70d92099b8",
+        "0df6235c-2fe9-11ee-bdbc-9a70d92099b8",
+        "0e0fc816-2fe9-11ee-bdbc-9a70d92099b8",
+        "0e31d17c-2fe9-11ee-bdbc-9a70d92099b8",
+        "0e4f26be-2fe9-11ee-bdbc-9a70d92099b8",
+        "0e6cacf2-2fe9-11ee-bdbc-9a70d92099b8",
+        "0e858f4c-2fe9-11ee-bdbc-9a70d92099b8",
+        "0eb871a0-2fe9-11ee-bdbc-9a70d92099b8",
+        "0ecfc094-2fe9-11ee-bdbc-9a70d92099b8",
+        "10081c86-2fe9-11ee-bdbc-9a70d92099b8",
+        "1112e976-2fe9-11ee-bdbc-9a70d92099b8",
+        "12178cfa-2fe9-11ee-bdbc-9a70d92099b8"
+      ],
+      "input_space": [
+        {
+          "name": "n",
+          "transformer": "normalize",
+          "type": "int",
+          "lower_bound": 128,
+          "upper_bound": 1000,
+          "optimize": true
+        }
+      ],
+      "parameter_space": [
+        {
+          "name": "nb",
+          "transformer": "normalize",
+          "type": "int",
+          "lower_bound": 1,
+          "upper_bound": 16,
+          "optimize": true
+        },
+        {
+          "name": "lg2npernode",
+          "transformer": "normalize",
+          "type": "int",
+          "lower_bound": 0,
+          "upper_bound": 3,
+          "optimize": true
+        },
+        {
+          "name": "p",
+          "transformer": "normalize",
+          "type": "int",
+          "lower_bound": 1,
+          "upper_bound": 8,
+          "optimize": true
+        }
+      ],
+      "output_space": [
+        {
+          "name": "r",
+          "transformer": "identity",
+          "type": "real",
+          "lower_bound": -Infinity,
+          "upper_bound": Infinity,
+          "optimize": true
+        }
+      ],
+      "modeler": "Model_LCM",
+      "objective": {
+        "name": "r",
+        "transformer": "identity",
+        "type": "real",
+        "lower_bound": -Infinity,
+        "upper_bound": Infinity,
+        "optimize": true,
+        "objective_id": 0
+      },
+      "time": {
+        "tm_year": 2023,
+        "tm_mon": 7,
+        "tm_mday": 31,
+        "tm_hour": 14,
+        "tm_min": 27,
+        "tm_sec": 38,
+        "tm_wday": 0,
+        "tm_yday": 212,
+        "tm_isdst": 1
+      },
+      "uid": "12a63f86-2fe9-11ee-bdbc-9a70d92099b8"
+    },
+    {
+      "hyperparameters": [
+        0.21029614476517133,
+        1396.145662527244,
+        0.7904206097458758,
+        1.0,
+        0.004968100814506925,
+        1e-05,
+        0.0002818297055382491
+      ],
+      "model_stats": {
+        "log_likelihood": 29.830862314665026,
+        "neg_log_likelihood": -29.830862314665026,
+        "gradients": [
+          3.824704350563479e-06,
+          -3.7177528240047775e-06,
+          8.711425819596386e-08,
+          0.0,
+          -6.114166993060086e-07,
+          0.28174128028613765,
+          -1.955016584266035e-11
+        ],
+        "iterations": 30
+      },
+      "task_parameters": [
+        [
+          1000
+        ]
+      ],
+      "function_evaluations": [
+        "0dbd8f4c-2fe9-11ee-bdbc-9a70d92099b8",
+        "0dd842d8-2fe9-11ee-bdbc-9a70d92099b8",
+        "0df6235c-2fe9-11ee-bdbc-9a70d92099b8",
+        "0e0fc816-2fe9-11ee-bdbc-9a70d92099b8",
+        "0e31d17c-2fe9-11ee-bdbc-9a70d92099b8",
+        "0e4f26be-2fe9-11ee-bdbc-9a70d92099b8",
+        "0e6cacf2-2fe9-11ee-bdbc-9a70d92099b8",
+        "0e858f4c-2fe9-11ee-bdbc-9a70d92099b8",
+        "0eb871a0-2fe9-11ee-bdbc-9a70d92099b8",
+        "0ecfc094-2fe9-11ee-bdbc-9a70d92099b8",
+        "10081c86-2fe9-11ee-bdbc-9a70d92099b8",
+        "1112e976-2fe9-11ee-bdbc-9a70d92099b8",
+        "12178cfa-2fe9-11ee-bdbc-9a70d92099b8",
+        "131eea3a-2fe9-11ee-bdbc-9a70d92099b8"
+      ],
+      "input_space": [
+        {
+          "name": "n",
+          "transformer": "normalize",
+          "type": "int",
+          "lower_bound": 128,
+          "upper_bound": 1000,
+          "optimize": true
+        }
+      ],
+      "parameter_space": [
+        {
+          "name": "nb",
+          "transformer": "normalize",
+          "type": "int",
+          "lower_bound": 1,
+          "upper_bound": 16,
+          "optimize": true
+        },
+        {
+          "name": "lg2npernode",
+          "transformer": "normalize",
+          "type": "int",
+          "lower_bound": 0,
+          "upper_bound": 3,
+          "optimize": true
+        },
+        {
+          "name": "p",
+          "transformer": "normalize",
+          "type": "int",
+          "lower_bound": 1,
+          "upper_bound": 8,
+          "optimize": true
+        }
+      ],
+      "output_space": [
+        {
+          "name": "r",
+          "transformer": "identity",
+          "type": "real",
+          "lower_bound": -Infinity,
+          "upper_bound": Infinity,
+          "optimize": true
+        }
+      ],
+      "modeler": "Model_LCM",
+      "objective": {
+        "name": "r",
+        "transformer": "identity",
+        "type": "real",
+        "lower_bound": -Infinity,
+        "upper_bound": Infinity,
+        "optimize": true,
+        "objective_id": 0
+      },
+      "time": {
+        "tm_year": 2023,
+        "tm_mon": 7,
+        "tm_mday": 31,
+        "tm_hour": 14,
+        "tm_min": 27,
+        "tm_sec": 39,
+        "tm_wday": 0,
+        "tm_yday": 212,
+        "tm_isdst": 1
+      },
+      "uid": "13a69fca-2fe9-11ee-bdbc-9a70d92099b8"
+    },
+    {
+      "hyperparameters": [
+        0.8363204961237373,
+        70413.69822266715,
+        0.010589246532141487,
+        1.0,
+        0.003950389529062031,
+        5.831628082584133e-06,
+        5.1889238240673125e-06
+      ],
+      "model_stats": {
+        "log_likelihood": 32.008940038125104,
+        "neg_log_likelihood": -32.008940038125104,
+        "gradients": [
+          -2.707172712224093e-06,
+          8.105093399207776e-09,
+          2.967014277490781e-37,
+          0.0,
+          -3.519614808889749e-06,
+          -2.3034860585677053e-06,
+          -4.797774082910797e-14
+        ],
+        "iterations": 58
+      },
+      "task_parameters": [
+        [
+          1000
+        ]
+      ],
+      "function_evaluations": [
+        "0dbd8f4c-2fe9-11ee-bdbc-9a70d92099b8",
+        "0dd842d8-2fe9-11ee-bdbc-9a70d92099b8",
+        "0df6235c-2fe9-11ee-bdbc-9a70d92099b8",
+        "0e0fc816-2fe9-11ee-bdbc-9a70d92099b8",
+        "0e31d17c-2fe9-11ee-bdbc-9a70d92099b8",
+        "0e4f26be-2fe9-11ee-bdbc-9a70d92099b8",
+        "0e6cacf2-2fe9-11ee-bdbc-9a70d92099b8",
+        "0e858f4c-2fe9-11ee-bdbc-9a70d92099b8",
+        "0eb871a0-2fe9-11ee-bdbc-9a70d92099b8",
+        "0ecfc094-2fe9-11ee-bdbc-9a70d92099b8",
+        "10081c86-2fe9-11ee-bdbc-9a70d92099b8",
+        "1112e976-2fe9-11ee-bdbc-9a70d92099b8",
+        "12178cfa-2fe9-11ee-bdbc-9a70d92099b8",
+        "131eea3a-2fe9-11ee-bdbc-9a70d92099b8",
+        "143abdc2-2fe9-11ee-bdbc-9a70d92099b8"
+      ],
+      "input_space": [
+        {
+          "name": "n",
+          "transformer": "normalize",
+          "type": "int",
+          "lower_bound": 128,
+          "upper_bound": 1000,
+          "optimize": true
+        }
+      ],
+      "parameter_space": [
+        {
+          "name": "nb",
+          "transformer": "normalize",
+          "type": "int",
+          "lower_bound": 1,
+          "upper_bound": 16,
+          "optimize": true
+        },
+        {
+          "name": "lg2npernode",
+          "transformer": "normalize",
+          "type": "int",
+          "lower_bound": 0,
+          "upper_bound": 3,
+          "optimize": true
+        },
+        {
+          "name": "p",
+          "transformer": "normalize",
+          "type": "int",
+          "lower_bound": 1,
+          "upper_bound": 8,
+          "optimize": true
+        }
+      ],
+      "output_space": [
+        {
+          "name": "r",
+          "transformer": "identity",
+          "type": "real",
+          "lower_bound": -Infinity,
+          "upper_bound": Infinity,
+          "optimize": true
+        }
+      ],
+      "modeler": "Model_LCM",
+      "objective": {
+        "name": "r",
+        "transformer": "identity",
+        "type": "real",
+        "lower_bound": -Infinity,
+        "upper_bound": Infinity,
+        "optimize": true,
+        "objective_id": 0
+      },
+      "time": {
+        "tm_year": 2023,
+        "tm_mon": 7,
+        "tm_mday": 31,
+        "tm_hour": 14,
+        "tm_min": 27,
+        "tm_sec": 41,
+        "tm_wday": 0,
+        "tm_yday": 212,
+        "tm_isdst": 1
+      },
+      "uid": "14c74350-2fe9-11ee-bdbc-9a70d92099b8"
+    },
+    {
+      "hyperparameters": [
+        0.851943447460939,
+        0.025930580724891836,
+        0.19968346652320879,
+        1.0,
+        0.0026818138778015553,
+        1e-05,
+        0.014724374345334634
+      ],
+      "model_stats": {
+        "log_likelihood": 31.601921934896165,
+        "neg_log_likelihood": -31.601921934896165,
+        "gradients": [
+          1.3810921625518474e-07,
+          6.908905064978764e-34,
+          -1.101659418370482e-06,
+          0.0,
+          1.9397319115908993e-07,
+          0.42485820273242736,
+          3.136293517653207e-08
+        ],
+        "iterations": 36
+      },
+      "task_parameters": [
+        [
+          1000
+        ]
+      ],
+      "function_evaluations": [
+        "0dbd8f4c-2fe9-11ee-bdbc-9a70d92099b8",
+        "0dd842d8-2fe9-11ee-bdbc-9a70d92099b8",
+        "0df6235c-2fe9-11ee-bdbc-9a70d92099b8",
+        "0e0fc816-2fe9-11ee-bdbc-9a70d92099b8",
+        "0e31d17c-2fe9-11ee-bdbc-9a70d92099b8",
+        "0e4f26be-2fe9-11ee-bdbc-9a70d92099b8",
+        "0e6cacf2-2fe9-11ee-bdbc-9a70d92099b8",
+        "0e858f4c-2fe9-11ee-bdbc-9a70d92099b8",
+        "0eb871a0-2fe9-11ee-bdbc-9a70d92099b8",
+        "0ecfc094-2fe9-11ee-bdbc-9a70d92099b8",
+        "10081c86-2fe9-11ee-bdbc-9a70d92099b8",
+        "1112e976-2fe9-11ee-bdbc-9a70d92099b8",
+        "12178cfa-2fe9-11ee-bdbc-9a70d92099b8",
+        "131eea3a-2fe9-11ee-bdbc-9a70d92099b8",
+        "143abdc2-2fe9-11ee-bdbc-9a70d92099b8",
+        "155367ae-2fe9-11ee-bdbc-9a70d92099b8"
+      ],
+      "input_space": [
+        {
+          "name": "n",
+          "transformer": "normalize",
+          "type": "int",
+          "lower_bound": 128,
+          "upper_bound": 1000,
+          "optimize": true
+        }
+      ],
+      "parameter_space": [
+        {
+          "name": "nb",
+          "transformer": "normalize",
+          "type": "int",
+          "lower_bound": 1,
+          "upper_bound": 16,
+          "optimize": true
+        },
+        {
+          "name": "lg2npernode",
+          "transformer": "normalize",
+          "type": "int",
+          "lower_bound": 0,
+          "upper_bound": 3,
+          "optimize": true
+        },
+        {
+          "name": "p",
+          "transformer": "normalize",
+          "type": "int",
+          "lower_bound": 1,
+          "upper_bound": 8,
+          "optimize": true
+        }
+      ],
+      "output_space": [
+        {
+          "name": "r",
+          "transformer": "identity",
+          "type": "real",
+          "lower_bound": -Infinity,
+          "upper_bound": Infinity,
+          "optimize": true
+        }
+      ],
+      "modeler": "Model_LCM",
+      "objective": {
+        "name": "r",
+        "transformer": "identity",
+        "type": "real",
+        "lower_bound": -Infinity,
+        "upper_bound": Infinity,
+        "optimize": true,
+        "objective_id": 0
+      },
+      "time": {
+        "tm_year": 2023,
+        "tm_mon": 7,
+        "tm_mday": 31,
+        "tm_hour": 14,
+        "tm_min": 27,
+        "tm_sec": 43,
+        "tm_wday": 0,
+        "tm_yday": 212,
+        "tm_isdst": 1
+      },
+      "uid": "15d6c4e6-2fe9-11ee-bdbc-9a70d92099b8"
+    },
+    {
+      "hyperparameters": [
+        0.27510535475146153,
+        1.3266032497253313,
+        0.34996212257550796,
+        1.0,
+        0.002841178330051067,
+        1e-05,
+        0.01930158624586466
+      ],
+      "model_stats": {
+        "log_likelihood": 35.33428850804373,
+        "neg_log_likelihood": -35.33428850804373,
+        "gradients": [
+          1.4345625376499527e-07,
+          -1.5693374526559722e-06,
+          1.6652226833002715e-06,
+          0.0,
+          -8.625125174973771e-09,
+          0.12584694329499777,
+          -2.261948094725709e-09
+        ],
+        "iterations": 36
+      },
+      "task_parameters": [
+        [
+          1000
+        ]
+      ],
+      "function_evaluations": [
+        "0dbd8f4c-2fe9-11ee-bdbc-9a70d92099b8",
+        "0dd842d8-2fe9-11ee-bdbc-9a70d92099b8",
+        "0df6235c-2fe9-11ee-bdbc-9a70d92099b8",
+        "0e0fc816-2fe9-11ee-bdbc-9a70d92099b8",
+        "0e31d17c-2fe9-11ee-bdbc-9a70d92099b8",
+        "0e4f26be-2fe9-11ee-bdbc-9a70d92099b8",
+        "0e6cacf2-2fe9-11ee-bdbc-9a70d92099b8",
+        "0e858f4c-2fe9-11ee-bdbc-9a70d92099b8",
+        "0eb871a0-2fe9-11ee-bdbc-9a70d92099b8",
+        "0ecfc094-2fe9-11ee-bdbc-9a70d92099b8",
+        "10081c86-2fe9-11ee-bdbc-9a70d92099b8",
+        "1112e976-2fe9-11ee-bdbc-9a70d92099b8",
+        "12178cfa-2fe9-11ee-bdbc-9a70d92099b8",
+        "131eea3a-2fe9-11ee-bdbc-9a70d92099b8",
+        "143abdc2-2fe9-11ee-bdbc-9a70d92099b8",
+        "155367ae-2fe9-11ee-bdbc-9a70d92099b8",
+        "165b2aec-2fe9-11ee-bdbc-9a70d92099b8"
+      ],
+      "input_space": [
+        {
+          "name": "n",
+          "transformer": "normalize",
+          "type": "int",
+          "lower_bound": 128,
+          "upper_bound": 1000,
+          "optimize": true
+        }
+      ],
+      "parameter_space": [
+        {
+          "name": "nb",
+          "transformer": "normalize",
+          "type": "int",
+          "lower_bound": 1,
+          "upper_bound": 16,
+          "optimize": true
+        },
+        {
+          "name": "lg2npernode",
+          "transformer": "normalize",
+          "type": "int",
+          "lower_bound": 0,
+          "upper_bound": 3,
+          "optimize": true
+        },
+        {
+          "name": "p",
+          "transformer": "normalize",
+          "type": "int",
+          "lower_bound": 1,
+          "upper_bound": 8,
+          "optimize": true
+        }
+      ],
+      "output_space": [
+        {
+          "name": "r",
+          "transformer": "identity",
+          "type": "real",
+          "lower_bound": -Infinity,
+          "upper_bound": Infinity,
+          "optimize": true
+        }
+      ],
+      "modeler": "Model_LCM",
+      "objective": {
+        "name": "r",
+        "transformer": "identity",
+        "type": "real",
+        "lower_bound": -Infinity,
+        "upper_bound": Infinity,
+        "optimize": true,
+        "objective_id": 0
+      },
+      "time": {
+        "tm_year": 2023,
+        "tm_mon": 7,
+        "tm_mday": 31,
+        "tm_hour": 14,
+        "tm_min": 27,
+        "tm_sec": 45,
+        "tm_wday": 0,
+        "tm_yday": 212,
+        "tm_isdst": 1
+      },
+      "uid": "16dae430-2fe9-11ee-bdbc-9a70d92099b8"
+    },
+    {
+      "hyperparameters": [
+        0.20090632054351773,
+        2.423125439671761,
+        0.5600999774720636,
+        1.0,
+        0.002056862692269241,
+        1e-05,
+        0.04148528207379217
+      ],
+      "model_stats": {
+        "log_likelihood": 38.698864483341765,
+        "neg_log_likelihood": -38.698864483341765,
+        "gradients": [
+          -7.688165233332711e-06,
+          -3.4409268757640277e-06,
+          -9.917227647981974e-07,
+          0.0,
+          3.37928591680147e-06,
+          0.14765298772496976,
+          5.655066604629606e-06
+        ],
+        "iterations": 56
+      },
+      "task_parameters": [
+        [
+          1000
+        ]
+      ],
+      "function_evaluations": [
+        "0dbd8f4c-2fe9-11ee-bdbc-9a70d92099b8",
+        "0dd842d8-2fe9-11ee-bdbc-9a70d92099b8",
+        "0df6235c-2fe9-11ee-bdbc-9a70d92099b8",
+        "0e0fc816-2fe9-11ee-bdbc-9a70d92099b8",
+        "0e31d17c-2fe9-11ee-bdbc-9a70d92099b8",
+        "0e4f26be-2fe9-11ee-bdbc-9a70d92099b8",
+        "0e6cacf2-2fe9-11ee-bdbc-9a70d92099b8",
+        "0e858f4c-2fe9-11ee-bdbc-9a70d92099b8",
+        "0eb871a0-2fe9-11ee-bdbc-9a70d92099b8",
+        "0ecfc094-2fe9-11ee-bdbc-9a70d92099b8",
+        "10081c86-2fe9-11ee-bdbc-9a70d92099b8",
+        "1112e976-2fe9-11ee-bdbc-9a70d92099b8",
+        "12178cfa-2fe9-11ee-bdbc-9a70d92099b8",
+        "131eea3a-2fe9-11ee-bdbc-9a70d92099b8",
+        "143abdc2-2fe9-11ee-bdbc-9a70d92099b8",
+        "155367ae-2fe9-11ee-bdbc-9a70d92099b8",
+        "165b2aec-2fe9-11ee-bdbc-9a70d92099b8",
+        "17585a1e-2fe9-11ee-bdbc-9a70d92099b8"
+      ],
+      "input_space": [
+        {
+          "name": "n",
+          "transformer": "normalize",
+          "type": "int",
+          "lower_bound": 128,
+          "upper_bound": 1000,
+          "optimize": true
+        }
+      ],
+      "parameter_space": [
+        {
+          "name": "nb",
+          "transformer": "normalize",
+          "type": "int",
+          "lower_bound": 1,
+          "upper_bound": 16,
+          "optimize": true
+        },
+        {
+          "name": "lg2npernode",
+          "transformer": "normalize",
+          "type": "int",
+          "lower_bound": 0,
+          "upper_bound": 3,
+          "optimize": true
+        },
+        {
+          "name": "p",
+          "transformer": "normalize",
+          "type": "int",
+          "lower_bound": 1,
+          "upper_bound": 8,
+          "optimize": true
+        }
+      ],
+      "output_space": [
+        {
+          "name": "r",
+          "transformer": "identity",
+          "type": "real",
+          "lower_bound": -Infinity,
+          "upper_bound": Infinity,
+          "optimize": true
+        }
+      ],
+      "modeler": "Model_LCM",
+      "objective": {
+        "name": "r",
+        "transformer": "identity",
+        "type": "real",
+        "lower_bound": -Infinity,
+        "upper_bound": Infinity,
+        "optimize": true,
+        "objective_id": 0
+      },
+      "time": {
+        "tm_year": 2023,
+        "tm_mon": 7,
+        "tm_mday": 31,
+        "tm_hour": 14,
+        "tm_min": 27,
+        "tm_sec": 46,
+        "tm_wday": 0,
+        "tm_yday": 212,
+        "tm_isdst": 1
+      },
+      "uid": "17dd15d8-2fe9-11ee-bdbc-9a70d92099b8"
+    },
+    {
+      "hyperparameters": [
+        0.2223142140825432,
+        2.1273890351187736,
+        0.48957656936887833,
+        1.0,
+        0.0020160627395631324,
+        1e-05,
+        0.03950613277239166
+      ],
+      "model_stats": {
+        "log_likelihood": 40.449604680574296,
+        "neg_log_likelihood": -40.449604680574296,
+        "gradients": [
+          -5.3693967371204465e-06,
+          -4.353762150313689e-07,
+          -1.3449933473630438e-06,
+          0.0,
+          7.557023794898625e-07,
+          0.3829295036188776,
+          1.1700536907217978e-06
+        ],
+        "iterations": 28
+      },
+      "task_parameters": [
+        [
+          1000
+        ]
+      ],
+      "function_evaluations": [
+        "0dbd8f4c-2fe9-11ee-bdbc-9a70d92099b8",
+        "0dd842d8-2fe9-11ee-bdbc-9a70d92099b8",
+        "0df6235c-2fe9-11ee-bdbc-9a70d92099b8",
+        "0e0fc816-2fe9-11ee-bdbc-9a70d92099b8",
+        "0e31d17c-2fe9-11ee-bdbc-9a70d92099b8",
+        "0e4f26be-2fe9-11ee-bdbc-9a70d92099b8",
+        "0e6cacf2-2fe9-11ee-bdbc-9a70d92099b8",
+        "0e858f4c-2fe9-11ee-bdbc-9a70d92099b8",
+        "0eb871a0-2fe9-11ee-bdbc-9a70d92099b8",
+        "0ecfc094-2fe9-11ee-bdbc-9a70d92099b8",
+        "10081c86-2fe9-11ee-bdbc-9a70d92099b8",
+        "1112e976-2fe9-11ee-bdbc-9a70d92099b8",
+        "12178cfa-2fe9-11ee-bdbc-9a70d92099b8",
+        "131eea3a-2fe9-11ee-bdbc-9a70d92099b8",
+        "143abdc2-2fe9-11ee-bdbc-9a70d92099b8",
+        "155367ae-2fe9-11ee-bdbc-9a70d92099b8",
+        "165b2aec-2fe9-11ee-bdbc-9a70d92099b8",
+        "17585a1e-2fe9-11ee-bdbc-9a70d92099b8",
+        "186b6f54-2fe9-11ee-bdbc-9a70d92099b8"
+      ],
+      "input_space": [
+        {
+          "name": "n",
+          "transformer": "normalize",
+          "type": "int",
+          "lower_bound": 128,
+          "upper_bound": 1000,
+          "optimize": true
+        }
+      ],
+      "parameter_space": [
+        {
+          "name": "nb",
+          "transformer": "normalize",
+          "type": "int",
+          "lower_bound": 1,
+          "upper_bound": 16,
+          "optimize": true
+        },
+        {
+          "name": "lg2npernode",
+          "transformer": "normalize",
+          "type": "int",
+          "lower_bound": 0,
+          "upper_bound": 3,
+          "optimize": true
+        },
+        {
+          "name": "p",
+          "transformer": "normalize",
+          "type": "int",
+          "lower_bound": 1,
+          "upper_bound": 8,
+          "optimize": true
+        }
+      ],
+      "output_space": [
+        {
+          "name": "r",
+          "transformer": "identity",
+          "type": "real",
+          "lower_bound": -Infinity,
+          "upper_bound": Infinity,
+          "optimize": true
+        }
+      ],
+      "modeler": "Model_LCM",
+      "objective": {
+        "name": "r",
+        "transformer": "identity",
+        "type": "real",
+        "lower_bound": -Infinity,
+        "upper_bound": Infinity,
+        "optimize": true,
+        "objective_id": 0
+      },
+      "time": {
+        "tm_year": 2023,
+        "tm_mon": 7,
+        "tm_mday": 31,
+        "tm_hour": 14,
+        "tm_min": 27,
+        "tm_sec": 48,
+        "tm_wday": 0,
+        "tm_yday": 212,
+        "tm_isdst": 1
+      },
+      "uid": "18f1aede-2fe9-11ee-bdbc-9a70d92099b8"
+    }
+  ],
+  "func_eval": [
+    {
+      "task_parameter": {
+        "n": 1000
+      },
+      "tuning_parameter": {
+        "nb": 4,
+        "lg2npernode": 3,
+        "p": 6
+      },
+      "constants": {
+        "nodes": 1,
+        "cores": 8,
+        "bunit": 8
+      },
+      "machine_configuration": {
+        "machine_name": "mac",
+        "intel": {
+          "nodes": 1,
+          "cores": 8
+        }
+      },
+      "software_configuration": {
+        "openmpi": {
+          "version_split": [
+            4,
+            1,
+            5
+          ]
+        },
+        "scalapack": {
+          "version_split": [
+            2,
+            2,
+            0
+          ]
+        },
+        "gcc": {
+          "version_split": [
+            13,
+            1,
+            0
+          ]
+        }
+      },
+      "evaluation_result": {
+        "r": 0.08
+      },
+      "evaluation_detail": {
+        "r": {
+          "evaluations": 0.08,
+          "objective_scheme": "average"
+        }
+      },
+      "additional_output": {},
+      "source": "measure",
+      "modeling": "Pilot",
+      "model_class": "Model_LCM",
+      "time": {
+        "tm_year": 2023,
+        "tm_mon": 7,
+        "tm_mday": 31,
+        "tm_hour": 14,
+        "tm_min": 27,
+        "tm_sec": 29,
+        "tm_wday": 0,
+        "tm_yday": 212,
+        "tm_isdst": 1
+      },
+      "uid": "0dbd8f4c-2fe9-11ee-bdbc-9a70d92099b8"
+    },
+    {
+      "task_parameter": {
+        "n": 1000
+      },
+      "tuning_parameter": {
+        "nb": 12,
+        "lg2npernode": 2,
+        "p": 3
+      },
+      "constants": {
+        "nodes": 1,
+        "cores": 8,
+        "bunit": 8
+      },
+      "machine_configuration": {
+        "machine_name": "mac",
+        "intel": {
+          "nodes": 1,
+          "cores": 8
+        }
+      },
+      "software_configuration": {
+        "openmpi": {
+          "version_split": [
+            4,
+            1,
+            5
+          ]
+        },
+        "scalapack": {
+          "version_split": [
+            2,
+            2,
+            0
+          ]
+        },
+        "gcc": {
+          "version_split": [
+            13,
+            1,
+            0
+          ]
+        }
+      },
+      "evaluation_result": {
+        "r": 0.06
+      },
+      "evaluation_detail": {
+        "r": {
+          "evaluations": 0.06,
+          "objective_scheme": "average"
+        }
+      },
+      "additional_output": {},
+      "source": "measure",
+      "modeling": "Pilot",
+      "model_class": "Model_LCM",
+      "time": {
+        "tm_year": 2023,
+        "tm_mon": 7,
+        "tm_mday": 31,
+        "tm_hour": 14,
+        "tm_min": 27,
+        "tm_sec": 30,
+        "tm_wday": 0,
+        "tm_yday": 212,
+        "tm_isdst": 1
+      },
+      "uid": "0dd842d8-2fe9-11ee-bdbc-9a70d92099b8"
+    },
+    {
+      "task_parameter": {
+        "n": 1000
+      },
+      "tuning_parameter": {
+        "nb": 8,
+        "lg2npernode": 2,
+        "p": 2
+      },
+      "constants": {
+        "nodes": 1,
+        "cores": 8,
+        "bunit": 8
+      },
+      "machine_configuration": {
+        "machine_name": "mac",
+        "intel": {
+          "nodes": 1,
+          "cores": 8
+        }
+      },
+      "software_configuration": {
+        "openmpi": {
+          "version_split": [
+            4,
+            1,
+            5
+          ]
+        },
+        "scalapack": {
+          "version_split": [
+            2,
+            2,
+            0
+          ]
+        },
+        "gcc": {
+          "version_split": [
+            13,
+            1,
+            0
+          ]
+        }
+      },
+      "evaluation_result": {
+        "r": 0.06
+      },
+      "evaluation_detail": {
+        "r": {
+          "evaluations": 0.06,
+          "objective_scheme": "average"
+        }
+      },
+      "additional_output": {},
+      "source": "measure",
+      "modeling": "Pilot",
+      "model_class": "Model_LCM",
+      "time": {
+        "tm_year": 2023,
+        "tm_mon": 7,
+        "tm_mday": 31,
+        "tm_hour": 14,
+        "tm_min": 27,
+        "tm_sec": 30,
+        "tm_wday": 0,
+        "tm_yday": 212,
+        "tm_isdst": 1
+      },
+      "uid": "0df6235c-2fe9-11ee-bdbc-9a70d92099b8"
+    },
+    {
+      "task_parameter": {
+        "n": 1000
+      },
+      "tuning_parameter": {
+        "nb": 14,
+        "lg2npernode": 1,
+        "p": 1
+      },
+      "constants": {
+        "nodes": 1,
+        "cores": 8,
+        "bunit": 8
+      },
+      "machine_configuration": {
+        "machine_name": "mac",
+        "intel": {
+          "nodes": 1,
+          "cores": 8
+        }
+      },
+      "software_configuration": {
+        "openmpi": {
+          "version_split": [
+            4,
+            1,
+            5
+          ]
+        },
+        "scalapack": {
+          "version_split": [
+            2,
+            2,
+            0
+          ]
+        },
+        "gcc": {
+          "version_split": [
+            13,
+            1,
+            0
+          ]
+        }
+      },
+      "evaluation_result": {
+        "r": 0.05
+      },
+      "evaluation_detail": {
+        "r": {
+          "evaluations": 0.05,
+          "objective_scheme": "average"
+        }
+      },
+      "additional_output": {},
+      "source": "measure",
+      "modeling": "Pilot",
+      "model_class": "Model_LCM",
+      "time": {
+        "tm_year": 2023,
+        "tm_mon": 7,
+        "tm_mday": 31,
+        "tm_hour": 14,
+        "tm_min": 27,
+        "tm_sec": 30,
+        "tm_wday": 0,
+        "tm_yday": 212,
+        "tm_isdst": 1
+      },
+      "uid": "0e0fc816-2fe9-11ee-bdbc-9a70d92099b8"
+    },
+    {
+      "task_parameter": {
+        "n": 1000
+      },
+      "tuning_parameter": {
+        "nb": 16,
+        "lg2npernode": 2,
+        "p": 2
+      },
+      "constants": {
+        "nodes": 1,
+        "cores": 8,
+        "bunit": 8
+      },
+      "machine_configuration": {
+        "machine_name": "mac",
+        "intel": {
+          "nodes": 1,
+          "cores": 8
+        }
+      },
+      "software_configuration": {
+        "openmpi": {
+          "version_split": [
+            4,
+            1,
+            5
+          ]
+        },
+        "scalapack": {
+          "version_split": [
+            2,
+            2,
+            0
+          ]
+        },
+        "gcc": {
+          "version_split": [
+            13,
+            1,
+            0
+          ]
+        }
+      },
+      "evaluation_result": {
+        "r": 0.08
+      },
+      "evaluation_detail": {
+        "r": {
+          "evaluations": 0.08,
+          "objective_scheme": "average"
+        }
+      },
+      "additional_output": {},
+      "source": "measure",
+      "modeling": "Pilot",
+      "model_class": "Model_LCM",
+      "time": {
+        "tm_year": 2023,
+        "tm_mon": 7,
+        "tm_mday": 31,
+        "tm_hour": 14,
+        "tm_min": 27,
+        "tm_sec": 30,
+        "tm_wday": 0,
+        "tm_yday": 212,
+        "tm_isdst": 1
+      },
+      "uid": "0e31d17c-2fe9-11ee-bdbc-9a70d92099b8"
+    },
+    {
+      "task_parameter": {
+        "n": 1000
+      },
+      "tuning_parameter": {
+        "nb": 13,
+        "lg2npernode": 2,
+        "p": 1
+      },
+      "constants": {
+        "nodes": 1,
+        "cores": 8,
+        "bunit": 8
+      },
+      "machine_configuration": {
+        "machine_name": "mac",
+        "intel": {
+          "nodes": 1,
+          "cores": 8
+        }
+      },
+      "software_configuration": {
+        "openmpi": {
+          "version_split": [
+            4,
+            1,
+            5
+          ]
+        },
+        "scalapack": {
+          "version_split": [
+            2,
+            2,
+            0
+          ]
+        },
+        "gcc": {
+          "version_split": [
+            13,
+            1,
+            0
+          ]
+        }
+      },
+      "evaluation_result": {
+        "r": 0.06
+      },
+      "evaluation_detail": {
+        "r": {
+          "evaluations": 0.06,
+          "objective_scheme": "average"
+        }
+      },
+      "additional_output": {},
+      "source": "measure",
+      "modeling": "Pilot",
+      "model_class": "Model_LCM",
+      "time": {
+        "tm_year": 2023,
+        "tm_mon": 7,
+        "tm_mday": 31,
+        "tm_hour": 14,
+        "tm_min": 27,
+        "tm_sec": 30,
+        "tm_wday": 0,
+        "tm_yday": 212,
+        "tm_isdst": 1
+      },
+      "uid": "0e4f26be-2fe9-11ee-bdbc-9a70d92099b8"
+    },
+    {
+      "task_parameter": {
+        "n": 1000
+      },
+      "tuning_parameter": {
+        "nb": 5,
+        "lg2npernode": 1,
+        "p": 2
+      },
+      "constants": {
+        "nodes": 1,
+        "cores": 8,
+        "bunit": 8
+      },
+      "machine_configuration": {
+        "machine_name": "mac",
+        "intel": {
+          "nodes": 1,
+          "cores": 8
+        }
+      },
+      "software_configuration": {
+        "openmpi": {
+          "version_split": [
+            4,
+            1,
+            5
+          ]
+        },
+        "scalapack": {
+          "version_split": [
+            2,
+            2,
+            0
+          ]
+        },
+        "gcc": {
+          "version_split": [
+            13,
+            1,
+            0
+          ]
+        }
+      },
+      "evaluation_result": {
+        "r": 0.05
+      },
+      "evaluation_detail": {
+        "r": {
+          "evaluations": 0.05,
+          "objective_scheme": "average"
+        }
+      },
+      "additional_output": {},
+      "source": "measure",
+      "modeling": "Pilot",
+      "model_class": "Model_LCM",
+      "time": {
+        "tm_year": 2023,
+        "tm_mon": 7,
+        "tm_mday": 31,
+        "tm_hour": 14,
+        "tm_min": 27,
+        "tm_sec": 31,
+        "tm_wday": 0,
+        "tm_yday": 212,
+        "tm_isdst": 1
+      },
+      "uid": "0e6cacf2-2fe9-11ee-bdbc-9a70d92099b8"
+    },
+    {
+      "task_parameter": {
+        "n": 1000
+      },
+      "tuning_parameter": {
+        "nb": 1,
+        "lg2npernode": 3,
+        "p": 3
+      },
+      "constants": {
+        "nodes": 1,
+        "cores": 8,
+        "bunit": 8
+      },
+      "machine_configuration": {
+        "machine_name": "mac",
+        "intel": {
+          "nodes": 1,
+          "cores": 8
+        }
+      },
+      "software_configuration": {
+        "openmpi": {
+          "version_split": [
+            4,
+            1,
+            5
+          ]
+        },
+        "scalapack": {
+          "version_split": [
+            2,
+            2,
+            0
+          ]
+        },
+        "gcc": {
+          "version_split": [
+            13,
+            1,
+            0
+          ]
+        }
+      },
+      "evaluation_result": {
+        "r": 0.04
+      },
+      "evaluation_detail": {
+        "r": {
+          "evaluations": 0.04,
+          "objective_scheme": "average"
+        }
+      },
+      "additional_output": {},
+      "source": "measure",
+      "modeling": "Pilot",
+      "model_class": "Model_LCM",
+      "time": {
+        "tm_year": 2023,
+        "tm_mon": 7,
+        "tm_mday": 31,
+        "tm_hour": 14,
+        "tm_min": 27,
+        "tm_sec": 31,
+        "tm_wday": 0,
+        "tm_yday": 212,
+        "tm_isdst": 1
+      },
+      "uid": "0e858f4c-2fe9-11ee-bdbc-9a70d92099b8"
+    },
+    {
+      "task_parameter": {
+        "n": 1000
+      },
+      "tuning_parameter": {
+        "nb": 11,
+        "lg2npernode": 3,
+        "p": 4
+      },
+      "constants": {
+        "nodes": 1,
+        "cores": 8,
+        "bunit": 8
+      },
+      "machine_configuration": {
+        "machine_name": "mac",
+        "intel": {
+          "nodes": 1,
+          "cores": 8
+        }
+      },
+      "software_configuration": {
+        "openmpi": {
+          "version_split": [
+            4,
+            1,
+            5
+          ]
+        },
+        "scalapack": {
+          "version_split": [
+            2,
+            2,
+            0
+          ]
+        },
+        "gcc": {
+          "version_split": [
+            13,
+            1,
+            0
+          ]
+        }
+      },
+      "evaluation_result": {
+        "r": 0.07
+      },
+      "evaluation_detail": {
+        "r": {
+          "evaluations": 0.07,
+          "objective_scheme": "average"
+        }
+      },
+      "additional_output": {},
+      "source": "measure",
+      "modeling": "Pilot",
+      "model_class": "Model_LCM",
+      "time": {
+        "tm_year": 2023,
+        "tm_mon": 7,
+        "tm_mday": 31,
+        "tm_hour": 14,
+        "tm_min": 27,
+        "tm_sec": 31,
+        "tm_wday": 0,
+        "tm_yday": 212,
+        "tm_isdst": 1
+      },
+      "uid": "0eb871a0-2fe9-11ee-bdbc-9a70d92099b8"
+    },
+    {
+      "task_parameter": {
+        "n": 1000
+      },
+      "tuning_parameter": {
+        "nb": 15,
+        "lg2npernode": 2,
+        "p": 3
+      },
+      "constants": {
+        "nodes": 1,
+        "cores": 8,
+        "bunit": 8
+      },
+      "machine_configuration": {
+        "machine_name": "mac",
+        "intel": {
+          "nodes": 1,
+          "cores": 8
+        }
+      },
+      "software_configuration": {
+        "openmpi": {
+          "version_split": [
+            4,
+            1,
+            5
+          ]
+        },
+        "scalapack": {
+          "version_split": [
+            2,
+            2,
+            0
+          ]
+        },
+        "gcc": {
+          "version_split": [
+            13,
+            1,
+            0
+          ]
+        }
+      },
+      "evaluation_result": {
+        "r": 0.05
+      },
+      "evaluation_detail": {
+        "r": {
+          "evaluations": 0.05,
+          "objective_scheme": "average"
+        }
+      },
+      "additional_output": {},
+      "source": "measure",
+      "modeling": "Pilot",
+      "model_class": "Model_LCM",
+      "time": {
+        "tm_year": 2023,
+        "tm_mon": 7,
+        "tm_mday": 31,
+        "tm_hour": 14,
+        "tm_min": 27,
+        "tm_sec": 31,
+        "tm_wday": 0,
+        "tm_yday": 212,
+        "tm_isdst": 1
+      },
+      "uid": "0ecfc094-2fe9-11ee-bdbc-9a70d92099b8"
+    },
+    {
+      "task_parameter": {
+        "n": 1000
+      },
+      "tuning_parameter": {
+        "nb": 14,
+        "lg2npernode": 3,
+        "p": 8
+      },
+      "constants": {
+        "nodes": 1,
+        "cores": 8,
+        "bunit": 8
+      },
+      "machine_configuration": {
+        "machine_name": "mac",
+        "intel": {
+          "nodes": 1,
+          "cores": 8
+        }
+      },
+      "software_configuration": {
+        "openmpi": {
+          "version_split": [
+            4,
+            1,
+            5
+          ]
+        },
+        "scalapack": {
+          "version_split": [
+            2,
+            2,
+            0
+          ]
+        },
+        "gcc": {
+          "version_split": [
+            13,
+            1,
+            0
+          ]
+        }
+      },
+      "evaluation_result": {
+        "r": 0.08
+      },
+      "evaluation_detail": {
+        "r": {
+          "evaluations": 0.08,
+          "objective_scheme": "average"
+        }
+      },
+      "additional_output": {},
+      "source": "measure",
+      "modeling": "TLA_LCM",
+      "model_class": "Model_LCM",
+      "time": {
+        "tm_year": 2023,
+        "tm_mon": 7,
+        "tm_mday": 31,
+        "tm_hour": 14,
+        "tm_min": 27,
+        "tm_sec": 33,
+        "tm_wday": 0,
+        "tm_yday": 212,
+        "tm_isdst": 1
+      },
+      "uid": "10081c86-2fe9-11ee-bdbc-9a70d92099b8"
+    },
+    {
+      "task_parameter": {
+        "n": 1000
+      },
+      "tuning_parameter": {
+        "nb": 3,
+        "lg2npernode": 1,
+        "p": 2
+      },
+      "constants": {
+        "nodes": 1,
+        "cores": 8,
+        "bunit": 8
+      },
+      "machine_configuration": {
+        "machine_name": "mac",
+        "intel": {
+          "nodes": 1,
+          "cores": 8
+        }
+      },
+      "software_configuration": {
+        "openmpi": {
+          "version_split": [
+            4,
+            1,
+            5
+          ]
+        },
+        "scalapack": {
+          "version_split": [
+            2,
+            2,
+            0
+          ]
+        },
+        "gcc": {
+          "version_split": [
+            13,
+            1,
+            0
+          ]
+        }
+      },
+      "evaluation_result": {
+        "r": 0.04
+      },
+      "evaluation_detail": {
+        "r": {
+          "evaluations": 0.04,
+          "objective_scheme": "average"
+        }
+      },
+      "additional_output": {},
+      "source": "measure",
+      "modeling": "TLA_LCM",
+      "model_class": "Model_LCM",
+      "time": {
+        "tm_year": 2023,
+        "tm_mon": 7,
+        "tm_mday": 31,
+        "tm_hour": 14,
+        "tm_min": 27,
+        "tm_sec": 35,
+        "tm_wday": 0,
+        "tm_yday": 212,
+        "tm_isdst": 1
+      },
+      "uid": "1112e976-2fe9-11ee-bdbc-9a70d92099b8"
+    },
+    {
+      "task_parameter": {
+        "n": 1000
+      },
+      "tuning_parameter": {
+        "nb": 1,
+        "lg2npernode": 2,
+        "p": 1
+      },
+      "constants": {
+        "nodes": 1,
+        "cores": 8,
+        "bunit": 8
+      },
+      "machine_configuration": {
+        "machine_name": "mac",
+        "intel": {
+          "nodes": 1,
+          "cores": 8
+        }
+      },
+      "software_configuration": {
+        "openmpi": {
+          "version_split": [
+            4,
+            1,
+            5
+          ]
+        },
+        "scalapack": {
+          "version_split": [
+            2,
+            2,
+            0
+          ]
+        },
+        "gcc": {
+          "version_split": [
+            13,
+            1,
+            0
+          ]
+        }
+      },
+      "evaluation_result": {
+        "r": 0.04
+      },
+      "evaluation_detail": {
+        "r": {
+          "evaluations": 0.04,
+          "objective_scheme": "average"
+        }
+      },
+      "additional_output": {},
+      "source": "measure",
+      "modeling": "TLA_LCM",
+      "model_class": "Model_LCM",
+      "time": {
+        "tm_year": 2023,
+        "tm_mon": 7,
+        "tm_mday": 31,
+        "tm_hour": 14,
+        "tm_min": 27,
+        "tm_sec": 37,
+        "tm_wday": 0,
+        "tm_yday": 212,
+        "tm_isdst": 1
+      },
+      "uid": "12178cfa-2fe9-11ee-bdbc-9a70d92099b8"
+    },
+    {
+      "task_parameter": {
+        "n": 1000
+      },
+      "tuning_parameter": {
+        "nb": 8,
+        "lg2npernode": 0,
+        "p": 1
+      },
+      "constants": {
+        "nodes": 1,
+        "cores": 8,
+        "bunit": 8
+      },
+      "machine_configuration": {
+        "machine_name": "mac",
+        "intel": {
+          "nodes": 1,
+          "cores": 8
+        }
+      },
+      "software_configuration": {
+        "openmpi": {
+          "version_split": [
+            4,
+            1,
+            5
+          ]
+        },
+        "scalapack": {
+          "version_split": [
+            2,
+            2,
+            0
+          ]
+        },
+        "gcc": {
+          "version_split": [
+            13,
+            1,
+            0
+          ]
+        }
+      },
+      "evaluation_result": {
+        "r": 0.07
+      },
+      "evaluation_detail": {
+        "r": {
+          "evaluations": 0.07,
+          "objective_scheme": "average"
+        }
+      },
+      "additional_output": {},
+      "source": "measure",
+      "modeling": "TLA_LCM",
+      "model_class": "Model_LCM",
+      "time": {
+        "tm_year": 2023,
+        "tm_mon": 7,
+        "tm_mday": 31,
+        "tm_hour": 14,
+        "tm_min": 27,
+        "tm_sec": 38,
+        "tm_wday": 0,
+        "tm_yday": 212,
+        "tm_isdst": 1
+      },
+      "uid": "131eea3a-2fe9-11ee-bdbc-9a70d92099b8"
+    },
+    {
+      "task_parameter": {
+        "n": 1000
+      },
+      "tuning_parameter": {
+        "nb": 1,
+        "lg2npernode": 3,
+        "p": 7
+      },
+      "constants": {
+        "nodes": 1,
+        "cores": 8,
+        "bunit": 8
+      },
+      "machine_configuration": {
+        "machine_name": "mac",
+        "intel": {
+          "nodes": 1,
+          "cores": 8
+        }
+      },
+      "software_configuration": {
+        "openmpi": {
+          "version_split": [
+            4,
+            1,
+            5
+          ]
+        },
+        "scalapack": {
+          "version_split": [
+            2,
+            2,
+            0
+          ]
+        },
+        "gcc": {
+          "version_split": [
+            13,
+            1,
+            0
+          ]
+        }
+      },
+      "evaluation_result": {
+        "r": 0.09
+      },
+      "evaluation_detail": {
+        "r": {
+          "evaluations": 0.09,
+          "objective_scheme": "average"
+        }
+      },
+      "additional_output": {},
+      "source": "measure",
+      "modeling": "TLA_LCM",
+      "model_class": "Model_LCM",
+      "time": {
+        "tm_year": 2023,
+        "tm_mon": 7,
+        "tm_mday": 31,
+        "tm_hour": 14,
+        "tm_min": 27,
+        "tm_sec": 40,
+        "tm_wday": 0,
+        "tm_yday": 212,
+        "tm_isdst": 1
+      },
+      "uid": "143abdc2-2fe9-11ee-bdbc-9a70d92099b8"
+    },
+    {
+      "task_parameter": {
+        "n": 1000
+      },
+      "tuning_parameter": {
+        "nb": 5,
+        "lg2npernode": 3,
+        "p": 5
+      },
+      "constants": {
+        "nodes": 1,
+        "cores": 8,
+        "bunit": 8
+      },
+      "machine_configuration": {
+        "machine_name": "mac",
+        "intel": {
+          "nodes": 1,
+          "cores": 8
+        }
+      },
+      "software_configuration": {
+        "openmpi": {
+          "version_split": [
+            4,
+            1,
+            5
+          ]
+        },
+        "scalapack": {
+          "version_split": [
+            2,
+            2,
+            0
+          ]
+        },
+        "gcc": {
+          "version_split": [
+            13,
+            1,
+            0
+          ]
+        }
+      },
+      "evaluation_result": {
+        "r": 0.04
+      },
+      "evaluation_detail": {
+        "r": {
+          "evaluations": 0.04,
+          "objective_scheme": "average"
+        }
+      },
+      "additional_output": {},
+      "source": "measure",
+      "modeling": "TLA_LCM",
+      "model_class": "Model_LCM",
+      "time": {
+        "tm_year": 2023,
+        "tm_mon": 7,
+        "tm_mday": 31,
+        "tm_hour": 14,
+        "tm_min": 27,
+        "tm_sec": 42,
+        "tm_wday": 0,
+        "tm_yday": 212,
+        "tm_isdst": 1
+      },
+      "uid": "155367ae-2fe9-11ee-bdbc-9a70d92099b8"
+    },
+    {
+      "task_parameter": {
+        "n": 1000
+      },
+      "tuning_parameter": {
+        "nb": 3,
+        "lg2npernode": 3,
+        "p": 1
+      },
+      "constants": {
+        "nodes": 1,
+        "cores": 8,
+        "bunit": 8
+      },
+      "machine_configuration": {
+        "machine_name": "mac",
+        "intel": {
+          "nodes": 1,
+          "cores": 8
+        }
+      },
+      "software_configuration": {
+        "openmpi": {
+          "version_split": [
+            4,
+            1,
+            5
+          ]
+        },
+        "scalapack": {
+          "version_split": [
+            2,
+            2,
+            0
+          ]
+        },
+        "gcc": {
+          "version_split": [
+            13,
+            1,
+            0
+          ]
+        }
+      },
+      "evaluation_result": {
+        "r": 0.02
+      },
+      "evaluation_detail": {
+        "r": {
+          "evaluations": 0.02,
+          "objective_scheme": "average"
+        }
+      },
+      "additional_output": {},
+      "source": "measure",
+      "modeling": "TLA_LCM",
+      "model_class": "Model_LCM",
+      "time": {
+        "tm_year": 2023,
+        "tm_mon": 7,
+        "tm_mday": 31,
+        "tm_hour": 14,
+        "tm_min": 27,
+        "tm_sec": 44,
+        "tm_wday": 0,
+        "tm_yday": 212,
+        "tm_isdst": 1
+      },
+      "uid": "165b2aec-2fe9-11ee-bdbc-9a70d92099b8"
+    },
+    {
+      "task_parameter": {
+        "n": 1000
+      },
+      "tuning_parameter": {
+        "nb": 4,
+        "lg2npernode": 3,
+        "p": 3
+      },
+      "constants": {
+        "nodes": 1,
+        "cores": 8,
+        "bunit": 8
+      },
+      "machine_configuration": {
+        "machine_name": "mac",
+        "intel": {
+          "nodes": 1,
+          "cores": 8
+        }
+      },
+      "software_configuration": {
+        "openmpi": {
+          "version_split": [
+            4,
+            1,
+            5
+          ]
+        },
+        "scalapack": {
+          "version_split": [
+            2,
+            2,
+            0
+          ]
+        },
+        "gcc": {
+          "version_split": [
+            13,
+            1,
+            0
+          ]
+        }
+      },
+      "evaluation_result": {
+        "r": 0.03
+      },
+      "evaluation_detail": {
+        "r": {
+          "evaluations": 0.03,
+          "objective_scheme": "average"
+        }
+      },
+      "additional_output": {},
+      "source": "measure",
+      "modeling": "TLA_LCM",
+      "model_class": "Model_LCM",
+      "time": {
+        "tm_year": 2023,
+        "tm_mon": 7,
+        "tm_mday": 31,
+        "tm_hour": 14,
+        "tm_min": 27,
+        "tm_sec": 46,
+        "tm_wday": 0,
+        "tm_yday": 212,
+        "tm_isdst": 1
+      },
+      "uid": "17585a1e-2fe9-11ee-bdbc-9a70d92099b8"
+    },
+    {
+      "task_parameter": {
+        "n": 1000
+      },
+      "tuning_parameter": {
+        "nb": 8,
+        "lg2npernode": 3,
+        "p": 8
+      },
+      "constants": {
+        "nodes": 1,
+        "cores": 8,
+        "bunit": 8
+      },
+      "machine_configuration": {
+        "machine_name": "mac",
+        "intel": {
+          "nodes": 1,
+          "cores": 8
+        }
+      },
+      "software_configuration": {
+        "openmpi": {
+          "version_split": [
+            4,
+            1,
+            5
+          ]
+        },
+        "scalapack": {
+          "version_split": [
+            2,
+            2,
+            0
+          ]
+        },
+        "gcc": {
+          "version_split": [
+            13,
+            1,
+            0
+          ]
+        }
+      },
+      "evaluation_result": {
+        "r": 0.07
+      },
+      "evaluation_detail": {
+        "r": {
+          "evaluations": 0.07,
+          "objective_scheme": "average"
+        }
+      },
+      "additional_output": {},
+      "source": "measure",
+      "modeling": "TLA_LCM",
+      "model_class": "Model_LCM",
+      "time": {
+        "tm_year": 2023,
+        "tm_mon": 7,
+        "tm_mday": 31,
+        "tm_hour": 14,
+        "tm_min": 27,
+        "tm_sec": 47,
+        "tm_wday": 0,
+        "tm_yday": 212,
+        "tm_isdst": 1
+      },
+      "uid": "186b6f54-2fe9-11ee-bdbc-9a70d92099b8"
+    },
+    {
+      "task_parameter": {
+        "n": 1000
+      },
+      "tuning_parameter": {
+        "nb": 16,
+        "lg2npernode": 3,
+        "p": 6
+      },
+      "constants": {
+        "nodes": 1,
+        "cores": 8,
+        "bunit": 8
+      },
+      "machine_configuration": {
+        "machine_name": "mac",
+        "intel": {
+          "nodes": 1,
+          "cores": 8
+        }
+      },
+      "software_configuration": {
+        "openmpi": {
+          "version_split": [
+            4,
+            1,
+            5
+          ]
+        },
+        "scalapack": {
+          "version_split": [
+            2,
+            2,
+            0
+          ]
+        },
+        "gcc": {
+          "version_split": [
+            13,
+            1,
+            0
+          ]
+        }
+      },
+      "evaluation_result": {
+        "r": 0.04
+      },
+      "evaluation_detail": {
+        "r": {
+          "evaluations": 0.04,
+          "objective_scheme": "average"
+        }
+      },
+      "additional_output": {},
+      "source": "measure",
+      "modeling": "TLA_LCM",
+      "model_class": "Model_LCM",
+      "time": {
+        "tm_year": 2023,
+        "tm_mon": 7,
+        "tm_mday": 31,
+        "tm_hour": 14,
+        "tm_min": 27,
+        "tm_sec": 49,
+        "tm_wday": 0,
+        "tm_yday": 212,
+        "tm_isdst": 1
+      },
+      "uid": "1974f802-2fe9-11ee-bdbc-9a70d92099b8"
+    }
+  ]
 }

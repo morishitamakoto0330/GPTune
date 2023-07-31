@@ -91,18 +91,19 @@ def read_output(params, RUNDIR, niter=1):
         words = line.split()
         # WRITE( NOUT, FMT = 9993 ) 'WALL', M, N, MB, NB, NPROW, NPCOL, WTIME( 1 ), TMFLOPS, PASSED, FRESID
         # WRITE( NOUT, FMT = 9993 ) 'WALL', M, N, NB, NRHS, NBRHS, NPROW, NPCOL, WTIME( 1 ), WTIME( 2 ), TMFLOPS, PASSED
-        print('words[9]={}'.format(words[9]))
+        # print('words={}'.format(words))
+        # print('params={}'.format(params))
         if (len(words) > 0 and words[0] == "WALL"):
-            if (words[9] == "PASSED"):
+            if (words[11] == "PASSED"):
                 n  = int(words[2])
                 nb = int(words[3])
                 p  = int(words[6])
                 q  = int(words[7])
                 mytime = float(words[8])
-                while (not ((n == params[idxparam][2])\
-                        and (nb == params[idxparam][3])\
-                        and (p == params[idxparam][6])\
-                        and (q == params[idxparam][7]))):
+                while (not ((n == params[idxparam][1])\
+                        and (nb == params[idxparam][4])\
+                        and (p == params[idxparam][7])\
+                        and (q == params[idxparam][8]))):
                     idxparam += 1
                 if (mytime < times[idxparam]):
                     times[idxparam] = mytime

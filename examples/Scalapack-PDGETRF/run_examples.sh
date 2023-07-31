@@ -3,8 +3,8 @@ cd ../../
 . run_env.sh
 cd -
 
-$MPIRUN -n 4 ./scalapack-driver/bin/pdludriver /Users/makotomorishita/Desktop/LBNL/GPTune/examples/Scalapack-PDGETRF/scalapack-driver/exp/mac/GPTune/0/
-exit
+# $MPIRUN -n 8 ./scalapack-driver/bin/pdludriver /Users/makotomorishita/Desktop/LBNL/GPTune/examples/Scalapack-PDGETRF/scalapack-driver/exp/mac/GPTune/0/
+# exit
 
 # the following examples only work with openmpi
 if [[ $ModuleEnv == *"openmpi"* ]]; then

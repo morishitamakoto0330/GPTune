@@ -48,7 +48,7 @@ driver:build_dirs $(BIN)/pdluinfo.o $(BIN)/pdgetrrv.o $(BIN)/pdlaschk.o $(BIN)/p
 	$(FC) $(CFLAGS) -o $(BIN)/pdludriver $(LIBS) $(BIN)/pdluinfo.o $(BIN)/pdgetrrv.o $(BIN)/pdlaschk.o $(BIN)/pdlafchk.o $(BIN)/pmatgeninc.o $(BIN)/pdmatgen.o $(BIN)/pdludriver.o
 
 clean:
-	rm -f $(BIN)/pdludriver.o $(BIN)/pdluinfo.o $(BIN)/pdgetrrv.o $(BIN)/pdlaschk.o $(BIN)/pdlafchk.o $(BIN)/pmatgeninc.o $(BIN)/pdmatgen.o
+	rm -f $(BIN)/pdludriver.o $(BIN)/pdluinfo.o $(BIN)/pdgetrrv.o $(BIN)/pdlaschk.o $(BIN)/pdlafchk.o $(BIN)/pmatgeninc.o $(BIN)/pdmatgen.o $(BIN)/pdludriver
 
 cleanall:
 	rm -fr bin/*/*.o bin/*/pdludriver exp/*/*
