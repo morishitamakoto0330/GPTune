@@ -3,10 +3,10 @@
 """
 Example of invocation of this script:
 
-mpirun -n 1 python scalapack_MLA.py -mmax 5000 -nmax 5000 -nprocmin_pernode 1 -ntask 5 -nrun 10 -jobid 0 -tla_I 0 -tla_II 0
+mpirun -n 1 python scalapack_MLA.py -nmax 5000 -nprocmin_pernode 1 -ntask 5 -nrun 10 -jobid 0 -tla_I 0 -tla_II 0
 
 where:
-    -mmax (nmax) is the maximum number of rows (columns) in a matrix
+    -nmax is the maximum number of rows (columns) in a matrix
     -nprocmin_pernode is the minimum number of MPIs per node for launching the application code
     -ntask is the number of different matrix sizes that will be tuned
     -nrun is the number of calls per task 
@@ -223,13 +223,13 @@ def main():
     seed(1)
     if ntask == 1:
         # giventask = [[mmax,nmax]]
-        giventask = [[nmax,nmax]]
+        giventask = [[nmax]]
     elif ntask == 2:
         # giventask = [[mmax,nmax],[int(mmax/2),int(nmax/2)]]
-        giventask = [[nmax,nmax],[int(nmax/2),int(nmax/2)]]
+        giventask = [[nmax],[int(nmax/2)]]
     else:
         # giventask = [[randint(mmin,mmax),randint(nmin,nmax)] for i in range(ntask)]
-        giventask = [[nmax,nmax] for i in range(ntask)]
+        giventask = [[randint(nmin,nmax)] for i in range(ntask)]
     # # giventask = [[2000, 2000]]
     # giventask = [[177, 1303],[367, 381],[1990, 1850],[1123, 1046],[200, 143],[788, 1133],[286, 1673],[1430, 512],[1419, 1320],[622, 263] ]
     # giventask = [[177, 1303],[367, 381]]
@@ -250,7 +250,8 @@ def main():
         """ Print all input and parameter samples """
         for tid in range(NI):
             print("tid: %d" % (tid))
-            print("    m:%d n:%d" % (data.I[tid][0], data.I[tid][1]))
+            # print("    m:%d n:%d" % (data.I[tid][0], data.I[tid][1]))
+            print("    n:%d" % (data.I[tid][0]))
             print("    Ps ", data.P[tid])
             print("    Os ", data.O[tid].tolist())
             print('    Popt ', data.P[tid][np.argmin(data.O[tid])], 'Oopt ', min(data.O[tid])[0], 'nth ', np.argmin(data.O[tid]))
@@ -284,7 +285,8 @@ def main():
             """ Print all input and parameter samples """
             for tid in range(len(data.I)):
                 print("tid: %d" % (tid))
-                print("    m:%d n:%d" % (data.I[tid][0], data.I[tid][1]))
+                # print("    m:%d n:%d" % (data.I[tid][0], data.I[tid][1]))
+                print("    n:%d" % (data.I[tid][0]))
                 print("    Ps ", data.P[tid])
                 print("    Os ", data.O[tid].tolist())
                 print('    Popt ', data.P[tid][np.argmin(data.O[tid])], 'Oopt ', min(data.O[tid])[0], 'nth ', np.argmin(data.O[tid]))
@@ -307,7 +309,8 @@ def main():
                             function_evaluations[Tsrc.index(task_parameter)].append(func_eval)
                 return function_evaluations
 
-            newtask = [[400, 500], [800, 600]]
+            # newtask = [[400, 500], [800, 600]]
+            newtask = [[500], [600]]
             (aprxopts, objval, stats) = gt.TLA_II(Tnew=newtask, Tsrc=giventask, source_function_evaluations=LoadFunctionEvaluations(giventask))
             print("stats: ", stats)
 
@@ -325,7 +328,8 @@ def main():
         """ Print all input and parameter samples """
         for tid in range(NI):
             print("tid: %d" % (tid))
-            print("    m:%d n:%d" % (data.I[tid][0], data.I[tid][1]))
+            # print("    m:%d n:%d" % (data.I[tid][0], data.I[tid][1]))
+            print("    n:%d" % (data.I[tid][0]))
             print("    Ps ", data.P[tid])
             print("    Os ", data.O[tid].tolist())
             print('    Popt ', data.P[tid][np.argmin(data.O[tid])], 'Oopt ', min(data.O[tid])[0], 'nth ', np.argmin(data.O[tid]))
@@ -339,7 +343,8 @@ def main():
         """ Print all input and parameter samples """
         for tid in range(NI):
             print("tid: %d" % (tid))
-            print("    m:%d n:%d" % (data.I[tid][0], data.I[tid][1]))
+            # print("    m:%d n:%d" % (data.I[tid][0], data.I[tid][1]))
+            print("    n:%d" % (data.I[tid][0]))
             print("    Ps ", data.P[tid])
             print("    Os ", data.O[tid].tolist())
             print('    Popt ', data.P[tid][np.argmin(data.O[tid])], 'Oopt ', min(data.O[tid])[0], 'nth ', np.argmin(data.O[tid]))

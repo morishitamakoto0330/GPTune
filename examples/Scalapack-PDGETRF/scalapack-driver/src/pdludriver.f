@@ -93,7 +93,7 @@
      $                   LIPIV, LIWORK, LWORK, LW2, M, MAXMN,
      $                   MINMN, MP, MYCOL, MYRHS, MYROW, N, NB, NBRHS,
      $                   NGRIDS, NMAT, NNB, NNBR, NNR, NOUT, NP, NPCOL,
-     $                   NPROCS, NPROW, NQ, NRHS, WORKSIZ, CONFIG
+     $                   NPROCS, NPROW, NQ, NRHS, WORKSIZ, CONFIG, NBCONF
       REAL               THRESH
       DOUBLE PRECISION   ANORM, ANORM1, FRESID, NOPS, RCOND,
      $                   SRESID, SRESID2, TMFLOPS
@@ -106,6 +106,7 @@
      $                   QVAL( NTESTS )
       DOUBLE PRECISION   CTIME( 2 ), WTIME( 2 )
       DOUBLE PRECISION, DIMENSION(:), ALLOCATABLE :: MEM
+      CHARACTER*2        FACTOR
 *     ..
 *     .. External Subroutines ..
       EXTERNAL           BLACS_BARRIER, BLACS_EXIT, BLACS_GET,
@@ -137,6 +138,8 @@
 	   call MPI_COMM_GET_PARENT(master, ierr) ! YL: this is needed if this function is spawned by a master process	     
 
       CALL BLACS_PINFO( IAM, NPROCS )
+      write(*,*) IAM, NPROCS
+!      STOP
 *
 *     Allocate MEM
 *
@@ -156,15 +159,16 @@
 *     Open input file
 *
       OPEN( NIN, FILE=trim(FILEDIR)//'LU.in', STATUS='OLD' )
-      write(*,*) IAM, FILEDIR
+!      write(*,*) IAM, FILEDIR
       IF( IAM.EQ.0 ) THEN
           OPEN( NOUT, FILE=trim(FILEDIR)//'LU.out', STATUS='UNKNOWN' )
+          write(*,*) 'LU.out open'
       END IF
 *
 *     Read number of configurations
 *
       READ( NIN, FMT = 1111 ) NBCONF
-      write(*,*)'nrep', NBCONF
+!      write(*,*)'nrep', NBCONF
 *
 *      IASEED = 100
 *      IBSEED = 200
@@ -188,22 +192,28 @@
       NMAT = 1
       NNB = 1
       NGRIDS = 1
+      NNR = 0
 *    
 *     Read configurations
 *    
       READ( NIN, '(A)') STRING
-	   write(*,*) IAM, STRING
+	   write(*,'(2i6,a)') IAM, CONFIG, STRING
 	   
-      READ( STRING, * ) FACTOR, MVAL, NVAL,
-     $                        MBVAL, NBVAL, PVAL, QVAL, THRESH
+*      READ( STRING, * ) FACTOR, MVAL, NVAL,
+*     $                        MBVAL, NBVAL, PVAL, QVAL, THRESH
+      READ( STRING, * ) FACTOR, NVAL, NBVAL, PVAL, QVAL, THRESH
 !          WRITE( * , * ) FACTOR, MVAL, NVAL,
 !         $               MBVAL, NBVAL, PVAL, QVAL, THRESH
 *     
 
 *      write(*,*)FACTOR, MVAL, NVAL, MBVAL, NBVAL, PVAL, QVAL, THRESH
+!      write(*,*)FACTOR, NVAL, NBVAL, PVAL, QVAL, THRESH
+
 
       IASEED = 100
-      CHECK = ( THRESH.GE.0.0E+0 )
+!      CHECK = ( THRESH.GE.0.0E+0 )
+      CHECK = .FALSE.
+      EST = .FALSE.
 *
 *     Loop over different process grids
 *
@@ -250,7 +260,8 @@
 *
          DO 40 J = 1, NMAT
 *
-            M = MVAL( J )
+*            M = MVAL( J )
+            M = NVAL( J )
             N = NVAL( J )
 *
 *           Make sure matrix information is correct

@@ -44,7 +44,7 @@ def write_input(params, RUNDIR, niter=1):
         for k in range(niter):
             # READ( NIN, FMT = 2222 ) FACTOR, MVAL, NVAL, MBVAL, NBVAL, PVAL, QVAL, THRESH
             # fin.write("%2s%6d%6d%6d%6d%6d%6d%20.13E\n"%(param[0], param[1], param[2], param[5], param[6], param[9], param[10],param[11]))
-            fin.write("%2s%6d%6d%6d%6d%6d\n"%(param[0], param[1], param[4], param[7], param[8], param[9]))
+            fin.write("%2s%6d%6d%6d%6d%20.13E\n"%(param[0], param[1], param[4], param[7], param[8], param[9]))
     fin.close()
 
 def execute(nproc, nthreads, npernode, RUNDIR):
@@ -91,6 +91,7 @@ def read_output(params, RUNDIR, niter=1):
         words = line.split()
         # WRITE( NOUT, FMT = 9993 ) 'WALL', M, N, MB, NB, NPROW, NPCOL, WTIME( 1 ), TMFLOPS, PASSED, FRESID
         # WRITE( NOUT, FMT = 9993 ) 'WALL', M, N, NB, NRHS, NBRHS, NPROW, NPCOL, WTIME( 1 ), WTIME( 2 ), TMFLOPS, PASSED
+        print('words[9]={}'.format(words[9]))
         if (len(words) > 0 and words[0] == "WALL"):
             if (words[9] == "PASSED"):
                 n  = int(words[2])
