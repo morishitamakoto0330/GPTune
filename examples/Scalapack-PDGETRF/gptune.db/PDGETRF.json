@@ -4,27 +4,818 @@
   "surrogate_model": [
     {
       "hyperparameters": [
-        0.21628089410982818,
-        6.116915861966075,
-        1.7964352783611648,
+        5.685365688574562,
+        335668.557804323,
+        0.1119868984976687,
         1.0,
-        0.001398235019315935,
+        0.01740256585768547,
+        2.8770017814192145e-06,
+        0.007375579752691167
+      ],
+      "model_stats": {
+        "log_likelihood": 22.059287914361676,
+        "neg_log_likelihood": -22.059287914361676,
+        "gradients": [
+          2.9913619918886525e-06,
+          3.458355377875699e-09,
+          -2.4593228999947314e-06,
+          0.0,
+          4.569382115257565e-07,
+          -1.8613826004571875e-07,
+          2.8567080111079925e-09
+        ],
+        "iterations": 84
+      },
+      "task_parameters": [
+        [
+          1000
+        ]
+      ],
+      "function_evaluations": [
+        "573eb69e-2feb-11ee-a0f0-9a70d92099b8",
+        "5753bf26-2feb-11ee-a0f0-9a70d92099b8",
+        "576ac86a-2feb-11ee-a0f0-9a70d92099b8",
+        "577c966c-2feb-11ee-a0f0-9a70d92099b8",
+        "5791575a-2feb-11ee-a0f0-9a70d92099b8",
+        "57a8239a-2feb-11ee-a0f0-9a70d92099b8",
+        "57be5fb6-2feb-11ee-a0f0-9a70d92099b8",
+        "57d86c6c-2feb-11ee-a0f0-9a70d92099b8",
+        "57ee2e6c-2feb-11ee-a0f0-9a70d92099b8",
+        "580eb772-2feb-11ee-a0f0-9a70d92099b8"
+      ],
+      "input_space": [
+        {
+          "name": "n",
+          "transformer": "normalize",
+          "type": "int",
+          "lower_bound": 128,
+          "upper_bound": 1000,
+          "optimize": true
+        }
+      ],
+      "parameter_space": [
+        {
+          "name": "nb",
+          "transformer": "normalize",
+          "type": "int",
+          "lower_bound": 1,
+          "upper_bound": 16,
+          "optimize": true
+        },
+        {
+          "name": "lg2npernode",
+          "transformer": "normalize",
+          "type": "int",
+          "lower_bound": 0,
+          "upper_bound": 3,
+          "optimize": true
+        },
+        {
+          "name": "p",
+          "transformer": "normalize",
+          "type": "int",
+          "lower_bound": 1,
+          "upper_bound": 8,
+          "optimize": true
+        }
+      ],
+      "output_space": [
+        {
+          "name": "r",
+          "transformer": "identity",
+          "type": "real",
+          "lower_bound": -Infinity,
+          "upper_bound": Infinity,
+          "optimize": true
+        }
+      ],
+      "modeler": "Model_LCM",
+      "objective": {
+        "name": "r",
+        "transformer": "identity",
+        "type": "real",
+        "lower_bound": -Infinity,
+        "upper_bound": Infinity,
+        "optimize": true,
+        "objective_id": 0
+      },
+      "time": {
+        "tm_year": 2023,
+        "tm_mon": 7,
+        "tm_mday": 31,
+        "tm_hour": 14,
+        "tm_min": 43,
+        "tm_sec": 54,
+        "tm_wday": 0,
+        "tm_yday": 212,
+        "tm_isdst": 1
+      },
+      "uid": "5895ac6e-2feb-11ee-a0f0-9a70d92099b8"
+    },
+    {
+      "hyperparameters": [
+        1.942500310585996,
+        0.3113639380219403,
+        1.0829464639326363,
+        1.0,
+        0.016849327847584254,
+        1e-05,
+        0.0069875102327132356
+      ],
+      "model_stats": {
+        "log_likelihood": 18.468241133744247,
+        "neg_log_likelihood": -18.468241133744247,
+        "gradients": [
+          3.2189437408902677e-06,
+          8.21452239474496e-06,
+          7.061159507770753e-06,
+          0.0,
+          -7.328360143712271e-06,
+          0.14179077701758572,
+          -4.247164972802769e-08
+        ],
+        "iterations": 24
+      },
+      "task_parameters": [
+        [
+          1000
+        ]
+      ],
+      "function_evaluations": [
+        "573eb69e-2feb-11ee-a0f0-9a70d92099b8",
+        "5753bf26-2feb-11ee-a0f0-9a70d92099b8",
+        "576ac86a-2feb-11ee-a0f0-9a70d92099b8",
+        "577c966c-2feb-11ee-a0f0-9a70d92099b8",
+        "5791575a-2feb-11ee-a0f0-9a70d92099b8",
+        "57a8239a-2feb-11ee-a0f0-9a70d92099b8",
+        "57be5fb6-2feb-11ee-a0f0-9a70d92099b8",
+        "57d86c6c-2feb-11ee-a0f0-9a70d92099b8",
+        "57ee2e6c-2feb-11ee-a0f0-9a70d92099b8",
+        "580eb772-2feb-11ee-a0f0-9a70d92099b8",
+        "59367bd0-2feb-11ee-a0f0-9a70d92099b8"
+      ],
+      "input_space": [
+        {
+          "name": "n",
+          "transformer": "normalize",
+          "type": "int",
+          "lower_bound": 128,
+          "upper_bound": 1000,
+          "optimize": true
+        }
+      ],
+      "parameter_space": [
+        {
+          "name": "nb",
+          "transformer": "normalize",
+          "type": "int",
+          "lower_bound": 1,
+          "upper_bound": 16,
+          "optimize": true
+        },
+        {
+          "name": "lg2npernode",
+          "transformer": "normalize",
+          "type": "int",
+          "lower_bound": 0,
+          "upper_bound": 3,
+          "optimize": true
+        },
+        {
+          "name": "p",
+          "transformer": "normalize",
+          "type": "int",
+          "lower_bound": 1,
+          "upper_bound": 8,
+          "optimize": true
+        }
+      ],
+      "output_space": [
+        {
+          "name": "r",
+          "transformer": "identity",
+          "type": "real",
+          "lower_bound": -Infinity,
+          "upper_bound": Infinity,
+          "optimize": true
+        }
+      ],
+      "modeler": "Model_LCM",
+      "objective": {
+        "name": "r",
+        "transformer": "identity",
+        "type": "real",
+        "lower_bound": -Infinity,
+        "upper_bound": Infinity,
+        "optimize": true,
+        "objective_id": 0
+      },
+      "time": {
+        "tm_year": 2023,
+        "tm_mon": 7,
+        "tm_mday": 31,
+        "tm_hour": 14,
+        "tm_min": 43,
+        "tm_sec": 56,
+        "tm_wday": 0,
+        "tm_yday": 212,
+        "tm_isdst": 1
+      },
+      "uid": "59beabae-2feb-11ee-a0f0-9a70d92099b8"
+    },
+    {
+      "hyperparameters": [
+        1.605310742127319,
+        0.008403091743952163,
+        1.1393997110802585,
+        1.0,
+        0.012755844025460646,
+        1e-05,
+        0.002232420303154905
+      ],
+      "model_stats": {
+        "log_likelihood": 20.800635427720785,
+        "neg_log_likelihood": -20.800635427720785,
+        "gradients": [
+          -2.6534757413543275e-07,
+          0.0,
+          -8.449609190108731e-08,
+          0.0,
+          -8.230210722884494e-08,
+          0.206581148636333,
+          -6.431076810377958e-11
+        ],
+        "iterations": 39
+      },
+      "task_parameters": [
+        [
+          1000
+        ]
+      ],
+      "function_evaluations": [
+        "573eb69e-2feb-11ee-a0f0-9a70d92099b8",
+        "5753bf26-2feb-11ee-a0f0-9a70d92099b8",
+        "576ac86a-2feb-11ee-a0f0-9a70d92099b8",
+        "577c966c-2feb-11ee-a0f0-9a70d92099b8",
+        "5791575a-2feb-11ee-a0f0-9a70d92099b8",
+        "57a8239a-2feb-11ee-a0f0-9a70d92099b8",
+        "57be5fb6-2feb-11ee-a0f0-9a70d92099b8",
+        "57d86c6c-2feb-11ee-a0f0-9a70d92099b8",
+        "57ee2e6c-2feb-11ee-a0f0-9a70d92099b8",
+        "580eb772-2feb-11ee-a0f0-9a70d92099b8",
+        "59367bd0-2feb-11ee-a0f0-9a70d92099b8",
+        "5a49e55c-2feb-11ee-a0f0-9a70d92099b8"
+      ],
+      "input_space": [
+        {
+          "name": "n",
+          "transformer": "normalize",
+          "type": "int",
+          "lower_bound": 128,
+          "upper_bound": 1000,
+          "optimize": true
+        }
+      ],
+      "parameter_space": [
+        {
+          "name": "nb",
+          "transformer": "normalize",
+          "type": "int",
+          "lower_bound": 1,
+          "upper_bound": 16,
+          "optimize": true
+        },
+        {
+          "name": "lg2npernode",
+          "transformer": "normalize",
+          "type": "int",
+          "lower_bound": 0,
+          "upper_bound": 3,
+          "optimize": true
+        },
+        {
+          "name": "p",
+          "transformer": "normalize",
+          "type": "int",
+          "lower_bound": 1,
+          "upper_bound": 8,
+          "optimize": true
+        }
+      ],
+      "output_space": [
+        {
+          "name": "r",
+          "transformer": "identity",
+          "type": "real",
+          "lower_bound": -Infinity,
+          "upper_bound": Infinity,
+          "optimize": true
+        }
+      ],
+      "modeler": "Model_LCM",
+      "objective": {
+        "name": "r",
+        "transformer": "identity",
+        "type": "real",
+        "lower_bound": -Infinity,
+        "upper_bound": Infinity,
+        "optimize": true,
+        "objective_id": 0
+      },
+      "time": {
+        "tm_year": 2023,
+        "tm_mon": 7,
+        "tm_mday": 31,
+        "tm_hour": 14,
+        "tm_min": 43,
+        "tm_sec": 58,
+        "tm_wday": 0,
+        "tm_yday": 212,
+        "tm_isdst": 1
+      },
+      "uid": "5acb0cea-2feb-11ee-a0f0-9a70d92099b8"
+    },
+    {
+      "hyperparameters": [
+        1.5943791387054027,
+        0.17845203214148347,
+        1.2105230253328054,
+        1.0,
+        0.0008974708390110948,
+        1e-05,
+        0.10653860216728812
+      ],
+      "model_stats": {
+        "log_likelihood": 24.130058016657564,
+        "neg_log_likelihood": -24.130058016657564,
+        "gradients": [
+          -2.1808030936654177e-07,
+          1.425939748500582e-07,
+          8.385401695232275e-08,
+          0.0,
+          -4.465729323651565e-08,
+          0.3960282204800131,
+          -1.1295776576337796e-06
+        ],
+        "iterations": 37
+      },
+      "task_parameters": [
+        [
+          1000
+        ]
+      ],
+      "function_evaluations": [
+        "573eb69e-2feb-11ee-a0f0-9a70d92099b8",
+        "5753bf26-2feb-11ee-a0f0-9a70d92099b8",
+        "576ac86a-2feb-11ee-a0f0-9a70d92099b8",
+        "577c966c-2feb-11ee-a0f0-9a70d92099b8",
+        "5791575a-2feb-11ee-a0f0-9a70d92099b8",
+        "57a8239a-2feb-11ee-a0f0-9a70d92099b8",
+        "57be5fb6-2feb-11ee-a0f0-9a70d92099b8",
+        "57d86c6c-2feb-11ee-a0f0-9a70d92099b8",
+        "57ee2e6c-2feb-11ee-a0f0-9a70d92099b8",
+        "580eb772-2feb-11ee-a0f0-9a70d92099b8",
+        "59367bd0-2feb-11ee-a0f0-9a70d92099b8",
+        "5a49e55c-2feb-11ee-a0f0-9a70d92099b8",
+        "5b570c72-2feb-11ee-a0f0-9a70d92099b8"
+      ],
+      "input_space": [
+        {
+          "name": "n",
+          "transformer": "normalize",
+          "type": "int",
+          "lower_bound": 128,
+          "upper_bound": 1000,
+          "optimize": true
+        }
+      ],
+      "parameter_space": [
+        {
+          "name": "nb",
+          "transformer": "normalize",
+          "type": "int",
+          "lower_bound": 1,
+          "upper_bound": 16,
+          "optimize": true
+        },
+        {
+          "name": "lg2npernode",
+          "transformer": "normalize",
+          "type": "int",
+          "lower_bound": 0,
+          "upper_bound": 3,
+          "optimize": true
+        },
+        {
+          "name": "p",
+          "transformer": "normalize",
+          "type": "int",
+          "lower_bound": 1,
+          "upper_bound": 8,
+          "optimize": true
+        }
+      ],
+      "output_space": [
+        {
+          "name": "r",
+          "transformer": "identity",
+          "type": "real",
+          "lower_bound": -Infinity,
+          "upper_bound": Infinity,
+          "optimize": true
+        }
+      ],
+      "modeler": "Model_LCM",
+      "objective": {
+        "name": "r",
+        "transformer": "identity",
+        "type": "real",
+        "lower_bound": -Infinity,
+        "upper_bound": Infinity,
+        "optimize": true,
+        "objective_id": 0
+      },
+      "time": {
+        "tm_year": 2023,
+        "tm_mon": 7,
+        "tm_mday": 31,
+        "tm_hour": 14,
+        "tm_min": 44,
+        "tm_sec": 0,
+        "tm_wday": 0,
+        "tm_yday": 212,
+        "tm_isdst": 1
+      },
+      "uid": "5bdd6b1e-2feb-11ee-a0f0-9a70d92099b8"
+    },
+    {
+      "hyperparameters": [
+        4.62525933049041,
+        0.48596085695669905,
+        0.0168119835561999,
+        1.0,
+        0.00971718686977603,
+        8.198069755668545e-06,
+        0.010183294933237759
+      ],
+      "model_stats": {
+        "log_likelihood": 21.0646416299474,
+        "neg_log_likelihood": -21.0646416299474,
+        "gradients": [
+          -4.834476160509027e-06,
+          -3.4473091973548575e-06,
+          2.7747843873656402e-14,
+          0.0,
+          1.098867832691517e-06,
+          2.3056741302899083e-07,
+          2.3453709763762097e-08
+        ],
+        "iterations": 36
+      },
+      "task_parameters": [
+        [
+          1000
+        ]
+      ],
+      "function_evaluations": [
+        "573eb69e-2feb-11ee-a0f0-9a70d92099b8",
+        "5753bf26-2feb-11ee-a0f0-9a70d92099b8",
+        "576ac86a-2feb-11ee-a0f0-9a70d92099b8",
+        "577c966c-2feb-11ee-a0f0-9a70d92099b8",
+        "5791575a-2feb-11ee-a0f0-9a70d92099b8",
+        "57a8239a-2feb-11ee-a0f0-9a70d92099b8",
+        "57be5fb6-2feb-11ee-a0f0-9a70d92099b8",
+        "57d86c6c-2feb-11ee-a0f0-9a70d92099b8",
+        "57ee2e6c-2feb-11ee-a0f0-9a70d92099b8",
+        "580eb772-2feb-11ee-a0f0-9a70d92099b8",
+        "59367bd0-2feb-11ee-a0f0-9a70d92099b8",
+        "5a49e55c-2feb-11ee-a0f0-9a70d92099b8",
+        "5b570c72-2feb-11ee-a0f0-9a70d92099b8",
+        "5c74c95a-2feb-11ee-a0f0-9a70d92099b8"
+      ],
+      "input_space": [
+        {
+          "name": "n",
+          "transformer": "normalize",
+          "type": "int",
+          "lower_bound": 128,
+          "upper_bound": 1000,
+          "optimize": true
+        }
+      ],
+      "parameter_space": [
+        {
+          "name": "nb",
+          "transformer": "normalize",
+          "type": "int",
+          "lower_bound": 1,
+          "upper_bound": 16,
+          "optimize": true
+        },
+        {
+          "name": "lg2npernode",
+          "transformer": "normalize",
+          "type": "int",
+          "lower_bound": 0,
+          "upper_bound": 3,
+          "optimize": true
+        },
+        {
+          "name": "p",
+          "transformer": "normalize",
+          "type": "int",
+          "lower_bound": 1,
+          "upper_bound": 8,
+          "optimize": true
+        }
+      ],
+      "output_space": [
+        {
+          "name": "r",
+          "transformer": "identity",
+          "type": "real",
+          "lower_bound": -Infinity,
+          "upper_bound": Infinity,
+          "optimize": true
+        }
+      ],
+      "modeler": "Model_LCM",
+      "objective": {
+        "name": "r",
+        "transformer": "identity",
+        "type": "real",
+        "lower_bound": -Infinity,
+        "upper_bound": Infinity,
+        "optimize": true,
+        "objective_id": 0
+      },
+      "time": {
+        "tm_year": 2023,
+        "tm_mon": 7,
+        "tm_mday": 31,
+        "tm_hour": 14,
+        "tm_min": 44,
+        "tm_sec": 1,
+        "tm_wday": 0,
+        "tm_yday": 212,
+        "tm_isdst": 1
+      },
+      "uid": "5cfe5c92-2feb-11ee-a0f0-9a70d92099b8"
+    },
+    {
+      "hyperparameters": [
+        0.008723352988446103,
+        0.3621546134090379,
+        0.9517184449324094,
+        1.0,
+        0.007418550428231546,
+        1e-05,
+        0.01627589969414926
+      ],
+      "model_stats": {
+        "log_likelihood": 17.917988854339747,
+        "neg_log_likelihood": -17.917988854339747,
+        "gradients": [
+          1.7361427000637655e-11,
+          3.814044810873069e-06,
+          4.811719869265379e-07,
+          0.0,
+          1.969625752378048e-06,
+          0.046740388716139857,
+          1.4066455114350436e-07
+        ],
+        "iterations": 92
+      },
+      "task_parameters": [
+        [
+          1000
+        ]
+      ],
+      "function_evaluations": [
+        "573eb69e-2feb-11ee-a0f0-9a70d92099b8",
+        "5753bf26-2feb-11ee-a0f0-9a70d92099b8",
+        "576ac86a-2feb-11ee-a0f0-9a70d92099b8",
+        "577c966c-2feb-11ee-a0f0-9a70d92099b8",
+        "5791575a-2feb-11ee-a0f0-9a70d92099b8",
+        "57a8239a-2feb-11ee-a0f0-9a70d92099b8",
+        "57be5fb6-2feb-11ee-a0f0-9a70d92099b8",
+        "57d86c6c-2feb-11ee-a0f0-9a70d92099b8",
+        "57ee2e6c-2feb-11ee-a0f0-9a70d92099b8",
+        "580eb772-2feb-11ee-a0f0-9a70d92099b8",
+        "59367bd0-2feb-11ee-a0f0-9a70d92099b8",
+        "5a49e55c-2feb-11ee-a0f0-9a70d92099b8",
+        "5b570c72-2feb-11ee-a0f0-9a70d92099b8",
+        "5c74c95a-2feb-11ee-a0f0-9a70d92099b8",
+        "5d7859ca-2feb-11ee-a0f0-9a70d92099b8"
+      ],
+      "input_space": [
+        {
+          "name": "n",
+          "transformer": "normalize",
+          "type": "int",
+          "lower_bound": 128,
+          "upper_bound": 1000,
+          "optimize": true
+        }
+      ],
+      "parameter_space": [
+        {
+          "name": "nb",
+          "transformer": "normalize",
+          "type": "int",
+          "lower_bound": 1,
+          "upper_bound": 16,
+          "optimize": true
+        },
+        {
+          "name": "lg2npernode",
+          "transformer": "normalize",
+          "type": "int",
+          "lower_bound": 0,
+          "upper_bound": 3,
+          "optimize": true
+        },
+        {
+          "name": "p",
+          "transformer": "normalize",
+          "type": "int",
+          "lower_bound": 1,
+          "upper_bound": 8,
+          "optimize": true
+        }
+      ],
+      "output_space": [
+        {
+          "name": "r",
+          "transformer": "identity",
+          "type": "real",
+          "lower_bound": -Infinity,
+          "upper_bound": Infinity,
+          "optimize": true
+        }
+      ],
+      "modeler": "Model_LCM",
+      "objective": {
+        "name": "r",
+        "transformer": "identity",
+        "type": "real",
+        "lower_bound": -Infinity,
+        "upper_bound": Infinity,
+        "optimize": true,
+        "objective_id": 0
+      },
+      "time": {
+        "tm_year": 2023,
+        "tm_mon": 7,
+        "tm_mday": 31,
+        "tm_hour": 14,
+        "tm_min": 44,
+        "tm_sec": 3,
+        "tm_wday": 0,
+        "tm_yday": 212,
+        "tm_isdst": 1
+      },
+      "uid": "5e0101b2-2feb-11ee-a0f0-9a70d92099b8"
+    },
+    {
+      "hyperparameters": [
+        4.260573413934858,
+        0.3730267829776144,
+        0.001789983642210306,
+        1.0,
+        0.005470282689323523,
+        9.291008691151065e-06,
+        0.05278984060463203
+      ],
+      "model_stats": {
+        "log_likelihood": 23.694113225797842,
+        "neg_log_likelihood": -23.694113225797842,
+        "gradients": [
+          -4.462670595561935e-08,
+          8.284277708270338e-09,
+          0.0,
+          0.0,
+          6.889596897463788e-08,
+          -7.677587702212059e-10,
+          7.019638459088433e-08
+        ],
+        "iterations": 50
+      },
+      "task_parameters": [
+        [
+          1000
+        ]
+      ],
+      "function_evaluations": [
+        "573eb69e-2feb-11ee-a0f0-9a70d92099b8",
+        "5753bf26-2feb-11ee-a0f0-9a70d92099b8",
+        "576ac86a-2feb-11ee-a0f0-9a70d92099b8",
+        "577c966c-2feb-11ee-a0f0-9a70d92099b8",
+        "5791575a-2feb-11ee-a0f0-9a70d92099b8",
+        "57a8239a-2feb-11ee-a0f0-9a70d92099b8",
+        "57be5fb6-2feb-11ee-a0f0-9a70d92099b8",
+        "57d86c6c-2feb-11ee-a0f0-9a70d92099b8",
+        "57ee2e6c-2feb-11ee-a0f0-9a70d92099b8",
+        "580eb772-2feb-11ee-a0f0-9a70d92099b8",
+        "59367bd0-2feb-11ee-a0f0-9a70d92099b8",
+        "5a49e55c-2feb-11ee-a0f0-9a70d92099b8",
+        "5b570c72-2feb-11ee-a0f0-9a70d92099b8",
+        "5c74c95a-2feb-11ee-a0f0-9a70d92099b8",
+        "5d7859ca-2feb-11ee-a0f0-9a70d92099b8",
+        "5e82d192-2feb-11ee-a0f0-9a70d92099b8"
+      ],
+      "input_space": [
+        {
+          "name": "n",
+          "transformer": "normalize",
+          "type": "int",
+          "lower_bound": 128,
+          "upper_bound": 1000,
+          "optimize": true
+        }
+      ],
+      "parameter_space": [
+        {
+          "name": "nb",
+          "transformer": "normalize",
+          "type": "int",
+          "lower_bound": 1,
+          "upper_bound": 16,
+          "optimize": true
+        },
+        {
+          "name": "lg2npernode",
+          "transformer": "normalize",
+          "type": "int",
+          "lower_bound": 0,
+          "upper_bound": 3,
+          "optimize": true
+        },
+        {
+          "name": "p",
+          "transformer": "normalize",
+          "type": "int",
+          "lower_bound": 1,
+          "upper_bound": 8,
+          "optimize": true
+        }
+      ],
+      "output_space": [
+        {
+          "name": "r",
+          "transformer": "identity",
+          "type": "real",
+          "lower_bound": -Infinity,
+          "upper_bound": Infinity,
+          "optimize": true
+        }
+      ],
+      "modeler": "Model_LCM",
+      "objective": {
+        "name": "r",
+        "transformer": "identity",
+        "type": "real",
+        "lower_bound": -Infinity,
+        "upper_bound": Infinity,
+        "optimize": true,
+        "objective_id": 0
+      },
+      "time": {
+        "tm_year": 2023,
+        "tm_mon": 7,
+        "tm_mday": 31,
+        "tm_hour": 14,
+        "tm_min": 44,
+        "tm_sec": 5,
+        "tm_wday": 0,
+        "tm_yday": 212,
+        "tm_isdst": 1
+      },
+      "uid": "5f051c1a-2feb-11ee-a0f0-9a70d92099b8"
+    },
+    {
+      "hyperparameters": [
+        7.691758678354674,
+        0.3748891605941075,
+        0.41560953404487955,
+        1.0,
+        0.020532434874364045,
         1e-10,
-        0.06386445751855424
+        0.058494542293481604
       ],
       "model_stats": {
-        "log_likelihood": 22.187896386495755,
-        "neg_log_likelihood": -22.187896386495755,
+        "log_likelihood": 35.39428033508585,
+        "neg_log_likelihood": -35.39428033508585,
         "gradients": [
-          -3.3081389645417403e-06,
-          4.133036446835048e-07,
-          7.073728964523962e-07,
+          -2.3436468095383578e-07,
+          -3.1243975229244825e-07,
+          -2.2236315544432728e-06,
           0.0,
-          8.973957086384104e-09,
-          -7.627252093827912e-07,
-          5.2354193046766144e-08
+          5.208117899199771e-07,
+          -1.341954912274615e-05,
+          1.735807510857698e-07
         ],
-        "iterations": 53
+        "iterations": 99
       },
       "task_parameters": [
         [
@@ -32,16 +823,23 @@
         ]
       ],
       "function_evaluations": [
-        "0dbd8f4c-2fe9-11ee-bdbc-9a70d92099b8",
-        "0dd842d8-2fe9-11ee-bdbc-9a70d92099b8",
-        "0df6235c-2fe9-11ee-bdbc-9a70d92099b8",
-        "0e0fc816-2fe9-11ee-bdbc-9a70d92099b8",
-        "0e31d17c-2fe9-11ee-bdbc-9a70d92099b8",
-        "0e4f26be-2fe9-11ee-bdbc-9a70d92099b8",
-        "0e6cacf2-2fe9-11ee-bdbc-9a70d92099b8",
-        "0e858f4c-2fe9-11ee-bdbc-9a70d92099b8",
-        "0eb871a0-2fe9-11ee-bdbc-9a70d92099b8",
-        "0ecfc094-2fe9-11ee-bdbc-9a70d92099b8"
+        "573eb69e-2feb-11ee-a0f0-9a70d92099b8",
+        "5753bf26-2feb-11ee-a0f0-9a70d92099b8",
+        "576ac86a-2feb-11ee-a0f0-9a70d92099b8",
+        "577c966c-2feb-11ee-a0f0-9a70d92099b8",
+        "5791575a-2feb-11ee-a0f0-9a70d92099b8",
+        "57a8239a-2feb-11ee-a0f0-9a70d92099b8",
+        "57be5fb6-2feb-11ee-a0f0-9a70d92099b8",
+        "57d86c6c-2feb-11ee-a0f0-9a70d92099b8",
+        "57ee2e6c-2feb-11ee-a0f0-9a70d92099b8",
+        "580eb772-2feb-11ee-a0f0-9a70d92099b8",
+        "59367bd0-2feb-11ee-a0f0-9a70d92099b8",
+        "5a49e55c-2feb-11ee-a0f0-9a70d92099b8",
+        "5b570c72-2feb-11ee-a0f0-9a70d92099b8",
+        "5c74c95a-2feb-11ee-a0f0-9a70d92099b8",
+        "5d7859ca-2feb-11ee-a0f0-9a70d92099b8",
+        "5e82d192-2feb-11ee-a0f0-9a70d92099b8",
+        "5f8a0466-2feb-11ee-a0f0-9a70d92099b8"
       ],
       "input_space": [
         {
@@ -104,37 +902,37 @@
         "tm_mon": 7,
         "tm_mday": 31,
         "tm_hour": 14,
-        "tm_min": 27,
-        "tm_sec": 32,
+        "tm_min": 44,
+        "tm_sec": 7,
         "tm_wday": 0,
         "tm_yday": 212,
         "tm_isdst": 1
       },
-      "uid": "0f68d7de-2fe9-11ee-bdbc-9a70d92099b8"
+      "uid": "600e7d54-2feb-11ee-a0f0-9a70d92099b8"
     },
     {
       "hyperparameters": [
-        0.008709701331215878,
-        0.09707300129327716,
-        39.36784917534017,
+        7.093307503670985,
+        0.05902876647831866,
+        0.3272278809881853,
         1.0,
-        0.0039900001734622294,
+        0.01543427490893386,
         1e-05,
-        9.010758256030615e-06
+        0.00022801643848175323
       ],
       "model_stats": {
-        "log_likelihood": 14.759711183048452,
-        "neg_log_likelihood": -14.759711183048452,
+        "log_likelihood": 34.607436750407956,
+        "neg_log_likelihood": -34.607436750407956,
         "gradients": [
-          2.1187501180731453e-11,
-          2.695448774332125e-09,
-          3.6886247243389175e-14,
+          4.924410197727873e-06,
+          -1.21025091665434e-07,
+          -1.878186780260876e-06,
           0.0,
-          -4.864900162657905e-07,
-          -1.2194173069033378e-09,
-          -1.9799475703407877e-14
+          -2.886735716597506e-06,
+          0.37970707684899885,
+          -1.9448362715347363e-11
         ],
-        "iterations": 8
+        "iterations": 123
       },
       "task_parameters": [
         [
@@ -142,17 +940,24 @@
         ]
       ],
       "function_evaluations": [
-        "0dbd8f4c-2fe9-11ee-bdbc-9a70d92099b8",
-        "0dd842d8-2fe9-11ee-bdbc-9a70d92099b8",
-        "0df6235c-2fe9-11ee-bdbc-9a70d92099b8",
-        "0e0fc816-2fe9-11ee-bdbc-9a70d92099b8",
-        "0e31d17c-2fe9-11ee-bdbc-9a70d92099b8",
-        "0e4f26be-2fe9-11ee-bdbc-9a70d92099b8",
-        "0e6cacf2-2fe9-11ee-bdbc-9a70d92099b8",
-        "0e858f4c-2fe9-11ee-bdbc-9a70d92099b8",
-        "0eb871a0-2fe9-11ee-bdbc-9a70d92099b8",
-        "0ecfc094-2fe9-11ee-bdbc-9a70d92099b8",
-        "10081c86-2fe9-11ee-bdbc-9a70d92099b8"
+        "573eb69e-2feb-11ee-a0f0-9a70d92099b8",
+        "5753bf26-2feb-11ee-a0f0-9a70d92099b8",
+        "576ac86a-2feb-11ee-a0f0-9a70d92099b8",
+        "577c966c-2feb-11ee-a0f0-9a70d92099b8",
+        "5791575a-2feb-11ee-a0f0-9a70d92099b8",
+        "57a8239a-2feb-11ee-a0f0-9a70d92099b8",
+        "57be5fb6-2feb-11ee-a0f0-9a70d92099b8",
+        "57d86c6c-2feb-11ee-a0f0-9a70d92099b8",
+        "57ee2e6c-2feb-11ee-a0f0-9a70d92099b8",
+        "580eb772-2feb-11ee-a0f0-9a70d92099b8",
+        "59367bd0-2feb-11ee-a0f0-9a70d92099b8",
+        "5a49e55c-2feb-11ee-a0f0-9a70d92099b8",
+        "5b570c72-2feb-11ee-a0f0-9a70d92099b8",
+        "5c74c95a-2feb-11ee-a0f0-9a70d92099b8",
+        "5d7859ca-2feb-11ee-a0f0-9a70d92099b8",
+        "5e82d192-2feb-11ee-a0f0-9a70d92099b8",
+        "5f8a0466-2feb-11ee-a0f0-9a70d92099b8",
+        "60966020-2feb-11ee-a0f0-9a70d92099b8"
       ],
       "input_space": [
         {
@@ -215,37 +1020,37 @@
         "tm_mon": 7,
         "tm_mday": 31,
         "tm_hour": 14,
-        "tm_min": 27,
-        "tm_sec": 34,
+        "tm_min": 44,
+        "tm_sec": 8,
         "tm_wday": 0,
         "tm_yday": 212,
         "tm_isdst": 1
       },
-      "uid": "108fbf06-2fe9-11ee-bdbc-9a70d92099b8"
+      "uid": "612023c8-2feb-11ee-a0f0-9a70d92099b8"
     },
     {
       "hyperparameters": [
-        1.0038124098305743,
-        1.9409505978965633,
-        0.19942658784539402,
+        0.7421446702778052,
+        0.27084401029988686,
+        0.5531370963151819,
         1.0,
-        0.0025969329970051886,
+        0.013011238606661686,
         1e-05,
-        0.01807408582180384
+        0.021598765620125117
       ],
       "model_stats": {
-        "log_likelihood": 28.48844528987165,
-        "neg_log_likelihood": -28.48844528987165,
+        "log_likelihood": 31.23797692287798,
+        "neg_log_likelihood": -31.23797692287798,
         "gradients": [
-          5.084452459067155e-07,
-          -3.716627971732519e-07,
-          4.950165568548548e-06,
+          7.71509978863237e-06,
+          2.1535877969824924e-06,
+          3.5245258827032444e-06,
           0.0,
-          5.078889497261664e-07,
-          0.38374252360994016,
-          1.277764048090777e-07
+          -1.532953081182693e-07,
+          0.878841238296939,
+          -1.0992538041720687e-08
         ],
-        "iterations": 21
+        "iterations": 46
       },
       "task_parameters": [
         [
@@ -253,18 +1058,25 @@
         ]
       ],
       "function_evaluations": [
-        "0dbd8f4c-2fe9-11ee-bdbc-9a70d92099b8",
-        "0dd842d8-2fe9-11ee-bdbc-9a70d92099b8",
-        "0df6235c-2fe9-11ee-bdbc-9a70d92099b8",
-        "0e0fc816-2fe9-11ee-bdbc-9a70d92099b8",
-        "0e31d17c-2fe9-11ee-bdbc-9a70d92099b8",
-        "0e4f26be-2fe9-11ee-bdbc-9a70d92099b8",
-        "0e6cacf2-2fe9-11ee-bdbc-9a70d92099b8",
-        "0e858f4c-2fe9-11ee-bdbc-9a70d92099b8",
-        "0eb871a0-2fe9-11ee-bdbc-9a70d92099b8",
-        "0ecfc094-2fe9-11ee-bdbc-9a70d92099b8",
-        "10081c86-2fe9-11ee-bdbc-9a70d92099b8",
-        "1112e976-2fe9-11ee-bdbc-9a70d92099b8"
+        "573eb69e-2feb-11ee-a0f0-9a70d92099b8",
+        "5753bf26-2feb-11ee-a0f0-9a70d92099b8",
+        "576ac86a-2feb-11ee-a0f0-9a70d92099b8",
+        "577c966c-2feb-11ee-a0f0-9a70d92099b8",
+        "5791575a-2feb-11ee-a0f0-9a70d92099b8",
+        "57a8239a-2feb-11ee-a0f0-9a70d92099b8",
+        "57be5fb6-2feb-11ee-a0f0-9a70d92099b8",
+        "57d86c6c-2feb-11ee-a0f0-9a70d92099b8",
+        "57ee2e6c-2feb-11ee-a0f0-9a70d92099b8",
+        "580eb772-2feb-11ee-a0f0-9a70d92099b8",
+        "59367bd0-2feb-11ee-a0f0-9a70d92099b8",
+        "5a49e55c-2feb-11ee-a0f0-9a70d92099b8",
+        "5b570c72-2feb-11ee-a0f0-9a70d92099b8",
+        "5c74c95a-2feb-11ee-a0f0-9a70d92099b8",
+        "5d7859ca-2feb-11ee-a0f0-9a70d92099b8",
+        "5e82d192-2feb-11ee-a0f0-9a70d92099b8",
+        "5f8a0466-2feb-11ee-a0f0-9a70d92099b8",
+        "60966020-2feb-11ee-a0f0-9a70d92099b8",
+        "61ae3f3c-2feb-11ee-a0f0-9a70d92099b8"
       ],
       "input_space": [
         {
@@ -327,825 +1139,13 @@
         "tm_mon": 7,
         "tm_mday": 31,
         "tm_hour": 14,
-        "tm_min": 27,
-        "tm_sec": 36,
+        "tm_min": 44,
+        "tm_sec": 10,
         "tm_wday": 0,
         "tm_yday": 212,
         "tm_isdst": 1
       },
-      "uid": "11965194-2fe9-11ee-bdbc-9a70d92099b8"
-    },
-    {
-      "hyperparameters": [
-        1.9631152207475788,
-        0.007306930024371833,
-        0.32792610455314036,
-        1.0,
-        0.00245412649403993,
-        1e-05,
-        0.0005977263434510913
-      ],
-      "model_stats": {
-        "log_likelihood": 26.65393073468546,
-        "neg_log_likelihood": -26.65393073468546,
-        "gradients": [
-          7.261492527277369e-07,
-          0.0,
-          1.6150858286323455e-06,
-          0.0,
-          -1.0376839603443315e-06,
-          5.449755256682493,
-          -3.021363484536934e-10
-        ],
-        "iterations": 38
-      },
-      "task_parameters": [
-        [
-          1000
-        ]
-      ],
-      "function_evaluations": [
-        "0dbd8f4c-2fe9-11ee-bdbc-9a70d92099b8",
-        "0dd842d8-2fe9-11ee-bdbc-9a70d92099b8",
-        "0df6235c-2fe9-11ee-bdbc-9a70d92099b8",
-        "0e0fc816-2fe9-11ee-bdbc-9a70d92099b8",
-        "0e31d17c-2fe9-11ee-bdbc-9a70d92099b8",
-        "0e4f26be-2fe9-11ee-bdbc-9a70d92099b8",
-        "0e6cacf2-2fe9-11ee-bdbc-9a70d92099b8",
-        "0e858f4c-2fe9-11ee-bdbc-9a70d92099b8",
-        "0eb871a0-2fe9-11ee-bdbc-9a70d92099b8",
-        "0ecfc094-2fe9-11ee-bdbc-9a70d92099b8",
-        "10081c86-2fe9-11ee-bdbc-9a70d92099b8",
-        "1112e976-2fe9-11ee-bdbc-9a70d92099b8",
-        "12178cfa-2fe9-11ee-bdbc-9a70d92099b8"
-      ],
-      "input_space": [
-        {
-          "name": "n",
-          "transformer": "normalize",
-          "type": "int",
-          "lower_bound": 128,
-          "upper_bound": 1000,
-          "optimize": true
-        }
-      ],
-      "parameter_space": [
-        {
-          "name": "nb",
-          "transformer": "normalize",
-          "type": "int",
-          "lower_bound": 1,
-          "upper_bound": 16,
-          "optimize": true
-        },
-        {
-          "name": "lg2npernode",
-          "transformer": "normalize",
-          "type": "int",
-          "lower_bound": 0,
-          "upper_bound": 3,
-          "optimize": true
-        },
-        {
-          "name": "p",
-          "transformer": "normalize",
-          "type": "int",
-          "lower_bound": 1,
-          "upper_bound": 8,
-          "optimize": true
-        }
-      ],
-      "output_space": [
-        {
-          "name": "r",
-          "transformer": "identity",
-          "type": "real",
-          "lower_bound": -Infinity,
-          "upper_bound": Infinity,
-          "optimize": true
-        }
-      ],
-      "modeler": "Model_LCM",
-      "objective": {
-        "name": "r",
-        "transformer": "identity",
-        "type": "real",
-        "lower_bound": -Infinity,
-        "upper_bound": Infinity,
-        "optimize": true,
-        "objective_id": 0
-      },
-      "time": {
-        "tm_year": 2023,
-        "tm_mon": 7,
-        "tm_mday": 31,
-        "tm_hour": 14,
-        "tm_min": 27,
-        "tm_sec": 38,
-        "tm_wday": 0,
-        "tm_yday": 212,
-        "tm_isdst": 1
-      },
-      "uid": "12a63f86-2fe9-11ee-bdbc-9a70d92099b8"
-    },
-    {
-      "hyperparameters": [
-        0.21029614476517133,
-        1396.145662527244,
-        0.7904206097458758,
-        1.0,
-        0.004968100814506925,
-        1e-05,
-        0.0002818297055382491
-      ],
-      "model_stats": {
-        "log_likelihood": 29.830862314665026,
-        "neg_log_likelihood": -29.830862314665026,
-        "gradients": [
-          3.824704350563479e-06,
-          -3.7177528240047775e-06,
-          8.711425819596386e-08,
-          0.0,
-          -6.114166993060086e-07,
-          0.28174128028613765,
-          -1.955016584266035e-11
-        ],
-        "iterations": 30
-      },
-      "task_parameters": [
-        [
-          1000
-        ]
-      ],
-      "function_evaluations": [
-        "0dbd8f4c-2fe9-11ee-bdbc-9a70d92099b8",
-        "0dd842d8-2fe9-11ee-bdbc-9a70d92099b8",
-        "0df6235c-2fe9-11ee-bdbc-9a70d92099b8",
-        "0e0fc816-2fe9-11ee-bdbc-9a70d92099b8",
-        "0e31d17c-2fe9-11ee-bdbc-9a70d92099b8",
-        "0e4f26be-2fe9-11ee-bdbc-9a70d92099b8",
-        "0e6cacf2-2fe9-11ee-bdbc-9a70d92099b8",
-        "0e858f4c-2fe9-11ee-bdbc-9a70d92099b8",
-        "0eb871a0-2fe9-11ee-bdbc-9a70d92099b8",
-        "0ecfc094-2fe9-11ee-bdbc-9a70d92099b8",
-        "10081c86-2fe9-11ee-bdbc-9a70d92099b8",
-        "1112e976-2fe9-11ee-bdbc-9a70d92099b8",
-        "12178cfa-2fe9-11ee-bdbc-9a70d92099b8",
-        "131eea3a-2fe9-11ee-bdbc-9a70d92099b8"
-      ],
-      "input_space": [
-        {
-          "name": "n",
-          "transformer": "normalize",
-          "type": "int",
-          "lower_bound": 128,
-          "upper_bound": 1000,
-          "optimize": true
-        }
-      ],
-      "parameter_space": [
-        {
-          "name": "nb",
-          "transformer": "normalize",
-          "type": "int",
-          "lower_bound": 1,
-          "upper_bound": 16,
-          "optimize": true
-        },
-        {
-          "name": "lg2npernode",
-          "transformer": "normalize",
-          "type": "int",
-          "lower_bound": 0,
-          "upper_bound": 3,
-          "optimize": true
-        },
-        {
-          "name": "p",
-          "transformer": "normalize",
-          "type": "int",
-          "lower_bound": 1,
-          "upper_bound": 8,
-          "optimize": true
-        }
-      ],
-      "output_space": [
-        {
-          "name": "r",
-          "transformer": "identity",
-          "type": "real",
-          "lower_bound": -Infinity,
-          "upper_bound": Infinity,
-          "optimize": true
-        }
-      ],
-      "modeler": "Model_LCM",
-      "objective": {
-        "name": "r",
-        "transformer": "identity",
-        "type": "real",
-        "lower_bound": -Infinity,
-        "upper_bound": Infinity,
-        "optimize": true,
-        "objective_id": 0
-      },
-      "time": {
-        "tm_year": 2023,
-        "tm_mon": 7,
-        "tm_mday": 31,
-        "tm_hour": 14,
-        "tm_min": 27,
-        "tm_sec": 39,
-        "tm_wday": 0,
-        "tm_yday": 212,
-        "tm_isdst": 1
-      },
-      "uid": "13a69fca-2fe9-11ee-bdbc-9a70d92099b8"
-    },
-    {
-      "hyperparameters": [
-        0.8363204961237373,
-        70413.69822266715,
-        0.010589246532141487,
-        1.0,
-        0.003950389529062031,
-        5.831628082584133e-06,
-        5.1889238240673125e-06
-      ],
-      "model_stats": {
-        "log_likelihood": 32.008940038125104,
-        "neg_log_likelihood": -32.008940038125104,
-        "gradients": [
-          -2.707172712224093e-06,
-          8.105093399207776e-09,
-          2.967014277490781e-37,
-          0.0,
-          -3.519614808889749e-06,
-          -2.3034860585677053e-06,
-          -4.797774082910797e-14
-        ],
-        "iterations": 58
-      },
-      "task_parameters": [
-        [
-          1000
-        ]
-      ],
-      "function_evaluations": [
-        "0dbd8f4c-2fe9-11ee-bdbc-9a70d92099b8",
-        "0dd842d8-2fe9-11ee-bdbc-9a70d92099b8",
-        "0df6235c-2fe9-11ee-bdbc-9a70d92099b8",
-        "0e0fc816-2fe9-11ee-bdbc-9a70d92099b8",
-        "0e31d17c-2fe9-11ee-bdbc-9a70d92099b8",
-        "0e4f26be-2fe9-11ee-bdbc-9a70d92099b8",
-        "0e6cacf2-2fe9-11ee-bdbc-9a70d92099b8",
-        "0e858f4c-2fe9-11ee-bdbc-9a70d92099b8",
-        "0eb871a0-2fe9-11ee-bdbc-9a70d92099b8",
-        "0ecfc094-2fe9-11ee-bdbc-9a70d92099b8",
-        "10081c86-2fe9-11ee-bdbc-9a70d92099b8",
-        "1112e976-2fe9-11ee-bdbc-9a70d92099b8",
-        "12178cfa-2fe9-11ee-bdbc-9a70d92099b8",
-        "131eea3a-2fe9-11ee-bdbc-9a70d92099b8",
-        "143abdc2-2fe9-11ee-bdbc-9a70d92099b8"
-      ],
-      "input_space": [
-        {
-          "name": "n",
-          "transformer": "normalize",
-          "type": "int",
-          "lower_bound": 128,
-          "upper_bound": 1000,
-          "optimize": true
-        }
-      ],
-      "parameter_space": [
-        {
-          "name": "nb",
-          "transformer": "normalize",
-          "type": "int",
-          "lower_bound": 1,
-          "upper_bound": 16,
-          "optimize": true
-        },
-        {
-          "name": "lg2npernode",
-          "transformer": "normalize",
-          "type": "int",
-          "lower_bound": 0,
-          "upper_bound": 3,
-          "optimize": true
-        },
-        {
-          "name": "p",
-          "transformer": "normalize",
-          "type": "int",
-          "lower_bound": 1,
-          "upper_bound": 8,
-          "optimize": true
-        }
-      ],
-      "output_space": [
-        {
-          "name": "r",
-          "transformer": "identity",
-          "type": "real",
-          "lower_bound": -Infinity,
-          "upper_bound": Infinity,
-          "optimize": true
-        }
-      ],
-      "modeler": "Model_LCM",
-      "objective": {
-        "name": "r",
-        "transformer": "identity",
-        "type": "real",
-        "lower_bound": -Infinity,
-        "upper_bound": Infinity,
-        "optimize": true,
-        "objective_id": 0
-      },
-      "time": {
-        "tm_year": 2023,
-        "tm_mon": 7,
-        "tm_mday": 31,
-        "tm_hour": 14,
-        "tm_min": 27,
-        "tm_sec": 41,
-        "tm_wday": 0,
-        "tm_yday": 212,
-        "tm_isdst": 1
-      },
-      "uid": "14c74350-2fe9-11ee-bdbc-9a70d92099b8"
-    },
-    {
-      "hyperparameters": [
-        0.851943447460939,
-        0.025930580724891836,
-        0.19968346652320879,
-        1.0,
-        0.0026818138778015553,
-        1e-05,
-        0.014724374345334634
-      ],
-      "model_stats": {
-        "log_likelihood": 31.601921934896165,
-        "neg_log_likelihood": -31.601921934896165,
-        "gradients": [
-          1.3810921625518474e-07,
-          6.908905064978764e-34,
-          -1.101659418370482e-06,
-          0.0,
-          1.9397319115908993e-07,
-          0.42485820273242736,
-          3.136293517653207e-08
-        ],
-        "iterations": 36
-      },
-      "task_parameters": [
-        [
-          1000
-        ]
-      ],
-      "function_evaluations": [
-        "0dbd8f4c-2fe9-11ee-bdbc-9a70d92099b8",
-        "0dd842d8-2fe9-11ee-bdbc-9a70d92099b8",
-        "0df6235c-2fe9-11ee-bdbc-9a70d92099b8",
-        "0e0fc816-2fe9-11ee-bdbc-9a70d92099b8",
-        "0e31d17c-2fe9-11ee-bdbc-9a70d92099b8",
-        "0e4f26be-2fe9-11ee-bdbc-9a70d92099b8",
-        "0e6cacf2-2fe9-11ee-bdbc-9a70d92099b8",
-        "0e858f4c-2fe9-11ee-bdbc-9a70d92099b8",
-        "0eb871a0-2fe9-11ee-bdbc-9a70d92099b8",
-        "0ecfc094-2fe9-11ee-bdbc-9a70d92099b8",
-        "10081c86-2fe9-11ee-bdbc-9a70d92099b8",
-        "1112e976-2fe9-11ee-bdbc-9a70d92099b8",
-        "12178cfa-2fe9-11ee-bdbc-9a70d92099b8",
-        "131eea3a-2fe9-11ee-bdbc-9a70d92099b8",
-        "143abdc2-2fe9-11ee-bdbc-9a70d92099b8",
-        "155367ae-2fe9-11ee-bdbc-9a70d92099b8"
-      ],
-      "input_space": [
-        {
-          "name": "n",
-          "transformer": "normalize",
-          "type": "int",
-          "lower_bound": 128,
-          "upper_bound": 1000,
-          "optimize": true
-        }
-      ],
-      "parameter_space": [
-        {
-          "name": "nb",
-          "transformer": "normalize",
-          "type": "int",
-          "lower_bound": 1,
-          "upper_bound": 16,
-          "optimize": true
-        },
-        {
-          "name": "lg2npernode",
-          "transformer": "normalize",
-          "type": "int",
-          "lower_bound": 0,
-          "upper_bound": 3,
-          "optimize": true
-        },
-        {
-          "name": "p",
-          "transformer": "normalize",
-          "type": "int",
-          "lower_bound": 1,
-          "upper_bound": 8,
-          "optimize": true
-        }
-      ],
-      "output_space": [
-        {
-          "name": "r",
-          "transformer": "identity",
-          "type": "real",
-          "lower_bound": -Infinity,
-          "upper_bound": Infinity,
-          "optimize": true
-        }
-      ],
-      "modeler": "Model_LCM",
-      "objective": {
-        "name": "r",
-        "transformer": "identity",
-        "type": "real",
-        "lower_bound": -Infinity,
-        "upper_bound": Infinity,
-        "optimize": true,
-        "objective_id": 0
-      },
-      "time": {
-        "tm_year": 2023,
-        "tm_mon": 7,
-        "tm_mday": 31,
-        "tm_hour": 14,
-        "tm_min": 27,
-        "tm_sec": 43,
-        "tm_wday": 0,
-        "tm_yday": 212,
-        "tm_isdst": 1
-      },
-      "uid": "15d6c4e6-2fe9-11ee-bdbc-9a70d92099b8"
-    },
-    {
-      "hyperparameters": [
-        0.27510535475146153,
-        1.3266032497253313,
-        0.34996212257550796,
-        1.0,
-        0.002841178330051067,
-        1e-05,
-        0.01930158624586466
-      ],
-      "model_stats": {
-        "log_likelihood": 35.33428850804373,
-        "neg_log_likelihood": -35.33428850804373,
-        "gradients": [
-          1.4345625376499527e-07,
-          -1.5693374526559722e-06,
-          1.6652226833002715e-06,
-          0.0,
-          -8.625125174973771e-09,
-          0.12584694329499777,
-          -2.261948094725709e-09
-        ],
-        "iterations": 36
-      },
-      "task_parameters": [
-        [
-          1000
-        ]
-      ],
-      "function_evaluations": [
-        "0dbd8f4c-2fe9-11ee-bdbc-9a70d92099b8",
-        "0dd842d8-2fe9-11ee-bdbc-9a70d92099b8",
-        "0df6235c-2fe9-11ee-bdbc-9a70d92099b8",
-        "0e0fc816-2fe9-11ee-bdbc-9a70d92099b8",
-        "0e31d17c-2fe9-11ee-bdbc-9a70d92099b8",
-        "0e4f26be-2fe9-11ee-bdbc-9a70d92099b8",
-        "0e6cacf2-2fe9-11ee-bdbc-9a70d92099b8",
-        "0e858f4c-2fe9-11ee-bdbc-9a70d92099b8",
-        "0eb871a0-2fe9-11ee-bdbc-9a70d92099b8",
-        "0ecfc094-2fe9-11ee-bdbc-9a70d92099b8",
-        "10081c86-2fe9-11ee-bdbc-9a70d92099b8",
-        "1112e976-2fe9-11ee-bdbc-9a70d92099b8",
-        "12178cfa-2fe9-11ee-bdbc-9a70d92099b8",
-        "131eea3a-2fe9-11ee-bdbc-9a70d92099b8",
-        "143abdc2-2fe9-11ee-bdbc-9a70d92099b8",
-        "155367ae-2fe9-11ee-bdbc-9a70d92099b8",
-        "165b2aec-2fe9-11ee-bdbc-9a70d92099b8"
-      ],
-      "input_space": [
-        {
-          "name": "n",
-          "transformer": "normalize",
-          "type": "int",
-          "lower_bound": 128,
-          "upper_bound": 1000,
-          "optimize": true
-        }
-      ],
-      "parameter_space": [
-        {
-          "name": "nb",
-          "transformer": "normalize",
-          "type": "int",
-          "lower_bound": 1,
-          "upper_bound": 16,
-          "optimize": true
-        },
-        {
-          "name": "lg2npernode",
-          "transformer": "normalize",
-          "type": "int",
-          "lower_bound": 0,
-          "upper_bound": 3,
-          "optimize": true
-        },
-        {
-          "name": "p",
-          "transformer": "normalize",
-          "type": "int",
-          "lower_bound": 1,
-          "upper_bound": 8,
-          "optimize": true
-        }
-      ],
-      "output_space": [
-        {
-          "name": "r",
-          "transformer": "identity",
-          "type": "real",
-          "lower_bound": -Infinity,
-          "upper_bound": Infinity,
-          "optimize": true
-        }
-      ],
-      "modeler": "Model_LCM",
-      "objective": {
-        "name": "r",
-        "transformer": "identity",
-        "type": "real",
-        "lower_bound": -Infinity,
-        "upper_bound": Infinity,
-        "optimize": true,
-        "objective_id": 0
-      },
-      "time": {
-        "tm_year": 2023,
-        "tm_mon": 7,
-        "tm_mday": 31,
-        "tm_hour": 14,
-        "tm_min": 27,
-        "tm_sec": 45,
-        "tm_wday": 0,
-        "tm_yday": 212,
-        "tm_isdst": 1
-      },
-      "uid": "16dae430-2fe9-11ee-bdbc-9a70d92099b8"
-    },
-    {
-      "hyperparameters": [
-        0.20090632054351773,
-        2.423125439671761,
-        0.5600999774720636,
-        1.0,
-        0.002056862692269241,
-        1e-05,
-        0.04148528207379217
-      ],
-      "model_stats": {
-        "log_likelihood": 38.698864483341765,
-        "neg_log_likelihood": -38.698864483341765,
-        "gradients": [
-          -7.688165233332711e-06,
-          -3.4409268757640277e-06,
-          -9.917227647981974e-07,
-          0.0,
-          3.37928591680147e-06,
-          0.14765298772496976,
-          5.655066604629606e-06
-        ],
-        "iterations": 56
-      },
-      "task_parameters": [
-        [
-          1000
-        ]
-      ],
-      "function_evaluations": [
-        "0dbd8f4c-2fe9-11ee-bdbc-9a70d92099b8",
-        "0dd842d8-2fe9-11ee-bdbc-9a70d92099b8",
-        "0df6235c-2fe9-11ee-bdbc-9a70d92099b8",
-        "0e0fc816-2fe9-11ee-bdbc-9a70d92099b8",
-        "0e31d17c-2fe9-11ee-bdbc-9a70d92099b8",
-        "0e4f26be-2fe9-11ee-bdbc-9a70d92099b8",
-        "0e6cacf2-2fe9-11ee-bdbc-9a70d92099b8",
-        "0e858f4c-2fe9-11ee-bdbc-9a70d92099b8",
-        "0eb871a0-2fe9-11ee-bdbc-9a70d92099b8",
-        "0ecfc094-2fe9-11ee-bdbc-9a70d92099b8",
-        "10081c86-2fe9-11ee-bdbc-9a70d92099b8",
-        "1112e976-2fe9-11ee-bdbc-9a70d92099b8",
-        "12178cfa-2fe9-11ee-bdbc-9a70d92099b8",
-        "131eea3a-2fe9-11ee-bdbc-9a70d92099b8",
-        "143abdc2-2fe9-11ee-bdbc-9a70d92099b8",
-        "155367ae-2fe9-11ee-bdbc-9a70d92099b8",
-        "165b2aec-2fe9-11ee-bdbc-9a70d92099b8",
-        "17585a1e-2fe9-11ee-bdbc-9a70d92099b8"
-      ],
-      "input_space": [
-        {
-          "name": "n",
-          "transformer": "normalize",
-          "type": "int",
-          "lower_bound": 128,
-          "upper_bound": 1000,
-          "optimize": true
-        }
-      ],
-      "parameter_space": [
-        {
-          "name": "nb",
-          "transformer": "normalize",
-          "type": "int",
-          "lower_bound": 1,
-          "upper_bound": 16,
-          "optimize": true
-        },
-        {
-          "name": "lg2npernode",
-          "transformer": "normalize",
-          "type": "int",
-          "lower_bound": 0,
-          "upper_bound": 3,
-          "optimize": true
-        },
-        {
-          "name": "p",
-          "transformer": "normalize",
-          "type": "int",
-          "lower_bound": 1,
-          "upper_bound": 8,
-          "optimize": true
-        }
-      ],
-      "output_space": [
-        {
-          "name": "r",
-          "transformer": "identity",
-          "type": "real",
-          "lower_bound": -Infinity,
-          "upper_bound": Infinity,
-          "optimize": true
-        }
-      ],
-      "modeler": "Model_LCM",
-      "objective": {
-        "name": "r",
-        "transformer": "identity",
-        "type": "real",
-        "lower_bound": -Infinity,
-        "upper_bound": Infinity,
-        "optimize": true,
-        "objective_id": 0
-      },
-      "time": {
-        "tm_year": 2023,
-        "tm_mon": 7,
-        "tm_mday": 31,
-        "tm_hour": 14,
-        "tm_min": 27,
-        "tm_sec": 46,
-        "tm_wday": 0,
-        "tm_yday": 212,
-        "tm_isdst": 1
-      },
-      "uid": "17dd15d8-2fe9-11ee-bdbc-9a70d92099b8"
-    },
-    {
-      "hyperparameters": [
-        0.2223142140825432,
-        2.1273890351187736,
-        0.48957656936887833,
-        1.0,
-        0.0020160627395631324,
-        1e-05,
-        0.03950613277239166
-      ],
-      "model_stats": {
-        "log_likelihood": 40.449604680574296,
-        "neg_log_likelihood": -40.449604680574296,
-        "gradients": [
-          -5.3693967371204465e-06,
-          -4.353762150313689e-07,
-          -1.3449933473630438e-06,
-          0.0,
-          7.557023794898625e-07,
-          0.3829295036188776,
-          1.1700536907217978e-06
-        ],
-        "iterations": 28
-      },
-      "task_parameters": [
-        [
-          1000
-        ]
-      ],
-      "function_evaluations": [
-        "0dbd8f4c-2fe9-11ee-bdbc-9a70d92099b8",
-        "0dd842d8-2fe9-11ee-bdbc-9a70d92099b8",
-        "0df6235c-2fe9-11ee-bdbc-9a70d92099b8",
-        "0e0fc816-2fe9-11ee-bdbc-9a70d92099b8",
-        "0e31d17c-2fe9-11ee-bdbc-9a70d92099b8",
-        "0e4f26be-2fe9-11ee-bdbc-9a70d92099b8",
-        "0e6cacf2-2fe9-11ee-bdbc-9a70d92099b8",
-        "0e858f4c-2fe9-11ee-bdbc-9a70d92099b8",
-        "0eb871a0-2fe9-11ee-bdbc-9a70d92099b8",
-        "0ecfc094-2fe9-11ee-bdbc-9a70d92099b8",
-        "10081c86-2fe9-11ee-bdbc-9a70d92099b8",
-        "1112e976-2fe9-11ee-bdbc-9a70d92099b8",
-        "12178cfa-2fe9-11ee-bdbc-9a70d92099b8",
-        "131eea3a-2fe9-11ee-bdbc-9a70d92099b8",
-        "143abdc2-2fe9-11ee-bdbc-9a70d92099b8",
-        "155367ae-2fe9-11ee-bdbc-9a70d92099b8",
-        "165b2aec-2fe9-11ee-bdbc-9a70d92099b8",
-        "17585a1e-2fe9-11ee-bdbc-9a70d92099b8",
-        "186b6f54-2fe9-11ee-bdbc-9a70d92099b8"
-      ],
-      "input_space": [
-        {
-          "name": "n",
-          "transformer": "normalize",
-          "type": "int",
-          "lower_bound": 128,
-          "upper_bound": 1000,
-          "optimize": true
-        }
-      ],
-      "parameter_space": [
-        {
-          "name": "nb",
-          "transformer": "normalize",
-          "type": "int",
-          "lower_bound": 1,
-          "upper_bound": 16,
-          "optimize": true
-        },
-        {
-          "name": "lg2npernode",
-          "transformer": "normalize",
-          "type": "int",
-          "lower_bound": 0,
-          "upper_bound": 3,
-          "optimize": true
-        },
-        {
-          "name": "p",
-          "transformer": "normalize",
-          "type": "int",
-          "lower_bound": 1,
-          "upper_bound": 8,
-          "optimize": true
-        }
-      ],
-      "output_space": [
-        {
-          "name": "r",
-          "transformer": "identity",
-          "type": "real",
-          "lower_bound": -Infinity,
-          "upper_bound": Infinity,
-          "optimize": true
-        }
-      ],
-      "modeler": "Model_LCM",
-      "objective": {
-        "name": "r",
-        "transformer": "identity",
-        "type": "real",
-        "lower_bound": -Infinity,
-        "upper_bound": Infinity,
-        "optimize": true,
-        "objective_id": 0
-      },
-      "time": {
-        "tm_year": 2023,
-        "tm_mon": 7,
-        "tm_mday": 31,
-        "tm_hour": 14,
-        "tm_min": 27,
-        "tm_sec": 48,
-        "tm_wday": 0,
-        "tm_yday": 212,
-        "tm_isdst": 1
-      },
-      "uid": "18f1aede-2fe9-11ee-bdbc-9a70d92099b8"
+      "uid": "62388c8c-2feb-11ee-a0f0-9a70d92099b8"
     }
   ],
   "func_eval": [
@@ -1154,218 +1154,8 @@
         "n": 1000
       },
       "tuning_parameter": {
-        "nb": 4,
-        "lg2npernode": 3,
-        "p": 6
-      },
-      "constants": {
-        "nodes": 1,
-        "cores": 8,
-        "bunit": 8
-      },
-      "machine_configuration": {
-        "machine_name": "mac",
-        "intel": {
-          "nodes": 1,
-          "cores": 8
-        }
-      },
-      "software_configuration": {
-        "openmpi": {
-          "version_split": [
-            4,
-            1,
-            5
-          ]
-        },
-        "scalapack": {
-          "version_split": [
-            2,
-            2,
-            0
-          ]
-        },
-        "gcc": {
-          "version_split": [
-            13,
-            1,
-            0
-          ]
-        }
-      },
-      "evaluation_result": {
-        "r": 0.08
-      },
-      "evaluation_detail": {
-        "r": {
-          "evaluations": 0.08,
-          "objective_scheme": "average"
-        }
-      },
-      "additional_output": {},
-      "source": "measure",
-      "modeling": "Pilot",
-      "model_class": "Model_LCM",
-      "time": {
-        "tm_year": 2023,
-        "tm_mon": 7,
-        "tm_mday": 31,
-        "tm_hour": 14,
-        "tm_min": 27,
-        "tm_sec": 29,
-        "tm_wday": 0,
-        "tm_yday": 212,
-        "tm_isdst": 1
-      },
-      "uid": "0dbd8f4c-2fe9-11ee-bdbc-9a70d92099b8"
-    },
-    {
-      "task_parameter": {
-        "n": 1000
-      },
-      "tuning_parameter": {
-        "nb": 12,
-        "lg2npernode": 2,
-        "p": 3
-      },
-      "constants": {
-        "nodes": 1,
-        "cores": 8,
-        "bunit": 8
-      },
-      "machine_configuration": {
-        "machine_name": "mac",
-        "intel": {
-          "nodes": 1,
-          "cores": 8
-        }
-      },
-      "software_configuration": {
-        "openmpi": {
-          "version_split": [
-            4,
-            1,
-            5
-          ]
-        },
-        "scalapack": {
-          "version_split": [
-            2,
-            2,
-            0
-          ]
-        },
-        "gcc": {
-          "version_split": [
-            13,
-            1,
-            0
-          ]
-        }
-      },
-      "evaluation_result": {
-        "r": 0.06
-      },
-      "evaluation_detail": {
-        "r": {
-          "evaluations": 0.06,
-          "objective_scheme": "average"
-        }
-      },
-      "additional_output": {},
-      "source": "measure",
-      "modeling": "Pilot",
-      "model_class": "Model_LCM",
-      "time": {
-        "tm_year": 2023,
-        "tm_mon": 7,
-        "tm_mday": 31,
-        "tm_hour": 14,
-        "tm_min": 27,
-        "tm_sec": 30,
-        "tm_wday": 0,
-        "tm_yday": 212,
-        "tm_isdst": 1
-      },
-      "uid": "0dd842d8-2fe9-11ee-bdbc-9a70d92099b8"
-    },
-    {
-      "task_parameter": {
-        "n": 1000
-      },
-      "tuning_parameter": {
-        "nb": 8,
-        "lg2npernode": 2,
-        "p": 2
-      },
-      "constants": {
-        "nodes": 1,
-        "cores": 8,
-        "bunit": 8
-      },
-      "machine_configuration": {
-        "machine_name": "mac",
-        "intel": {
-          "nodes": 1,
-          "cores": 8
-        }
-      },
-      "software_configuration": {
-        "openmpi": {
-          "version_split": [
-            4,
-            1,
-            5
-          ]
-        },
-        "scalapack": {
-          "version_split": [
-            2,
-            2,
-            0
-          ]
-        },
-        "gcc": {
-          "version_split": [
-            13,
-            1,
-            0
-          ]
-        }
-      },
-      "evaluation_result": {
-        "r": 0.06
-      },
-      "evaluation_detail": {
-        "r": {
-          "evaluations": 0.06,
-          "objective_scheme": "average"
-        }
-      },
-      "additional_output": {},
-      "source": "measure",
-      "modeling": "Pilot",
-      "model_class": "Model_LCM",
-      "time": {
-        "tm_year": 2023,
-        "tm_mon": 7,
-        "tm_mday": 31,
-        "tm_hour": 14,
-        "tm_min": 27,
-        "tm_sec": 30,
-        "tm_wday": 0,
-        "tm_yday": 212,
-        "tm_isdst": 1
-      },
-      "uid": "0df6235c-2fe9-11ee-bdbc-9a70d92099b8"
-    },
-    {
-      "task_parameter": {
-        "n": 1000
-      },
-      "tuning_parameter": {
-        "nb": 14,
-        "lg2npernode": 1,
+        "nb": 2,
+        "lg2npernode": 0,
         "p": 1
       },
       "constants": {
@@ -1404,11 +1194,11 @@
         }
       },
       "evaluation_result": {
-        "r": 0.05
+        "r": 0.27
       },
       "evaluation_detail": {
         "r": {
-          "evaluations": 0.05,
+          "evaluations": 0.27,
           "objective_scheme": "average"
         }
       },
@@ -1421,13 +1211,13 @@
         "tm_mon": 7,
         "tm_mday": 31,
         "tm_hour": 14,
-        "tm_min": 27,
-        "tm_sec": 30,
+        "tm_min": 43,
+        "tm_sec": 52,
         "tm_wday": 0,
         "tm_yday": 212,
         "tm_isdst": 1
       },
-      "uid": "0e0fc816-2fe9-11ee-bdbc-9a70d92099b8"
+      "uid": "573eb69e-2feb-11ee-a0f0-9a70d92099b8"
     },
     {
       "task_parameter": {
@@ -1435,216 +1225,6 @@
       },
       "tuning_parameter": {
         "nb": 16,
-        "lg2npernode": 2,
-        "p": 2
-      },
-      "constants": {
-        "nodes": 1,
-        "cores": 8,
-        "bunit": 8
-      },
-      "machine_configuration": {
-        "machine_name": "mac",
-        "intel": {
-          "nodes": 1,
-          "cores": 8
-        }
-      },
-      "software_configuration": {
-        "openmpi": {
-          "version_split": [
-            4,
-            1,
-            5
-          ]
-        },
-        "scalapack": {
-          "version_split": [
-            2,
-            2,
-            0
-          ]
-        },
-        "gcc": {
-          "version_split": [
-            13,
-            1,
-            0
-          ]
-        }
-      },
-      "evaluation_result": {
-        "r": 0.08
-      },
-      "evaluation_detail": {
-        "r": {
-          "evaluations": 0.08,
-          "objective_scheme": "average"
-        }
-      },
-      "additional_output": {},
-      "source": "measure",
-      "modeling": "Pilot",
-      "model_class": "Model_LCM",
-      "time": {
-        "tm_year": 2023,
-        "tm_mon": 7,
-        "tm_mday": 31,
-        "tm_hour": 14,
-        "tm_min": 27,
-        "tm_sec": 30,
-        "tm_wday": 0,
-        "tm_yday": 212,
-        "tm_isdst": 1
-      },
-      "uid": "0e31d17c-2fe9-11ee-bdbc-9a70d92099b8"
-    },
-    {
-      "task_parameter": {
-        "n": 1000
-      },
-      "tuning_parameter": {
-        "nb": 13,
-        "lg2npernode": 2,
-        "p": 1
-      },
-      "constants": {
-        "nodes": 1,
-        "cores": 8,
-        "bunit": 8
-      },
-      "machine_configuration": {
-        "machine_name": "mac",
-        "intel": {
-          "nodes": 1,
-          "cores": 8
-        }
-      },
-      "software_configuration": {
-        "openmpi": {
-          "version_split": [
-            4,
-            1,
-            5
-          ]
-        },
-        "scalapack": {
-          "version_split": [
-            2,
-            2,
-            0
-          ]
-        },
-        "gcc": {
-          "version_split": [
-            13,
-            1,
-            0
-          ]
-        }
-      },
-      "evaluation_result": {
-        "r": 0.06
-      },
-      "evaluation_detail": {
-        "r": {
-          "evaluations": 0.06,
-          "objective_scheme": "average"
-        }
-      },
-      "additional_output": {},
-      "source": "measure",
-      "modeling": "Pilot",
-      "model_class": "Model_LCM",
-      "time": {
-        "tm_year": 2023,
-        "tm_mon": 7,
-        "tm_mday": 31,
-        "tm_hour": 14,
-        "tm_min": 27,
-        "tm_sec": 30,
-        "tm_wday": 0,
-        "tm_yday": 212,
-        "tm_isdst": 1
-      },
-      "uid": "0e4f26be-2fe9-11ee-bdbc-9a70d92099b8"
-    },
-    {
-      "task_parameter": {
-        "n": 1000
-      },
-      "tuning_parameter": {
-        "nb": 5,
-        "lg2npernode": 1,
-        "p": 2
-      },
-      "constants": {
-        "nodes": 1,
-        "cores": 8,
-        "bunit": 8
-      },
-      "machine_configuration": {
-        "machine_name": "mac",
-        "intel": {
-          "nodes": 1,
-          "cores": 8
-        }
-      },
-      "software_configuration": {
-        "openmpi": {
-          "version_split": [
-            4,
-            1,
-            5
-          ]
-        },
-        "scalapack": {
-          "version_split": [
-            2,
-            2,
-            0
-          ]
-        },
-        "gcc": {
-          "version_split": [
-            13,
-            1,
-            0
-          ]
-        }
-      },
-      "evaluation_result": {
-        "r": 0.05
-      },
-      "evaluation_detail": {
-        "r": {
-          "evaluations": 0.05,
-          "objective_scheme": "average"
-        }
-      },
-      "additional_output": {},
-      "source": "measure",
-      "modeling": "Pilot",
-      "model_class": "Model_LCM",
-      "time": {
-        "tm_year": 2023,
-        "tm_mon": 7,
-        "tm_mday": 31,
-        "tm_hour": 14,
-        "tm_min": 27,
-        "tm_sec": 31,
-        "tm_wday": 0,
-        "tm_yday": 212,
-        "tm_isdst": 1
-      },
-      "uid": "0e6cacf2-2fe9-11ee-bdbc-9a70d92099b8"
-    },
-    {
-      "task_parameter": {
-        "n": 1000
-      },
-      "tuning_parameter": {
-        "nb": 1,
         "lg2npernode": 3,
         "p": 3
       },
@@ -1701,92 +1281,22 @@
         "tm_mon": 7,
         "tm_mday": 31,
         "tm_hour": 14,
-        "tm_min": 27,
-        "tm_sec": 31,
+        "tm_min": 43,
+        "tm_sec": 52,
         "tm_wday": 0,
         "tm_yday": 212,
         "tm_isdst": 1
       },
-      "uid": "0e858f4c-2fe9-11ee-bdbc-9a70d92099b8"
+      "uid": "5753bf26-2feb-11ee-a0f0-9a70d92099b8"
     },
     {
       "task_parameter": {
         "n": 1000
       },
       "tuning_parameter": {
-        "nb": 11,
-        "lg2npernode": 3,
-        "p": 4
-      },
-      "constants": {
-        "nodes": 1,
-        "cores": 8,
-        "bunit": 8
-      },
-      "machine_configuration": {
-        "machine_name": "mac",
-        "intel": {
-          "nodes": 1,
-          "cores": 8
-        }
-      },
-      "software_configuration": {
-        "openmpi": {
-          "version_split": [
-            4,
-            1,
-            5
-          ]
-        },
-        "scalapack": {
-          "version_split": [
-            2,
-            2,
-            0
-          ]
-        },
-        "gcc": {
-          "version_split": [
-            13,
-            1,
-            0
-          ]
-        }
-      },
-      "evaluation_result": {
-        "r": 0.07
-      },
-      "evaluation_detail": {
-        "r": {
-          "evaluations": 0.07,
-          "objective_scheme": "average"
-        }
-      },
-      "additional_output": {},
-      "source": "measure",
-      "modeling": "Pilot",
-      "model_class": "Model_LCM",
-      "time": {
-        "tm_year": 2023,
-        "tm_mon": 7,
-        "tm_mday": 31,
-        "tm_hour": 14,
-        "tm_min": 27,
-        "tm_sec": 31,
-        "tm_wday": 0,
-        "tm_yday": 212,
-        "tm_isdst": 1
-      },
-      "uid": "0eb871a0-2fe9-11ee-bdbc-9a70d92099b8"
-    },
-    {
-      "task_parameter": {
-        "n": 1000
-      },
-      "tuning_parameter": {
-        "nb": 15,
-        "lg2npernode": 2,
-        "p": 3
+        "nb": 9,
+        "lg2npernode": 1,
+        "p": 2
       },
       "constants": {
         "nodes": 1,
@@ -1841,22 +1351,22 @@
         "tm_mon": 7,
         "tm_mday": 31,
         "tm_hour": 14,
-        "tm_min": 27,
-        "tm_sec": 31,
+        "tm_min": 43,
+        "tm_sec": 52,
         "tm_wday": 0,
         "tm_yday": 212,
         "tm_isdst": 1
       },
-      "uid": "0ecfc094-2fe9-11ee-bdbc-9a70d92099b8"
+      "uid": "576ac86a-2feb-11ee-a0f0-9a70d92099b8"
     },
     {
       "task_parameter": {
         "n": 1000
       },
       "tuning_parameter": {
-        "nb": 14,
-        "lg2npernode": 3,
-        "p": 8
+        "nb": 4,
+        "lg2npernode": 2,
+        "p": 3
       },
       "constants": {
         "nodes": 1,
@@ -1894,30 +1404,30 @@
         }
       },
       "evaluation_result": {
-        "r": 0.08
+        "r": 0.03
       },
       "evaluation_detail": {
         "r": {
-          "evaluations": 0.08,
+          "evaluations": 0.03,
           "objective_scheme": "average"
         }
       },
       "additional_output": {},
       "source": "measure",
-      "modeling": "TLA_LCM",
+      "modeling": "Pilot",
       "model_class": "Model_LCM",
       "time": {
         "tm_year": 2023,
         "tm_mon": 7,
         "tm_mday": 31,
         "tm_hour": 14,
-        "tm_min": 27,
-        "tm_sec": 33,
+        "tm_min": 43,
+        "tm_sec": 52,
         "tm_wday": 0,
         "tm_yday": 212,
         "tm_isdst": 1
       },
-      "uid": "10081c86-2fe9-11ee-bdbc-9a70d92099b8"
+      "uid": "577c966c-2feb-11ee-a0f0-9a70d92099b8"
     },
     {
       "task_parameter": {
@@ -1974,20 +1484,20 @@
       },
       "additional_output": {},
       "source": "measure",
-      "modeling": "TLA_LCM",
+      "modeling": "Pilot",
       "model_class": "Model_LCM",
       "time": {
         "tm_year": 2023,
         "tm_mon": 7,
         "tm_mday": 31,
         "tm_hour": 14,
-        "tm_min": 27,
-        "tm_sec": 35,
+        "tm_min": 43,
+        "tm_sec": 52,
         "tm_wday": 0,
         "tm_yday": 212,
         "tm_isdst": 1
       },
-      "uid": "1112e976-2fe9-11ee-bdbc-9a70d92099b8"
+      "uid": "5791575a-2feb-11ee-a0f0-9a70d92099b8"
     },
     {
       "task_parameter": {
@@ -1995,8 +1505,8 @@
       },
       "tuning_parameter": {
         "nb": 1,
-        "lg2npernode": 2,
-        "p": 1
+        "lg2npernode": 3,
+        "p": 2
       },
       "constants": {
         "nodes": 1,
@@ -2044,167 +1554,27 @@
       },
       "additional_output": {},
       "source": "measure",
-      "modeling": "TLA_LCM",
+      "modeling": "Pilot",
       "model_class": "Model_LCM",
       "time": {
         "tm_year": 2023,
         "tm_mon": 7,
         "tm_mday": 31,
         "tm_hour": 14,
-        "tm_min": 27,
-        "tm_sec": 37,
+        "tm_min": 43,
+        "tm_sec": 52,
         "tm_wday": 0,
         "tm_yday": 212,
         "tm_isdst": 1
       },
-      "uid": "12178cfa-2fe9-11ee-bdbc-9a70d92099b8"
+      "uid": "57a8239a-2feb-11ee-a0f0-9a70d92099b8"
     },
     {
       "task_parameter": {
         "n": 1000
       },
       "tuning_parameter": {
-        "nb": 8,
-        "lg2npernode": 0,
-        "p": 1
-      },
-      "constants": {
-        "nodes": 1,
-        "cores": 8,
-        "bunit": 8
-      },
-      "machine_configuration": {
-        "machine_name": "mac",
-        "intel": {
-          "nodes": 1,
-          "cores": 8
-        }
-      },
-      "software_configuration": {
-        "openmpi": {
-          "version_split": [
-            4,
-            1,
-            5
-          ]
-        },
-        "scalapack": {
-          "version_split": [
-            2,
-            2,
-            0
-          ]
-        },
-        "gcc": {
-          "version_split": [
-            13,
-            1,
-            0
-          ]
-        }
-      },
-      "evaluation_result": {
-        "r": 0.07
-      },
-      "evaluation_detail": {
-        "r": {
-          "evaluations": 0.07,
-          "objective_scheme": "average"
-        }
-      },
-      "additional_output": {},
-      "source": "measure",
-      "modeling": "TLA_LCM",
-      "model_class": "Model_LCM",
-      "time": {
-        "tm_year": 2023,
-        "tm_mon": 7,
-        "tm_mday": 31,
-        "tm_hour": 14,
-        "tm_min": 27,
-        "tm_sec": 38,
-        "tm_wday": 0,
-        "tm_yday": 212,
-        "tm_isdst": 1
-      },
-      "uid": "131eea3a-2fe9-11ee-bdbc-9a70d92099b8"
-    },
-    {
-      "task_parameter": {
-        "n": 1000
-      },
-      "tuning_parameter": {
-        "nb": 1,
-        "lg2npernode": 3,
-        "p": 7
-      },
-      "constants": {
-        "nodes": 1,
-        "cores": 8,
-        "bunit": 8
-      },
-      "machine_configuration": {
-        "machine_name": "mac",
-        "intel": {
-          "nodes": 1,
-          "cores": 8
-        }
-      },
-      "software_configuration": {
-        "openmpi": {
-          "version_split": [
-            4,
-            1,
-            5
-          ]
-        },
-        "scalapack": {
-          "version_split": [
-            2,
-            2,
-            0
-          ]
-        },
-        "gcc": {
-          "version_split": [
-            13,
-            1,
-            0
-          ]
-        }
-      },
-      "evaluation_result": {
-        "r": 0.09
-      },
-      "evaluation_detail": {
-        "r": {
-          "evaluations": 0.09,
-          "objective_scheme": "average"
-        }
-      },
-      "additional_output": {},
-      "source": "measure",
-      "modeling": "TLA_LCM",
-      "model_class": "Model_LCM",
-      "time": {
-        "tm_year": 2023,
-        "tm_mon": 7,
-        "tm_mday": 31,
-        "tm_hour": 14,
-        "tm_min": 27,
-        "tm_sec": 40,
-        "tm_wday": 0,
-        "tm_yday": 212,
-        "tm_isdst": 1
-      },
-      "uid": "143abdc2-2fe9-11ee-bdbc-9a70d92099b8"
-    },
-    {
-      "task_parameter": {
-        "n": 1000
-      },
-      "tuning_parameter": {
-        "nb": 5,
+        "nb": 13,
         "lg2npernode": 3,
         "p": 5
       },
@@ -2254,6 +1624,286 @@
       },
       "additional_output": {},
       "source": "measure",
+      "modeling": "Pilot",
+      "model_class": "Model_LCM",
+      "time": {
+        "tm_year": 2023,
+        "tm_mon": 7,
+        "tm_mday": 31,
+        "tm_hour": 14,
+        "tm_min": 43,
+        "tm_sec": 53,
+        "tm_wday": 0,
+        "tm_yday": 212,
+        "tm_isdst": 1
+      },
+      "uid": "57be5fb6-2feb-11ee-a0f0-9a70d92099b8"
+    },
+    {
+      "task_parameter": {
+        "n": 1000
+      },
+      "tuning_parameter": {
+        "nb": 11,
+        "lg2npernode": 2,
+        "p": 4
+      },
+      "constants": {
+        "nodes": 1,
+        "cores": 8,
+        "bunit": 8
+      },
+      "machine_configuration": {
+        "machine_name": "mac",
+        "intel": {
+          "nodes": 1,
+          "cores": 8
+        }
+      },
+      "software_configuration": {
+        "openmpi": {
+          "version_split": [
+            4,
+            1,
+            5
+          ]
+        },
+        "scalapack": {
+          "version_split": [
+            2,
+            2,
+            0
+          ]
+        },
+        "gcc": {
+          "version_split": [
+            13,
+            1,
+            0
+          ]
+        }
+      },
+      "evaluation_result": {
+        "r": 0.05
+      },
+      "evaluation_detail": {
+        "r": {
+          "evaluations": 0.05,
+          "objective_scheme": "average"
+        }
+      },
+      "additional_output": {},
+      "source": "measure",
+      "modeling": "Pilot",
+      "model_class": "Model_LCM",
+      "time": {
+        "tm_year": 2023,
+        "tm_mon": 7,
+        "tm_mday": 31,
+        "tm_hour": 14,
+        "tm_min": 43,
+        "tm_sec": 53,
+        "tm_wday": 0,
+        "tm_yday": 212,
+        "tm_isdst": 1
+      },
+      "uid": "57d86c6c-2feb-11ee-a0f0-9a70d92099b8"
+    },
+    {
+      "task_parameter": {
+        "n": 1000
+      },
+      "tuning_parameter": {
+        "nb": 14,
+        "lg2npernode": 2,
+        "p": 3
+      },
+      "constants": {
+        "nodes": 1,
+        "cores": 8,
+        "bunit": 8
+      },
+      "machine_configuration": {
+        "machine_name": "mac",
+        "intel": {
+          "nodes": 1,
+          "cores": 8
+        }
+      },
+      "software_configuration": {
+        "openmpi": {
+          "version_split": [
+            4,
+            1,
+            5
+          ]
+        },
+        "scalapack": {
+          "version_split": [
+            2,
+            2,
+            0
+          ]
+        },
+        "gcc": {
+          "version_split": [
+            13,
+            1,
+            0
+          ]
+        }
+      },
+      "evaluation_result": {
+        "r": 0.04
+      },
+      "evaluation_detail": {
+        "r": {
+          "evaluations": 0.04,
+          "objective_scheme": "average"
+        }
+      },
+      "additional_output": {},
+      "source": "measure",
+      "modeling": "Pilot",
+      "model_class": "Model_LCM",
+      "time": {
+        "tm_year": 2023,
+        "tm_mon": 7,
+        "tm_mday": 31,
+        "tm_hour": 14,
+        "tm_min": 43,
+        "tm_sec": 53,
+        "tm_wday": 0,
+        "tm_yday": 212,
+        "tm_isdst": 1
+      },
+      "uid": "57ee2e6c-2feb-11ee-a0f0-9a70d92099b8"
+    },
+    {
+      "task_parameter": {
+        "n": 1000
+      },
+      "tuning_parameter": {
+        "nb": 6,
+        "lg2npernode": 3,
+        "p": 4
+      },
+      "constants": {
+        "nodes": 1,
+        "cores": 8,
+        "bunit": 8
+      },
+      "machine_configuration": {
+        "machine_name": "mac",
+        "intel": {
+          "nodes": 1,
+          "cores": 8
+        }
+      },
+      "software_configuration": {
+        "openmpi": {
+          "version_split": [
+            4,
+            1,
+            5
+          ]
+        },
+        "scalapack": {
+          "version_split": [
+            2,
+            2,
+            0
+          ]
+        },
+        "gcc": {
+          "version_split": [
+            13,
+            1,
+            0
+          ]
+        }
+      },
+      "evaluation_result": {
+        "r": 0.06
+      },
+      "evaluation_detail": {
+        "r": {
+          "evaluations": 0.06,
+          "objective_scheme": "average"
+        }
+      },
+      "additional_output": {},
+      "source": "measure",
+      "modeling": "Pilot",
+      "model_class": "Model_LCM",
+      "time": {
+        "tm_year": 2023,
+        "tm_mon": 7,
+        "tm_mday": 31,
+        "tm_hour": 14,
+        "tm_min": 43,
+        "tm_sec": 53,
+        "tm_wday": 0,
+        "tm_yday": 212,
+        "tm_isdst": 1
+      },
+      "uid": "580eb772-2feb-11ee-a0f0-9a70d92099b8"
+    },
+    {
+      "task_parameter": {
+        "n": 1000
+      },
+      "tuning_parameter": {
+        "nb": 1,
+        "lg2npernode": 3,
+        "p": 8
+      },
+      "constants": {
+        "nodes": 1,
+        "cores": 8,
+        "bunit": 8
+      },
+      "machine_configuration": {
+        "machine_name": "mac",
+        "intel": {
+          "nodes": 1,
+          "cores": 8
+        }
+      },
+      "software_configuration": {
+        "openmpi": {
+          "version_split": [
+            4,
+            1,
+            5
+          ]
+        },
+        "scalapack": {
+          "version_split": [
+            2,
+            2,
+            0
+          ]
+        },
+        "gcc": {
+          "version_split": [
+            13,
+            1,
+            0
+          ]
+        }
+      },
+      "evaluation_result": {
+        "r": 0.1
+      },
+      "evaluation_detail": {
+        "r": {
+          "evaluations": 0.1,
+          "objective_scheme": "average"
+        }
+      },
+      "additional_output": {},
+      "source": "measure",
       "modeling": "TLA_LCM",
       "model_class": "Model_LCM",
       "time": {
@@ -2261,21 +1911,21 @@
         "tm_mon": 7,
         "tm_mday": 31,
         "tm_hour": 14,
-        "tm_min": 27,
-        "tm_sec": 42,
+        "tm_min": 43,
+        "tm_sec": 55,
         "tm_wday": 0,
         "tm_yday": 212,
         "tm_isdst": 1
       },
-      "uid": "155367ae-2fe9-11ee-bdbc-9a70d92099b8"
+      "uid": "59367bd0-2feb-11ee-a0f0-9a70d92099b8"
     },
     {
       "task_parameter": {
         "n": 1000
       },
       "tuning_parameter": {
-        "nb": 3,
-        "lg2npernode": 3,
+        "nb": 2,
+        "lg2npernode": 2,
         "p": 1
       },
       "constants": {
@@ -2331,22 +1981,22 @@
         "tm_mon": 7,
         "tm_mday": 31,
         "tm_hour": 14,
-        "tm_min": 27,
-        "tm_sec": 44,
+        "tm_min": 43,
+        "tm_sec": 57,
         "tm_wday": 0,
         "tm_yday": 212,
         "tm_isdst": 1
       },
-      "uid": "165b2aec-2fe9-11ee-bdbc-9a70d92099b8"
+      "uid": "5a49e55c-2feb-11ee-a0f0-9a70d92099b8"
     },
     {
       "task_parameter": {
         "n": 1000
       },
       "tuning_parameter": {
-        "nb": 4,
-        "lg2npernode": 3,
-        "p": 3
+        "nb": 16,
+        "lg2npernode": 2,
+        "p": 1
       },
       "constants": {
         "nodes": 1,
@@ -2401,20 +2051,20 @@
         "tm_mon": 7,
         "tm_mday": 31,
         "tm_hour": 14,
-        "tm_min": 27,
-        "tm_sec": 46,
+        "tm_min": 43,
+        "tm_sec": 59,
         "tm_wday": 0,
         "tm_yday": 212,
         "tm_isdst": 1
       },
-      "uid": "17585a1e-2fe9-11ee-bdbc-9a70d92099b8"
+      "uid": "5b570c72-2feb-11ee-a0f0-9a70d92099b8"
     },
     {
       "task_parameter": {
         "n": 1000
       },
       "tuning_parameter": {
-        "nb": 8,
+        "nb": 15,
         "lg2npernode": 3,
         "p": 8
       },
@@ -2471,20 +2121,90 @@
         "tm_mon": 7,
         "tm_mday": 31,
         "tm_hour": 14,
-        "tm_min": 27,
-        "tm_sec": 47,
+        "tm_min": 44,
+        "tm_sec": 1,
         "tm_wday": 0,
         "tm_yday": 212,
         "tm_isdst": 1
       },
-      "uid": "186b6f54-2fe9-11ee-bdbc-9a70d92099b8"
+      "uid": "5c74c95a-2feb-11ee-a0f0-9a70d92099b8"
     },
     {
       "task_parameter": {
         "n": 1000
       },
       "tuning_parameter": {
-        "nb": 16,
+        "nb": 1,
+        "lg2npernode": 3,
+        "p": 1
+      },
+      "constants": {
+        "nodes": 1,
+        "cores": 8,
+        "bunit": 8
+      },
+      "machine_configuration": {
+        "machine_name": "mac",
+        "intel": {
+          "nodes": 1,
+          "cores": 8
+        }
+      },
+      "software_configuration": {
+        "openmpi": {
+          "version_split": [
+            4,
+            1,
+            5
+          ]
+        },
+        "scalapack": {
+          "version_split": [
+            2,
+            2,
+            0
+          ]
+        },
+        "gcc": {
+          "version_split": [
+            13,
+            1,
+            0
+          ]
+        }
+      },
+      "evaluation_result": {
+        "r": 0.04
+      },
+      "evaluation_detail": {
+        "r": {
+          "evaluations": 0.04,
+          "objective_scheme": "average"
+        }
+      },
+      "additional_output": {},
+      "source": "measure",
+      "modeling": "TLA_LCM",
+      "model_class": "Model_LCM",
+      "time": {
+        "tm_year": 2023,
+        "tm_mon": 7,
+        "tm_mday": 31,
+        "tm_hour": 14,
+        "tm_min": 44,
+        "tm_sec": 2,
+        "tm_wday": 0,
+        "tm_yday": 212,
+        "tm_isdst": 1
+      },
+      "uid": "5d7859ca-2feb-11ee-a0f0-9a70d92099b8"
+    },
+    {
+      "task_parameter": {
+        "n": 1000
+      },
+      "tuning_parameter": {
+        "nb": 2,
         "lg2npernode": 3,
         "p": 6
       },
@@ -2541,13 +2261,293 @@
         "tm_mon": 7,
         "tm_mday": 31,
         "tm_hour": 14,
-        "tm_min": 27,
-        "tm_sec": 49,
+        "tm_min": 44,
+        "tm_sec": 4,
         "tm_wday": 0,
         "tm_yday": 212,
         "tm_isdst": 1
       },
-      "uid": "1974f802-2fe9-11ee-bdbc-9a70d92099b8"
+      "uid": "5e82d192-2feb-11ee-a0f0-9a70d92099b8"
+    },
+    {
+      "task_parameter": {
+        "n": 1000
+      },
+      "tuning_parameter": {
+        "nb": 1,
+        "lg2npernode": 3,
+        "p": 7
+      },
+      "constants": {
+        "nodes": 1,
+        "cores": 8,
+        "bunit": 8
+      },
+      "machine_configuration": {
+        "machine_name": "mac",
+        "intel": {
+          "nodes": 1,
+          "cores": 8
+        }
+      },
+      "software_configuration": {
+        "openmpi": {
+          "version_split": [
+            4,
+            1,
+            5
+          ]
+        },
+        "scalapack": {
+          "version_split": [
+            2,
+            2,
+            0
+          ]
+        },
+        "gcc": {
+          "version_split": [
+            13,
+            1,
+            0
+          ]
+        }
+      },
+      "evaluation_result": {
+        "r": 0.05
+      },
+      "evaluation_detail": {
+        "r": {
+          "evaluations": 0.05,
+          "objective_scheme": "average"
+        }
+      },
+      "additional_output": {},
+      "source": "measure",
+      "modeling": "TLA_LCM",
+      "model_class": "Model_LCM",
+      "time": {
+        "tm_year": 2023,
+        "tm_mon": 7,
+        "tm_mday": 31,
+        "tm_hour": 14,
+        "tm_min": 44,
+        "tm_sec": 6,
+        "tm_wday": 0,
+        "tm_yday": 212,
+        "tm_isdst": 1
+      },
+      "uid": "5f8a0466-2feb-11ee-a0f0-9a70d92099b8"
+    },
+    {
+      "task_parameter": {
+        "n": 1000
+      },
+      "tuning_parameter": {
+        "nb": 1,
+        "lg2npernode": 2,
+        "p": 2
+      },
+      "constants": {
+        "nodes": 1,
+        "cores": 8,
+        "bunit": 8
+      },
+      "machine_configuration": {
+        "machine_name": "mac",
+        "intel": {
+          "nodes": 1,
+          "cores": 8
+        }
+      },
+      "software_configuration": {
+        "openmpi": {
+          "version_split": [
+            4,
+            1,
+            5
+          ]
+        },
+        "scalapack": {
+          "version_split": [
+            2,
+            2,
+            0
+          ]
+        },
+        "gcc": {
+          "version_split": [
+            13,
+            1,
+            0
+          ]
+        }
+      },
+      "evaluation_result": {
+        "r": 0.04
+      },
+      "evaluation_detail": {
+        "r": {
+          "evaluations": 0.04,
+          "objective_scheme": "average"
+        }
+      },
+      "additional_output": {},
+      "source": "measure",
+      "modeling": "TLA_LCM",
+      "model_class": "Model_LCM",
+      "time": {
+        "tm_year": 2023,
+        "tm_mon": 7,
+        "tm_mday": 31,
+        "tm_hour": 14,
+        "tm_min": 44,
+        "tm_sec": 7,
+        "tm_wday": 0,
+        "tm_yday": 212,
+        "tm_isdst": 1
+      },
+      "uid": "60966020-2feb-11ee-a0f0-9a70d92099b8"
+    },
+    {
+      "task_parameter": {
+        "n": 1000
+      },
+      "tuning_parameter": {
+        "nb": 1,
+        "lg2npernode": 1,
+        "p": 1
+      },
+      "constants": {
+        "nodes": 1,
+        "cores": 8,
+        "bunit": 8
+      },
+      "machine_configuration": {
+        "machine_name": "mac",
+        "intel": {
+          "nodes": 1,
+          "cores": 8
+        }
+      },
+      "software_configuration": {
+        "openmpi": {
+          "version_split": [
+            4,
+            1,
+            5
+          ]
+        },
+        "scalapack": {
+          "version_split": [
+            2,
+            2,
+            0
+          ]
+        },
+        "gcc": {
+          "version_split": [
+            13,
+            1,
+            0
+          ]
+        }
+      },
+      "evaluation_result": {
+        "r": 0.06
+      },
+      "evaluation_detail": {
+        "r": {
+          "evaluations": 0.06,
+          "objective_scheme": "average"
+        }
+      },
+      "additional_output": {},
+      "source": "measure",
+      "modeling": "TLA_LCM",
+      "model_class": "Model_LCM",
+      "time": {
+        "tm_year": 2023,
+        "tm_mon": 7,
+        "tm_mday": 31,
+        "tm_hour": 14,
+        "tm_min": 44,
+        "tm_sec": 9,
+        "tm_wday": 0,
+        "tm_yday": 212,
+        "tm_isdst": 1
+      },
+      "uid": "61ae3f3c-2feb-11ee-a0f0-9a70d92099b8"
+    },
+    {
+      "task_parameter": {
+        "n": 1000
+      },
+      "tuning_parameter": {
+        "nb": 7,
+        "lg2npernode": 2,
+        "p": 1
+      },
+      "constants": {
+        "nodes": 1,
+        "cores": 8,
+        "bunit": 8
+      },
+      "machine_configuration": {
+        "machine_name": "mac",
+        "intel": {
+          "nodes": 1,
+          "cores": 8
+        }
+      },
+      "software_configuration": {
+        "openmpi": {
+          "version_split": [
+            4,
+            1,
+            5
+          ]
+        },
+        "scalapack": {
+          "version_split": [
+            2,
+            2,
+            0
+          ]
+        },
+        "gcc": {
+          "version_split": [
+            13,
+            1,
+            0
+          ]
+        }
+      },
+      "evaluation_result": {
+        "r": 0.04
+      },
+      "evaluation_detail": {
+        "r": {
+          "evaluations": 0.04,
+          "objective_scheme": "average"
+        }
+      },
+      "additional_output": {},
+      "source": "measure",
+      "modeling": "TLA_LCM",
+      "model_class": "Model_LCM",
+      "time": {
+        "tm_year": 2023,
+        "tm_mon": 7,
+        "tm_mday": 31,
+        "tm_hour": 14,
+        "tm_min": 44,
+        "tm_sec": 11,
+        "tm_wday": 0,
+        "tm_yday": 212,
+        "tm_isdst": 1
+      },
+      "uid": "62bb83b2-2feb-11ee-a0f0-9a70d92099b8"
     }
   ]
 }

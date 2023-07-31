@@ -1,0 +1,136 @@
+/Users/makotomorishita/Desktop/LBNL/GPTune/examples/Scalapack-PDGETRF
+machine: mac processor: intel num_nodes: 1 num_cores: 8
+True
+/Users/makotomorishita/Desktop/LBNL/GPTune/examples/Scalapack-PDGETRF/./scalapack_MLA.py
+/Users/makotomorishita/Desktop/LBNL/GPTune/examples/Scalapack-PDGETRF/scalapack-driver/bin/pdludriver
+Space([Integer(low=128, high=10000, prior='uniform', transform='normalize')]) Space([Integer(low=1, high=16, prior='uniform', transform='normalize'),
+       Integer(low=0, high=3, prior='uniform', transform='normalize'),
+       Integer(low=1, high=8, prior='uniform', transform='normalize')]) Space([Real(low=-inf, high=inf, prior='uniform', transform='identity')]) {'cst2': <function cst2 at 0x17b58d3a0>, 'cst3': <function cst3 at 0x17b58d430>}
+GPTune History Database Init
+[HistoryDB] Create a JSON file at ./gptune.db/PDGETRF.json
+
+
+
+------Starting MLA with 1 tasks and 20 samples each 
+[HistoryDB] Found a history database file
+no history data has been loaded
+NS1:  10
+[('LU', 10000, 1, 8, 104, 2, 3, 3, 1, 1.0, 4)]  scalapack starts 
+exec /Users/makotomorishita/Desktop/LBNL/GPTune/examples/Scalapack-PDGETRF/scalapack-driver/bin/mac/pdludriver args /Users/makotomorishita/Desktop/LBNL/GPTune/examples/Scalapack-PDGETRF/scalapack-driver/exp/mac/GPTune/0/ nproc 3 nthreads 2 npernode 4
+[('LU', 10000, 1, 8, 104, 2, 3, 3, 1, 1.0, 4)]  scalapack time:  [7.85]
+[('LU', 10000, 1, 8, 24, 1, 8, 8, 1, 1.0, 8)]  scalapack starts 
+exec /Users/makotomorishita/Desktop/LBNL/GPTune/examples/Scalapack-PDGETRF/scalapack-driver/bin/mac/pdludriver args /Users/makotomorishita/Desktop/LBNL/GPTune/examples/Scalapack-PDGETRF/scalapack-driver/exp/mac/GPTune/0/ nproc 8 nthreads 1 npernode 8
+[('LU', 10000, 1, 8, 24, 1, 8, 8, 1, 1.0, 8)]  scalapack time:  [13.24]
+[('LU', 10000, 1, 8, 88, 2, 4, 1, 4, 1.0, 4)]  scalapack starts 
+exec /Users/makotomorishita/Desktop/LBNL/GPTune/examples/Scalapack-PDGETRF/scalapack-driver/bin/mac/pdludriver args /Users/makotomorishita/Desktop/LBNL/GPTune/examples/Scalapack-PDGETRF/scalapack-driver/exp/mac/GPTune/0/ nproc 4 nthreads 2 npernode 4
+[('LU', 10000, 1, 8, 88, 2, 4, 1, 4, 1.0, 4)]  scalapack time:  [6.5]
+[('LU', 10000, 1, 8, 16, 2, 4, 2, 2, 1.0, 4)]  scalapack starts 
+exec /Users/makotomorishita/Desktop/LBNL/GPTune/examples/Scalapack-PDGETRF/scalapack-driver/bin/mac/pdludriver args /Users/makotomorishita/Desktop/LBNL/GPTune/examples/Scalapack-PDGETRF/scalapack-driver/exp/mac/GPTune/0/ nproc 4 nthreads 2 npernode 4
+[('LU', 10000, 1, 8, 16, 2, 4, 2, 2, 1.0, 4)]  scalapack time:  [15.75]
+[('LU', 10000, 1, 8, 80, 2, 4, 1, 4, 1.0, 4)]  scalapack starts 
+exec /Users/makotomorishita/Desktop/LBNL/GPTune/examples/Scalapack-PDGETRF/scalapack-driver/bin/mac/pdludriver args /Users/makotomorishita/Desktop/LBNL/GPTune/examples/Scalapack-PDGETRF/scalapack-driver/exp/mac/GPTune/0/ nproc 4 nthreads 2 npernode 4
+[('LU', 10000, 1, 8, 80, 2, 4, 1, 4, 1.0, 4)]  scalapack time:  [6.95]
+[('LU', 10000, 1, 8, 88, 2, 4, 2, 2, 1.0, 4)]  scalapack starts 
+exec /Users/makotomorishita/Desktop/LBNL/GPTune/examples/Scalapack-PDGETRF/scalapack-driver/bin/mac/pdludriver args /Users/makotomorishita/Desktop/LBNL/GPTune/examples/Scalapack-PDGETRF/scalapack-driver/exp/mac/GPTune/0/ nproc 4 nthreads 2 npernode 4
+[('LU', 10000, 1, 8, 88, 2, 4, 2, 2, 1.0, 4)]  scalapack time:  [8.08]
+[('LU', 10000, 1, 8, 96, 1, 7, 7, 1, 1.0, 8)]  scalapack starts 
+exec /Users/makotomorishita/Desktop/LBNL/GPTune/examples/Scalapack-PDGETRF/scalapack-driver/bin/mac/pdludriver args /Users/makotomorishita/Desktop/LBNL/GPTune/examples/Scalapack-PDGETRF/scalapack-driver/exp/mac/GPTune/0/ nproc 7 nthreads 1 npernode 8
+[('LU', 10000, 1, 8, 96, 1, 7, 7, 1, 1.0, 8)]  scalapack time:  [9.6]
+[('LU', 10000, 1, 8, 40, 1, 6, 3, 2, 1.0, 8)]  scalapack starts 
+exec /Users/makotomorishita/Desktop/LBNL/GPTune/examples/Scalapack-PDGETRF/scalapack-driver/bin/mac/pdludriver args /Users/makotomorishita/Desktop/LBNL/GPTune/examples/Scalapack-PDGETRF/scalapack-driver/exp/mac/GPTune/0/ nproc 6 nthreads 1 npernode 8
+[('LU', 10000, 1, 8, 40, 1, 6, 3, 2, 1.0, 8)]  scalapack time:  [8.36]
+[('LU', 10000, 1, 8, 48, 1, 6, 6, 1, 1.0, 8)]  scalapack starts 
+exec /Users/makotomorishita/Desktop/LBNL/GPTune/examples/Scalapack-PDGETRF/scalapack-driver/bin/mac/pdludriver args /Users/makotomorishita/Desktop/LBNL/GPTune/examples/Scalapack-PDGETRF/scalapack-driver/exp/mac/GPTune/0/ nproc 6 nthreads 1 npernode 8
+[('LU', 10000, 1, 8, 48, 1, 6, 6, 1, 1.0, 8)]  scalapack time:  [9.11]
+[('LU', 10000, 1, 8, 120, 2, 4, 4, 1, 1.0, 4)]  scalapack starts 
+exec /Users/makotomorishita/Desktop/LBNL/GPTune/examples/Scalapack-PDGETRF/scalapack-driver/bin/mac/pdludriver args /Users/makotomorishita/Desktop/LBNL/GPTune/examples/Scalapack-PDGETRF/scalapack-driver/exp/mac/GPTune/0/ nproc 4 nthreads 2 npernode 4
+[('LU', 10000, 1, 8, 120, 2, 4, 4, 1, 1.0, 4)]  scalapack time:  [9.15]
+NSmin:  10
+NS:  20
+Iteration:  0
+[HistoryDB] Found a history database file
+loaded function evaluations:  10
+exec /Users/makotomorishita/Desktop/LBNL/GPTune/GPTune/lcm.py args None nproc 1
+searcher:  SearchPyGMO algorithm:  pso
+[('LU', 10000, 1, 8, 16, 8, 1, 1, 1, 1.0, 1)]  scalapack starts 
+exec /Users/makotomorishita/Desktop/LBNL/GPTune/examples/Scalapack-PDGETRF/scalapack-driver/bin/mac/pdludriver args /Users/makotomorishita/Desktop/LBNL/GPTune/examples/Scalapack-PDGETRF/scalapack-driver/exp/mac/GPTune/0/ nproc 1 nthreads 8 npernode 1
+[('LU', 10000, 1, 8, 16, 8, 1, 1, 1, 1.0, 1)]  scalapack time:  [20.68]
+Iteration:  1
+[HistoryDB] Found a history database file
+loaded function evaluations:  11
+exec /Users/makotomorishita/Desktop/LBNL/GPTune/GPTune/lcm.py args None nproc 1
+searcher:  SearchPyGMO algorithm:  pso
+[('LU', 10000, 1, 8, 104, 1, 8, 1, 8, 1.0, 8)]  scalapack starts 
+exec /Users/makotomorishita/Desktop/LBNL/GPTune/examples/Scalapack-PDGETRF/scalapack-driver/bin/mac/pdludriver args /Users/makotomorishita/Desktop/LBNL/GPTune/examples/Scalapack-PDGETRF/scalapack-driver/exp/mac/GPTune/0/ nproc 8 nthreads 1 npernode 8
+[('LU', 10000, 1, 8, 104, 1, 8, 1, 8, 1.0, 8)]  scalapack time:  [6.87]
+Iteration:  2
+[HistoryDB] Found a history database file
+loaded function evaluations:  12
+exec /Users/makotomorishita/Desktop/LBNL/GPTune/GPTune/lcm.py args None nproc 1
+searcher:  SearchPyGMO algorithm:  pso
+[('LU', 10000, 1, 8, 128, 8, 1, 1, 1, 1.0, 1)]  scalapack starts 
+exec /Users/makotomorishita/Desktop/LBNL/GPTune/examples/Scalapack-PDGETRF/scalapack-driver/bin/mac/pdludriver args /Users/makotomorishita/Desktop/LBNL/GPTune/examples/Scalapack-PDGETRF/scalapack-driver/exp/mac/GPTune/0/ nproc 1 nthreads 8 npernode 1
+[('LU', 10000, 1, 8, 128, 8, 1, 1, 1, 1.0, 1)]  scalapack time:  [9.94]
+Iteration:  3
+[HistoryDB] Found a history database file
+loaded function evaluations:  13
+exec /Users/makotomorishita/Desktop/LBNL/GPTune/GPTune/lcm.py args None nproc 1
+searcher:  SearchPyGMO algorithm:  pso
+[('LU', 10000, 1, 8, 96, 1, 8, 4, 2, 1.0, 8)]  scalapack starts 
+exec /Users/makotomorishita/Desktop/LBNL/GPTune/examples/Scalapack-PDGETRF/scalapack-driver/bin/mac/pdludriver args /Users/makotomorishita/Desktop/LBNL/GPTune/examples/Scalapack-PDGETRF/scalapack-driver/exp/mac/GPTune/0/ nproc 8 nthreads 1 npernode 8
+[('LU', 10000, 1, 8, 96, 1, 8, 4, 2, 1.0, 8)]  scalapack time:  [7.78]
+Iteration:  4
+[HistoryDB] Found a history database file
+loaded function evaluations:  14
+exec /Users/makotomorishita/Desktop/LBNL/GPTune/GPTune/lcm.py args None nproc 1
+searcher:  SearchPyGMO algorithm:  pso
+[('LU', 10000, 1, 8, 128, 1, 8, 8, 1, 1.0, 8)]  scalapack starts 
+exec /Users/makotomorishita/Desktop/LBNL/GPTune/examples/Scalapack-PDGETRF/scalapack-driver/bin/mac/pdludriver args /Users/makotomorishita/Desktop/LBNL/GPTune/examples/Scalapack-PDGETRF/scalapack-driver/exp/mac/GPTune/0/ nproc 8 nthreads 1 npernode 8
+[('LU', 10000, 1, 8, 128, 1, 8, 8, 1, 1.0, 8)]  scalapack time:  [9.62]
+Iteration:  5
+[HistoryDB] Found a history database file
+loaded function evaluations:  15
+exec /Users/makotomorishita/Desktop/LBNL/GPTune/GPTune/lcm.py args None nproc 1
+searcher:  SearchPyGMO algorithm:  pso
+[('LU', 10000, 1, 8, 8, 1, 5, 5, 1, 1.0, 8)]  scalapack starts 
+exec /Users/makotomorishita/Desktop/LBNL/GPTune/examples/Scalapack-PDGETRF/scalapack-driver/bin/mac/pdludriver args /Users/makotomorishita/Desktop/LBNL/GPTune/examples/Scalapack-PDGETRF/scalapack-driver/exp/mac/GPTune/0/ nproc 5 nthreads 1 npernode 8
+[('LU', 10000, 1, 8, 8, 1, 5, 5, 1, 1.0, 8)]  scalapack time:  [28.2]
+Iteration:  6
+[HistoryDB] Found a history database file
+loaded function evaluations:  16
+exec /Users/makotomorishita/Desktop/LBNL/GPTune/GPTune/lcm.py args None nproc 1
+searcher:  SearchPyGMO algorithm:  pso
+[('LU', 10000, 1, 8, 40, 1, 8, 1, 8, 1.0, 8)]  scalapack starts 
+exec /Users/makotomorishita/Desktop/LBNL/GPTune/examples/Scalapack-PDGETRF/scalapack-driver/bin/mac/pdludriver args /Users/makotomorishita/Desktop/LBNL/GPTune/examples/Scalapack-PDGETRF/scalapack-driver/exp/mac/GPTune/0/ nproc 8 nthreads 1 npernode 8
+[('LU', 10000, 1, 8, 40, 1, 8, 1, 8, 1.0, 8)]  scalapack time:  [7.01]
+Iteration:  7
+[HistoryDB] Found a history database file
+loaded function evaluations:  17
+exec /Users/makotomorishita/Desktop/LBNL/GPTune/GPTune/lcm.py args None nproc 1
+searcher:  SearchPyGMO algorithm:  pso
+[('LU', 10000, 1, 8, 64, 1, 8, 1, 8, 1.0, 8)]  scalapack starts 
+exec /Users/makotomorishita/Desktop/LBNL/GPTune/examples/Scalapack-PDGETRF/scalapack-driver/bin/mac/pdludriver args /Users/makotomorishita/Desktop/LBNL/GPTune/examples/Scalapack-PDGETRF/scalapack-driver/exp/mac/GPTune/0/ nproc 8 nthreads 1 npernode 8
+[('LU', 10000, 1, 8, 64, 1, 8, 1, 8, 1.0, 8)]  scalapack time:  [6.58]
+Iteration:  8
+[HistoryDB] Found a history database file
+loaded function evaluations:  18
+exec /Users/makotomorishita/Desktop/LBNL/GPTune/GPTune/lcm.py args None nproc 1
+searcher:  SearchPyGMO algorithm:  pso
+[('LU', 10000, 1, 8, 64, 1, 8, 8, 1, 1.0, 8)]  scalapack starts 
+exec /Users/makotomorishita/Desktop/LBNL/GPTune/examples/Scalapack-PDGETRF/scalapack-driver/bin/mac/pdludriver args /Users/makotomorishita/Desktop/LBNL/GPTune/examples/Scalapack-PDGETRF/scalapack-driver/exp/mac/GPTune/0/ nproc 8 nthreads 1 npernode 8
+[('LU', 10000, 1, 8, 64, 1, 8, 8, 1, 1.0, 8)]  scalapack time:  [9.67]
+Iteration:  9
+[HistoryDB] Found a history database file
+loaded function evaluations:  19
+exec /Users/makotomorishita/Desktop/LBNL/GPTune/GPTune/lcm.py args None nproc 1
+searcher:  SearchPyGMO algorithm:  pso
+[('LU', 10000, 1, 8, 104, 8, 1, 1, 1, 1.0, 1)]  scalapack starts 
+exec /Users/makotomorishita/Desktop/LBNL/GPTune/examples/Scalapack-PDGETRF/scalapack-driver/bin/mac/pdludriver args /Users/makotomorishita/Desktop/LBNL/GPTune/examples/Scalapack-PDGETRF/scalapack-driver/exp/mac/GPTune/0/ nproc 1 nthreads 8 npernode 1
+[('LU', 10000, 1, 8, 104, 8, 1, 1, 1, 1.0, 1)]  scalapack time:  [9.92]
+stats:  {'time_total': 464.217307, 'time_sample_init': 0.0502, 'time_fun': 448.04896199999996, 'time_search': 5.282926999999999, 'time_model': 10.832325999999998, 'func_eval_time': [199.555505], 'search_time': [0.569097, 0.569777, 0.530614, 0.512234, 0.488711, 0.509158, 0.550579, 0.497699, 0.507764, 0.547294], 'modeling_time': [1.086343, 1.128687, 1.106233, 0.958306, 1.118975, 1.058151, 1.127585, 1.050493, 1.114046, 1.083507], 'modeling_iteration': [26, 33, 25, 30, 33, 205, 50, 28, 79, 58]}
+tid: 0
+    n:10000
+    Ps  [[13, 2, 3], [3, 3, 8], [11, 2, 1], [2, 2, 2], [10, 2, 1], [11, 2, 2], [12, 3, 7], [5, 3, 3], [6, 3, 6], [15, 2, 4], [2, 0, 1], [13, 3, 1], [16, 0, 1], [12, 3, 4], [16, 3, 8], [1, 3, 5], [5, 3, 1], [8, 3, 1], [8, 3, 8], [13, 0, 1]]
+    Os  [[7.85], [13.24], [6.5], [15.75], [6.95], [8.08], [9.6], [8.36], [9.11], [9.15], [20.68], [6.87], [9.94], [7.78], [9.62], [28.2], [7.01], [6.58], [9.67], [9.92]]
+    Popt  [11, 2, 1] Oopt  6.5 nth  2
+    
